@@ -20,16 +20,24 @@ Application web vanilla pour préparer le baccalauréat : suivi des notions, cou
 - Persistance locale via `localStorage` (progression du tracker, notes du simulateur)
 - [MathJax](https://www.mathjax.org/) (CDN) pour les formules mathématiques
 
+## Démo en ligne (GitHub Pages)
+
+**URL :** [https://yehielscourses.github.io/app/](https://yehielscourses.github.io/app/)
+
+Le déploiement est automatique à chaque push sur `main` via GitHub Actions (`.github/workflows/deploy.yml`).
+
+### Activer GitHub Pages (une seule fois)
+
+1. Repo **Settings** → **Pages**
+2. **Build and deployment** → Source : **GitHub Actions**
+3. Merger sur `main` — le workflow `Deploy to GitHub Pages` publie le site
+
 ## Lancement en local
 
 Un serveur HTTP local est nécessaire pour charger les fichiers JSON (`fetch`).
 
 ```bash
-# Python
 python -m http.server 8000
-
-# ou Node (npx)
-npx serve .
 ```
 
 Puis ouvrir [http://localhost:8000](http://localhost:8000).

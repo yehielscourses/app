@@ -122,7 +122,7 @@ function renderSection(section) {
 
 async function loadData() {
     if (data) return data;
-    const res = await fetch('data/notions.json');
+    const res = await fetch(new URL('data/notions.json', document.baseURI));
     if (!res.ok) throw new Error('Impossible de charger les notions');
     data = await res.json();
     return data;
