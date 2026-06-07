@@ -1,1 +1,14 @@
-/* Design tokens — palette inspirée du tracker existant */
+:root {
+    --primary:      #1e3a5f;
+    --primary-mid:  #2c5282;
+    --accent:       #c0392b;
+    --success:      #1a7f4b;
+    --success-bg:   #e6f4ed;
+    --warning:      #b7791f;
+    --bg:           #f0f2f5;
+    --card:         #ffffff;
+    --border:       #dde3ec;
+    --text:         #1a202c;
+    --muted:        #718096;
+    --done-opacity: 0.38;
+}

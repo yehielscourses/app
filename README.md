@@ -75,12 +75,14 @@ Puis ouvrir [http://localhost:8000](http://localhost:8000).
 
 ## Données
 
-Les fichiers JSON dans `data/` sont la source de vérité pour le contenu pédagogique. Le tracker existant (39 notions Maths & PC en 8 sections) sera migré vers `data/notions.json`.
+Les fichiers JSON dans `data/` sont la source de vérité pour le contenu pédagogique.
+
+- `data/notions.json` — 39 notions Maths & PC en 8 sections (Phase 0 → Bloc 6 + transversales)
+- La progression est sauvegardée dans `localStorage` (clé `bac-tracker-v2`, compatible avec l'ancien fichier HTML)
 
 ## Roadmap
 
-- [ ] Squelette HTML/CSS avec navigation par onglets
-- [ ] Migration du tracker existant vers `data/notions.json`
+- [x] Squelette HTML/CSS avec navigation par onglets
+- [x] Migration du tracker vers `data/notions.json`
 - [ ] Contenu cours et exercices
 - [ ] Simulateur avec coefficients officiels
-- [ ] UX mobile-first, accessibilité clavier
