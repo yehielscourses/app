@@ -7,7 +7,7 @@
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    background: linear-gradient(135deg, #eef3fb 0%, #e8f0fa 100%);
+    background: var(--next-exam-bg);
     border-left: 5px solid var(--primary-mid);
     border-radius: 8px;
     padding: 16px 18px;
@@ -46,6 +46,21 @@
     font-size: 0.85rem;
     color: var(--muted);
     margin-top: 4px;
+}
+
+.sim-next-exam-location {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 8px;
+    line-height: 1.45;
+}
+
+.sim-next-exam-location-icon {
+    flex-shrink: 0;
+    line-height: 1.45;
 }
 
 .sim-summary {
@@ -181,21 +196,15 @@
 }
 
 .sim-group-co {
-    background: #fef9e7;
-    color: #92710a;
-    border-right-color: #f6c90e;
+    background: var(--group-co-bg);
+    color: var(--group-co-text);
+    border-right-color: var(--group-co-border);
 }
 
 .sim-group-finales {
-    background: #ebf4ff;
-    color: #2c5282;
-    border-right-color: #63b3ed;
-}
-
-.sim-group-opt {
-    background: #fff5f7;
-    color: #97266d;
-    border-right-color: #f687b3;
+    background: var(--group-fin-bg);
+    color: var(--group-fin-text);
+    border-right-color: var(--group-fin-border);
 }
 
 .sim-group-short {
@@ -206,7 +215,7 @@
 
 .sim-row td {
     padding: 7px 10px;
-    border-bottom: 1px solid #edf2f7;
+    border-bottom: 1px solid var(--row-border);
     vertical-align: middle;
 }
 
@@ -241,19 +250,19 @@
     font-weight: 600;
     text-align: center;
     color: var(--text);
-    background: #fafbfc;
+    background: var(--input-bg);
     transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .sim-note-input:focus {
     outline: none;
     border-color: var(--primary-mid);
-    box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.15);
-    background: #fff;
+    box-shadow: 0 0 0 3px var(--focus-ring);
+    background: var(--input-focus-bg);
 }
 
 .sim-note-input::placeholder {
-    color: #cbd5e0;
+    color: var(--input-placeholder);
     font-weight: 400;
 }
 
@@ -270,12 +279,12 @@
     font-size: 0.9rem;
     color: var(--primary);
     cursor: pointer;
-    background: #f7fafc;
+    background: var(--calendar-summary);
     user-select: none;
 }
 
 .sim-calendar summary:hover {
-    background: #edf2f7;
+    background: var(--calendar-summary-hover);
 }
 
 .sim-calendar-list {
@@ -292,12 +301,19 @@
     gap: 8px;
     padding: 9px 16px;
     font-size: 0.84rem;
-    border-top: 1px solid #edf2f7;
+    border-top: 1px solid var(--row-border);
     align-items: baseline;
 }
 
+.sim-calendar-address {
+    grid-column: 1 / -1;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.4;
+}
+
 .sim-calendar-item--next {
-    background: #eef3fb;
+    background: var(--calendar-next);
     font-weight: 600;
 }
 

@@ -25,10 +25,6 @@
       { "id": "ct-spe-2", "label": "Spécialité 2 — Physique-chimie", "coefficient": 16, "required": true },
       { "id": "ct-philo", "label": "Philosophie", "coefficient": 8, "required": true },
       { "id": "ct-grand-oral", "label": "Grand oral", "coefficient": 10, "required": true }
-    ],
-    "options": [
-      { "id": "ct-opt-1", "label": "Ens. optionnel 1", "coefficient": 4, "required": false },
-      { "id": "ct-opt-2", "label": "Ens. optionnel 2", "coefficient": 4, "required": false }
     ]
   }
 }
