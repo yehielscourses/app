@@ -1,0 +1,172 @@
+[
+  {
+    "id": "eps-1",
+    "nom": "EPS première activité sportive - Cross training",
+    "date": "2026-04-23",
+    "heure_debut": "08:00",
+    "duree": null,
+    "coefficient": 3,
+    "adresse": "GYMNASE LYCEE BERTHOLLET, 9 BOULEVARD DU LYCEE, 74000 ANNECY",
+    "matiere": "eps"
+  },
+  {
+    "id": "eps-2",
+    "nom": "EPS seconde activité sportive - Tennis de table",
+    "date": "2026-04-23",
+    "heure_debut": "13:30",
+    "duree": null,
+    "coefficient": 3,
+    "adresse": "GYMNASE DU COLLEGE LE SEMNOZ, 30 RUE DU MURAILLON, 74000 ANNECY",
+    "matiere": "eps"
+  },
+  {
+    "id": "hg-terminale",
+    "nom": "Histoire - Géographie (programme cycle) (écrite)",
+    "date": "2026-05-26",
+    "heure_debut": "10:00",
+    "duree": "02:00",
+    "coefficient": 6,
+    "adresse": "LPO JEAN MOULIN, 12 RUE FELIX CHAUTEMPS, BP 55, 73202 ALBERTVILLE CEDEX",
+    "matiere": "hg"
+  },
+  {
+    "id": "ens-sci-terminale",
+    "nom": "Enseignement scientifique (programme cycle) (écrite)",
+    "date": "2026-05-26",
+    "heure_debut": "14:30",
+    "duree": "02:00",
+    "coefficient": 6,
+    "adresse": "LPO JEAN MOULIN, 12 RUE FELIX CHAUTEMPS, BP 55, 73202 ALBERTVILLE CEDEX",
+    "matiere": "ens-sci"
+  },
+  {
+    "id": "emc-terminale",
+    "nom": "Enseignement moral et civique (programme cycle) (oral)",
+    "date": "2026-05-28",
+    "heure_debut": "08:30",
+    "duree": "01:00",
+    "coefficient": 2,
+    "adresse": "LPO MARLIOZ, 2 CHEMIN DU LYCEE, 73100 AIX LES BAINS (Salle: 303)",
+    "matiere": "emc"
+  },
+  {
+    "id": "lvb-oral",
+    "nom": "Langue vivante B oral (programme cycle) - Hébreu (oral)",
+    "date": "2026-05-29",
+    "heure_debut": "09:30",
+    "duree": "00:20",
+    "coefficient": 6,
+    "adresse": "RECTORAT DE GRENOBLE, 7 PLACE BIR HAKEIM, 38021 GRENOBLE CEDEX 1",
+    "matiere": "lvb"
+  },
+  {
+    "id": "lva-ecrit",
+    "nom": "Langue vivante A écrit (programme cycle) - Anglais (écrite)",
+    "date": "2026-06-03",
+    "heure_debut": "08:30",
+    "duree": "01:30",
+    "coefficient": 6,
+    "adresse": "LGT VAUGELAS - LG VAUGELAS, 8 RUE JEAN-PIERRE VEYRAT, BP 50628, 73006 CHAMBERY CEDEX (Salle: H217, Bâtiment H/LG VAUGELAS)",
+    "matiere": "lva"
+  },
+  {
+    "id": "lvb-ecrit",
+    "nom": "Langue vivante B écrit (programme cycle) - Hébreu (écrite)",
+    "date": "2026-06-03",
+    "heure_debut": "14:30",
+    "duree": "01:30",
+    "coefficient": 6,
+    "adresse": "LGT VAUGELAS - LG VAUGELAS, 8 RUE JEAN-PIERRE VEYRAT, BP 50628, 73006 CHAMBERY CEDEX (Salle: H213, Bâtiment H/LG VAUGELAS)",
+    "matiere": "lvb"
+  },
+  {
+    "id": "nsi-ecrit",
+    "nom": "Spécialité: Numérique et sciences informatiques (écrite)",
+    "date": "2026-06-05",
+    "heure_debut": "10:00",
+    "duree": "03:30",
+    "coefficient": 16,
+    "adresse": "LPO DES METIERS LOUIS LACHENAL-BAC, 335 ROUTE CHAMP FARCON, BP 38, 74372 PRINGY CEDEX (Salle: G SOMMEILLER (BAC))",
+    "matiere": "spe-abandonnee"
+  },
+  {
+    "id": "lva-oral",
+    "nom": "Langue vivante A oral (programme cycle) - Anglais (oral)",
+    "date": "2026-06-08",
+    "heure_debut": "09:00",
+    "duree": "00:20",
+    "coefficient": 6,
+    "adresse": "LGT VAUGELAS - LG VAUGELAS, 8 RUE JEAN-PIERRE VEYRAT, BP 50628, 73006 CHAMBERY CEDEX (Salle: H106, Bâtiment H/LG VAUGELAS)",
+    "matiere": "lva"
+  },
+  {
+    "id": "francais-ecrit",
+    "nom": "Français écrit (écrite)",
+    "date": "2026-06-11",
+    "heure_debut": "08:00",
+    "duree": "04:00",
+    "coefficient": 5,
+    "adresse": "LPO MARLIOZ, 2 CHEMIN DU LYCEE, 73100 AIX LES BAINS",
+    "matiere": "francais-ecrit"
+  },
+  {
+    "id": "philo",
+    "nom": "Philosophie (écrite)",
+    "date": "2026-06-15",
+    "heure_debut": "08:00",
+    "duree": "04:00",
+    "coefficient": 8,
+    "adresse": "LPO MARLIOZ, 2 CHEMIN DU LYCEE, 73100 AIX LES BAINS",
+    "matiere": "philo"
+  },
+  {
+    "id": "pc-ecrit",
+    "nom": "Spécialité: Physique-chimie écrit (écrite)",
+    "date": "2026-06-16",
+    "heure_debut": "08:00",
+    "duree": "03:30",
+    "coefficient": 16,
+    "adresse": "LPO MARLIOZ, 2 CHEMIN DU LYCEE, 73100 AIX LES BAINS",
+    "matiere": "spe-2"
+  },
+  {
+    "id": "maths-ecrit",
+    "nom": "Spécialité: Mathématiques (écrite)",
+    "date": "2026-06-17",
+    "heure_debut": "08:00",
+    "duree": "04:00",
+    "coefficient": 16,
+    "adresse": "LPO MARLIOZ, 2 CHEMIN DU LYCEE, 73100 AIX LES BAINS",
+    "matiere": "spe-1"
+  },
+  {
+    "id": "grand-oral",
+    "nom": "Epreuve orale terminale (Grand oral) (oral)",
+    "date": "2026-06-22",
+    "heure_debut": "13:30",
+    "duree": "00:40",
+    "coefficient": 10,
+    "adresse": "LGT PR DES METIERS ST AMBROISE, 2 RUE BURDIN, 73025 CHAMBERY CEDEX (Salle: 101)",
+    "matiere": "grand-oral"
+  },
+  {
+    "id": "francais-oral",
+    "nom": "Français oral (oral)",
+    "date": "2026-06-30",
+    "heure_debut": "08:00",
+    "duree": "00:50",
+    "coefficient": 5,
+    "adresse": "LPO MARLIOZ, 2 CHEMIN DU LYCEE, 73100 AIX LES BAINS",
+    "matiere": "francais-oral"
+  },
+  {
+    "id": "orales-controle",
+    "nom": "Epreuves orales de contrôle (oral)",
+    "date": "2026-07-09",
+    "heure_debut": "08:00",
+    "duree": null,
+    "coefficient": null,
+    "adresse": "LPO LOUIS ARMAND, 321 RUE DU GRAND CHAMP, 73000 CHAMBERY",
+    "matiere": null
+  }
+]

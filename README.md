@@ -93,4 +93,4 @@ Les fichiers JSON dans `data/` sont la source de vérité pour le contenu pédag
 - [x] Squelette HTML/CSS avec navigation par onglets
 - [x] Migration du tracker vers `data/notions.json`
 - [ ] Contenu cours et exercices
-- [ ] Simulateur avec coefficients officiels
+- [x] Simulateur avec coefficients officiels et calendrier des épreuves

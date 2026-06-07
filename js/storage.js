@@ -1,4 +1,5 @@
 export const TRACKER_STORAGE_KEY = 'bac-tracker-v2';
+export const SIMULATOR_STORAGE_KEY = 'bac-simulateur-v1';
 
 export function loadState(key = TRACKER_STORAGE_KEY) {
     try {
