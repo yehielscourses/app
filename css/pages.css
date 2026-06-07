@@ -1,3 +1,338 @@
+/* ── Simulateur ──────────────────────────────────────────── */
+.page-simulateur h1 {
+    margin-bottom: 20px;
+}
+
+.sim-next-exam {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: linear-gradient(135deg, #eef3fb 0%, #e8f0fa 100%);
+    border-left: 5px solid var(--primary-mid);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+}
+
+.sim-next-exam--done {
+    border-left-color: var(--success);
+    background: var(--success-bg);
+}
+
+.sim-next-exam-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.sim-next-exam-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--primary-mid);
+    margin-bottom: 4px;
+}
+
+.sim-next-exam-title {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.4;
+}
+
+.sim-next-exam-meta {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+.sim-summary {
+    background: var(--primary);
+    color: #fff;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 28px;
+}
+
+.sim-summary-main {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    margin-bottom: 8px;
+}
+
+.sim-summary-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    opacity: 0.85;
+}
+
+.sim-summary-score {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.sim-summary-unit {
+    font-size: 1rem;
+    font-weight: 600;
+    opacity: 0.7;
+}
+
+.sim-mention {
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.2);
+}
+
+.sim-mention.mention-tb { background: #f6c90e; color: #5c4a00; }
+.sim-mention.mention-b  { background: #90cdf4; color: #1a365d; }
+.sim-mention.mention-ab { background: #9ae6b4; color: #1a4731; }
+.sim-mention.mention-p  { background: #fbd38d; color: #744210; }
+.sim-mention.mention-i  { background: #feb2b2; color: #742a2a; }
+
+.sim-summary-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    font-size: 0.82rem;
+    opacity: 0.8;
+}
+
+.sim-summary-hint {
+    font-style: italic;
+}
+
+.sim-niveau {
+    margin-bottom: 32px;
+}
+
+.sim-niveau-title {
+    font-family: 'Lora', serif;
+    font-size: 1.15rem;
+    color: var(--primary);
+    background: none;
+    border: none;
+    border-bottom: 2px solid var(--border);
+    border-radius: 0;
+    padding: 0 0 8px;
+    margin: 0 0 6px;
+    display: block;
+}
+
+.sim-cycle-hint {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 0 0 14px;
+}
+
+.sim-block {
+    margin-bottom: 0;
+    overflow-x: auto;
+}
+
+.sim-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+.sim-table thead th {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--muted);
+    padding: 6px 10px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+}
+
+.sim-th-coef,
+.sim-th-note,
+.sim-cell-coef,
+.sim-cell-note {
+    width: 72px;
+    text-align: center;
+}
+
+.sim-th-group {
+    width: 44px;
+}
+
+.sim-group-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    text-align: center;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 8px 4px;
+    vertical-align: middle;
+    border-right: 3px solid transparent;
+}
+
+.sim-group-co {
+    background: #fef9e7;
+    color: #92710a;
+    border-right-color: #f6c90e;
+}
+
+.sim-group-finales {
+    background: #ebf4ff;
+    color: #2c5282;
+    border-right-color: #63b3ed;
+}
+
+.sim-group-opt {
+    background: #fff5f7;
+    color: #97266d;
+    border-right-color: #f687b3;
+}
+
+.sim-group-short {
+    display: inline-block;
+    max-height: 120px;
+    overflow: hidden;
+}
+
+.sim-row td {
+    padding: 7px 10px;
+    border-bottom: 1px solid #edf2f7;
+    vertical-align: middle;
+}
+
+.sim-row--optional .sim-cell-label {
+    color: var(--muted);
+}
+
+.sim-cell-label {
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+
+.sim-required {
+    color: var(--accent);
+    font-weight: 800;
+    margin-right: 2px;
+}
+
+.sim-cell-coef {
+    font-weight: 700;
+    color: var(--primary-mid);
+    font-size: 0.88rem;
+}
+
+.sim-note-input {
+    width: 64px;
+    padding: 6px 8px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--text);
+    background: #fafbfc;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.sim-note-input:focus {
+    outline: none;
+    border-color: var(--primary-mid);
+    box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.15);
+    background: #fff;
+}
+
+.sim-note-input::placeholder {
+    color: #cbd5e0;
+    font-weight: 400;
+}
+
+.sim-calendar {
+    margin-top: 24px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.sim-calendar summary {
+    padding: 12px 16px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--primary);
+    cursor: pointer;
+    background: #f7fafc;
+    user-select: none;
+}
+
+.sim-calendar summary:hover {
+    background: #edf2f7;
+}
+
+.sim-calendar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.sim-calendar-item {
+    display: grid;
+    grid-template-columns: 140px 52px 1fr;
+    gap: 8px;
+    padding: 9px 16px;
+    font-size: 0.84rem;
+    border-top: 1px solid #edf2f7;
+    align-items: baseline;
+}
+
+.sim-calendar-item--next {
+    background: #eef3fb;
+    font-weight: 600;
+}
+
+.sim-calendar-item time {
+    color: var(--muted);
+    text-transform: capitalize;
+}
+
+.sim-calendar-time {
+    color: var(--primary-mid);
+    font-weight: 700;
+}
+
+.sim-calendar-name {
+    color: var(--text);
+}
+
+@media (max-width: 620px) {
+    .sim-calendar-item {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+
+    .sim-group-label {
+        writing-mode: horizontal-tb;
+        transform: none;
+        text-align: left;
+        padding: 4px 8px;
+    }
+
+    .sim-summary-score {
+        font-size: 1.6rem;
+    }
+}
+
 /* ── Pages à venir (placeholder) ─────────────────────────── */
 .page-placeholder {
     text-align: center;
