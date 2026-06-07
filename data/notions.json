@@ -1,0 +1,178 @@
+{
+  "storageKey": "bac-tracker-v2",
+  "title": "🎯 TRACKER DE RÉVISIONS — BAC MATHS & PC",
+  "profile": {
+    "headline": "Profil : Candidat Libre — Parcours adapté Post-5e",
+    "objective": "Objectif : cocher chaque case une fois la notion maîtrisée (cours compris + exercices d'application faits)."
+  },
+  "completionMessage": "🏆 Toutes les notions sont maîtrisées — Bonne chance au bac !",
+  "sections": [
+    {
+      "id": "phase0",
+      "title": "🛠️ PHASE 0 — Le pont des collèges & seconde",
+      "subsections": [
+        {
+          "title": "Mathématiques de base",
+          "notions": [
+            { "id": "m0-1", "html": "<strong>Le calcul littéral :</strong> développer, factoriser, double distributivité." },
+            { "id": "m0-2", "html": "<strong>Les identités remarquables :</strong> $(a+b)^2$, $(a-b)^2$ et $(a-b)(a+b)$." },
+            { "id": "m0-3", "html": "<strong>Les équations du 1<sup>er</sup> degré :</strong> isoler une inconnue $x$ (ex : $ax + b = c$)." },
+            { "id": "m0-4", "html": "<strong>Puissances et racines carrées :</strong> règles de calcul ($10^a \\times 10^b$) et simplification de $\\sqrt{x}$." },
+            { "id": "m0-5", "html": "<strong>Le concept de fonction :</strong> lire un graphique, axes des abscisses ($x$) et des ordonnées ($y$)." }
+          ]
+        },
+        {
+          "title": "Physique-Chimie de base",
+          "notions": [
+            { "id": "pc0-1", "html": "<strong>Structure de la matière :</strong> atomes, molécules, ions, protons, neutrons, électrons." },
+            { "id": "pc0-2", "html": "<strong>La notion de force :</strong> représenter une action mécanique par une flèche (direction, sens, valeur en Newton)." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bloc1",
+      "title": "📦 BLOC 1 — Les fondations & chimie descriptive",
+      "difficulty": 1,
+      "subsections": [
+        {
+          "title": "Mathématiques",
+          "notions": [
+            { "id": "m1-1", "html": "<strong>Le second degré :</strong> calcul de $\\Delta = b^2 - 4ac$, recherche des racines, factorisation et tableau de signes." },
+            { "id": "m1-2", "html": "<span class=\"badge-alert\">🚨 INCONTOURNABLE</span><span class=\"important\">Probabilités conditionnelles :</span> arbre pondéré, calcul de $P_A(B)$ et formule des probabilités totales." }
+          ]
+        },
+        {
+          "title": "Physique-Chimie",
+          "notions": [
+            { "id": "pc1-1", "html": "<strong>Modélisation des gaz parfaits :</strong> utilisation de $PV = nRT$, conversions d'unités ($m^3$, Kelvin)." },
+            { "id": "pc1-2", "html": "<strong>Quantité de matière :</strong> $n = \\frac{m}{M}$, $n = \\frac{V}{V_m}$, $C = \\frac{n}{V}$." },
+            { "id": "pc1-3", "html": "<strong>Introduction aux réactions :</strong> équilibrer une réaction acide-base (proton $H^+$) ou d'oxydoréduction (électron $e^-$)." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bloc2",
+      "title": "📦 BLOC 2 — Dérivées, vecteurs & molécules",
+      "difficulty": 2,
+      "subsections": [
+        {
+          "title": "Mathématiques",
+          "notions": [
+            { "id": "m2-1", "html": "<strong>Géométrie vectorielle plane :</strong> coordonnées, colinéarité, produit scalaire $\\vec{u} \\cdot \\vec{v}$ et orthogonalité." },
+            { "id": "m2-2", "html": "<span class=\"badge-alert\">🚨 INCONTOURNABLE</span><span class=\"important\">Dérivation (bases) :</span> calculer $f'(x)$, étudier son signe et dresser le tableau de variations de $f$." }
+          ]
+        },
+        {
+          "title": "Physique-Chimie",
+          "notions": [
+            { "id": "pc2-1", "html": "<strong>Chimie organique :</strong> groupes caractéristiques (alcool, acide carboxylique…) et flèches courbes des mécanismes réactionnels." },
+            { "id": "pc2-2", "html": "<span class=\"badge-alert\">🚨 INCONTOURNABLE</span><span class=\"important\">Titrage direct :</span> déterminer une concentration inconnue, repérer l'équivalence, tableau d'avancement, réactif limitant ($x_{max}$)." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bloc3",
+      "title": "📦 BLOC 3 — Le cœur du raisonnement (mécanique)",
+      "difficulty": 3,
+      "subsections": [
+        {
+          "title": "Mathématiques",
+          "notions": [
+            { "id": "m3-1", "html": "<span class=\"badge-alert\">🚨 INCONTOURNABLE</span><span class=\"important\">Suites numériques & récurrence :</span> suites arithmétiques et géométriques ; rédiger une démonstration par récurrence (initialisation, hérédité, conclusion)." }
+          ]
+        },
+        {
+          "title": "Physique-Chimie",
+          "notions": [
+            { "id": "pc3-1", "html": "<strong>Cinématique :</strong> vecteurs position, vitesse (dérivée de la position) et accélération (dérivée de la vitesse)." },
+            { "id": "pc3-2", "html": "<span class=\"badge-alert\">🚨 INCONTOURNABLE</span><span class=\"important\">2<sup>e</sup> loi de Newton :</span> bilan des forces et projection de $\\sum \\vec{F} = m \\cdot \\vec{a}$ sur les axes Ox et Oy." },
+            { "id": "pc3-3", "html": "<span class=\"badge-alert\">🚨 INCONTOURNABLE</span><span class=\"important\">Mouvement des projectiles :</span> équations horaires et équation de la trajectoire parabolique (intégrations successives)." },
+            { "id": "pc3-4", "html": "<strong>Lois de Kepler & satellites :</strong> MCU, repère de Frenet, 3<sup>e</sup> loi de Kepler $\\dfrac{T^2}{R^3} = \\mathrm{cste}$." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bloc4",
+      "title": "📦 BLOC 4 — L'exponentielle & les évolutions",
+      "difficulty": 4,
+      "subsections": [
+        {
+          "title": "Mathématiques",
+          "notions": [
+            { "id": "m4-1", "html": "<span class=\"badge-alert\">🚨 INCONTOURNABLE</span><span class=\"important\">Limites & TVI :</span> formes indéterminées, théorème des valeurs intermédiaires pour prouver l'existence et l'unicité d'une solution $\\alpha$ de $f(x)=k$." },
+            { "id": "m4-2", "html": "<span class=\"badge-alert\">🚨 INCONTOURNABLE</span><span class=\"important\">Fonction exponentielle $e^x$ :</span> propriétés, limites de référence, croissances comparées, dérivation de $e^{u(x)}$." }
+          ]
+        },
+        {
+          "title": "Physique-Chimie",
+          "notions": [
+            { "id": "pc4-1", "html": "<span class=\"badge-alert\">🚨 INCONTOURNABLE</span><span class=\"important\">Circuit RC :</span> équation différentielle $u_c + RC\\dfrac{du_c}{dt} = E$, vérification de la solution exponentielle, constante de temps $\\tau = RC$." },
+            { "id": "pc4-2", "html": "<span class=\"badge-alert\">🚨 INCONTOURNABLE</span><span class=\"important\">Cinétique chimique d'ordre 1 :</span> loi de vitesse $v = k[A]$, décroissance exponentielle de la concentration, temps de demi-réaction $t_{1/2}$." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bloc5",
+      "title": "📦 BLOC 5 — Le logarithme & la thermodynamique",
+      "difficulty": 5,
+      "subsections": [
+        {
+          "title": "Mathématiques",
+          "notions": [
+            { "id": "m5-1", "html": "<strong>Logarithme népérien ($\\ln$) :</strong> propriétés ($\\ln(ab)=\\ln a+\\ln b$), étude de fonction, isolation d'une puissance inconnue $n$." }
+          ]
+        },
+        {
+          "title": "Physique-Chimie",
+          "notions": [
+            { "id": "pc5-1", "html": "<span class=\"badge-alert\">🚨 INCONTOURNABLE</span><span class=\"important\">Chimie des solutions (pH & $K_a$) :</span> $\\mathrm{pH} = -\\log[H_3O^+]$, constante d'acidité $K_a$ / $pK_a$, diagrammes de prédominance." },
+            { "id": "pc5-2", "html": "<strong>Évolution spontanée & piles :</strong> comparer $Q_r$ et $K$, capacité électrique maximale d'une pile." },
+            { "id": "pc5-3", "html": "<strong>Thermodynamique :</strong> premier principe $\\Delta U = W + Q$, calcul $\\Delta U = mc\\Delta T$, loi de refroidissement de Newton." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bloc6",
+      "title": "📦 BLOC 6 — La clôture (3D, intégrales & ondes)",
+      "difficulty": 6,
+      "subsections": [
+        {
+          "title": "Mathématiques",
+          "notions": [
+            { "id": "m6-1", "html": "<span class=\"badge-alert\">🚨 INCONTOURNABLE</span><span class=\"important\">Géométrie dans l'espace :</span> représentation paramétrique d'une droite, équation cartésienne d'un plan ($ax+by+cz+d=0$), intersections." },
+            { "id": "m6-2", "html": "<strong>Primitives et intégration :</strong> trouver $F(x)$, calculer $\\displaystyle\\int_{a}^{b} f(x)\\,dx$ et maîtriser l'intégration par parties (IPP)." },
+            { "id": "m6-3", "html": "<strong>Loi binomiale $\\mathcal{B}(n,p)$ :</strong> schéma de Bernoulli, formule, calculs de probabilités à la calculatrice." }
+          ]
+        },
+        {
+          "title": "Physique-Chimie",
+          "notions": [
+            { "id": "pc6-1", "html": "<strong>Énergie mécanique :</strong> travail d'une force ($\\vec{F} \\cdot \\vec{AB}$), conservation ou non de $E_m = E_c + E_{pp}$." },
+            { "id": "pc6-2", "html": "<strong>Physique ondulatoire :</strong> $\\lambda = v/f$, diffraction ($\\theta = \\lambda/a$), interférences constructives/destructives, effet Doppler." },
+            { "id": "pc6-3", "html": "<strong>Physique quantique & optique :</strong> effet photoélectrique ($E=hf$), grossissement d'une lunette afocale $G = f'_1/f'_2$." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "transversal",
+      "title": "🛠️ Épreuves transversales — À ne pas oublier !",
+      "subsections": [
+        {
+          "notions": [
+            { "id": "t-1", "html": "<strong>Algorithmique Python :</strong> lire et compléter un script (boucles <code>for</code>, <code>while</code>) en maths (suites) et en physique (méthode d'Euler)." },
+            { "id": "t-2", "html": "<strong>Incertitudes de mesure :</strong> écrire un résultat expérimental ($X \\pm U(X)$) et calculer un écart normalisé." },
+            { "id": "t-3", "html": "<span class=\"badge-alert\">🚨 INCONTOURNABLE</span><span class=\"important\">Grand oral (coeff. 10) :</span> préparer et répéter ses deux questions de 5 minutes (idéalement à la frontière Maths / PC)." },
+            { "id": "t-4", "html": "<strong>Épreuve pratique ECE – PC :</strong> connaître les montages de laboratoire (titrage, filtration, CCM) et manipuler virtuellement via vidéo." }
+          ]
+        }
+      ]
+    }
+  ]
+}
