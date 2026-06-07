@@ -122,8 +122,14 @@
     border-bottom: 2px solid var(--border);
     border-radius: 0;
     padding: 0 0 8px;
-    margin: 0 0 14px;
+    margin: 0 0 6px;
     display: block;
+}
+
+.sim-cycle-hint {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 0 0 14px;
 }
 
 .sim-block {

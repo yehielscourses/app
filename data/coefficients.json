@@ -1,49 +1,34 @@
 {
   "filiere": "general",
+  "cycle": "terminale",
+  "candidat": "libre",
   "specialites": ["Mathématiques", "Physique-chimie"],
   "specialite_abandonnee": "NSI",
   "langues": {
     "lva": "Anglais",
     "lvb": "Hébreu"
   },
-  "niveaux": {
-    "premiere": {
-      "controle_continu": [
-        { "id": "p-hg", "label": "Histoire-géographie", "coefficient": 3, "required": true },
-        { "id": "p-emc", "label": "EMC", "coefficient": 1, "required": true },
-        { "id": "p-lva", "label": "LVA — Anglais", "coefficient": 3, "required": true },
-        { "id": "p-lvb", "label": "LVB — Hébreu", "coefficient": 3, "required": true },
-        { "id": "p-ens-sci", "label": "Ens. scientifique", "coefficient": 3, "required": true },
-        { "id": "p-spe-abandon", "label": "Spécialité abandonnée — NSI", "coefficient": 8, "required": true }
-      ],
-      "epreuves_finales": [
-        { "id": "p-fr-ecrit", "label": "Français écrit", "coefficient": 5, "required": true },
-        { "id": "p-fr-oral", "label": "Français oral", "coefficient": 5, "required": true }
-      ],
-      "options": [
-        { "id": "p-opt-1", "label": "Ens. optionnel 1", "coefficient": 2, "required": false },
-        { "id": "p-opt-2", "label": "Ens. optionnel 2", "coefficient": 2, "required": false }
-      ]
-    },
-    "terminale": {
-      "controle_continu": [
-        { "id": "t-hg", "label": "Histoire-géographie", "coefficient": 3, "required": true },
-        { "id": "t-emc", "label": "EMC", "coefficient": 1, "required": true },
-        { "id": "t-lva", "label": "LVA — Anglais", "coefficient": 3, "required": true },
-        { "id": "t-lvb", "label": "LVB — Hébreu", "coefficient": 3, "required": true },
-        { "id": "t-eps", "label": "EPS", "coefficient": 6, "required": true },
-        { "id": "t-ens-sci", "label": "Ens. scientifique", "coefficient": 3, "required": true }
-      ],
-      "epreuves_finales": [
-        { "id": "t-spe-1", "label": "Spécialité 1 — Mathématiques", "coefficient": 16, "required": true },
-        { "id": "t-spe-2", "label": "Spécialité 2 — Physique-chimie", "coefficient": 16, "required": true },
-        { "id": "t-philo", "label": "Philosophie", "coefficient": 8, "required": true },
-        { "id": "t-grand-oral", "label": "Grand oral", "coefficient": 10, "required": true }
-      ],
-      "options": [
-        { "id": "t-opt-1", "label": "Ens. optionnel 1", "coefficient": 2, "required": false },
-        { "id": "t-opt-2", "label": "Ens. optionnel 2", "coefficient": 2, "required": false }
-      ]
-    }
+  "epreuves": {
+    "controle_continu": [
+      { "id": "ct-hg", "label": "Histoire-géographie", "coefficient": 6, "required": true },
+      { "id": "ct-emc", "label": "EMC", "coefficient": 2, "required": true },
+      { "id": "ct-lva", "label": "LVA — Anglais", "coefficient": 6, "required": true },
+      { "id": "ct-lvb", "label": "LVB — Hébreu", "coefficient": 6, "required": true },
+      { "id": "ct-ens-sci", "label": "Ens. scientifique", "coefficient": 6, "required": true },
+      { "id": "ct-eps", "label": "EPS", "coefficient": 6, "required": true },
+      { "id": "ct-spe-abandon", "label": "Spécialité abandonnée — NSI", "coefficient": 8, "required": true }
+    ],
+    "epreuves_finales": [
+      { "id": "ct-fr-ecrit", "label": "Français écrit", "coefficient": 5, "required": true },
+      { "id": "ct-fr-oral", "label": "Français oral", "coefficient": 5, "required": true },
+      { "id": "ct-spe-1", "label": "Spécialité 1 — Mathématiques", "coefficient": 16, "required": true },
+      { "id": "ct-spe-2", "label": "Spécialité 2 — Physique-chimie", "coefficient": 16, "required": true },
+      { "id": "ct-philo", "label": "Philosophie", "coefficient": 8, "required": true },
+      { "id": "ct-grand-oral", "label": "Grand oral", "coefficient": 10, "required": true }
+    ],
+    "options": [
+      { "id": "ct-opt-1", "label": "Ens. optionnel 1", "coefficient": 4, "required": false },
+      { "id": "ct-opt-2", "label": "Ens. optionnel 2", "coefficient": 4, "required": false }
+    ]
   }
 }

@@ -44,15 +44,14 @@ export function getMention(moyenne) {
  */
 export function collectSimulatorEntries(coefficients, notes) {
     const entries = [];
+    const groups = coefficients.epreuves ?? coefficients.niveaux;
 
-    for (const niveau of Object.values(coefficients.niveaux)) {
-        for (const group of Object.values(niveau)) {
-            for (const epreuve of group) {
-                const raw = notes[epreuve.id];
-                const note = raw === undefined || raw === '' ? null : parseFloat(raw);
-                if (!epreuve.required && (note === null || Number.isNaN(note))) continue;
-                entries.push({ coefficient: epreuve.coefficient, note });
-            }
+    for (const group of Object.values(groups)) {
+        for (const epreuve of group) {
+            const raw = notes[epreuve.id];
+            const note = raw === undefined || raw === '' ? null : parseFloat(raw);
+            if (!epreuve.required && (note === null || Number.isNaN(note))) continue;
+            entries.push({ coefficient: epreuve.coefficient, note });
         }
     }
 

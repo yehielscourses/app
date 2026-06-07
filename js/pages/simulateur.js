@@ -127,15 +127,15 @@ function renderGroupTables(groupKey, epreuves, notes) {
         </div>`;
 }
 
-function renderNiveau(niveauKey, niveauData, notes) {
-    const title = niveauKey === 'premiere' ? 'Première' : 'Terminale';
+function renderCycleTerminale(epreuvesData, notes) {
     const blocks = ['controle_continu', 'epreuves_finales', 'options']
-        .map((key) => renderGroupTables(key, niveauData[key], notes))
+        .map((key) => renderGroupTables(key, epreuvesData[key], notes))
         .join('');
 
     return `
-        <section class="sim-niveau" data-niveau="${niveauKey}">
-            <h2 class="sim-niveau-title">${title}</h2>
+        <section class="sim-niveau" data-cycle="terminale">
+            <h2 class="sim-niveau-title">Cycle terminale</h2>
+            <p class="sim-cycle-hint">Candidat libre — toutes les épreuves en une session (40 % ponctuelles · 60 % finales)</p>
             ${blocks}
         </section>`;
 }
@@ -206,10 +206,13 @@ export async function mountSimulateur(container) {
 
     container.innerHTML = `
         <h1>Simulateur de note</h1>
+        <div class="profile-box">
+            <p>Bac général — Candidat libre, cycle terminale</p>
+            <p>Spécialités : Mathématiques &amp; Physique-chimie · NSI abandonnée</p>
+        </div>
         ${renderNextExam(nextExam)}
         ${renderSummary(moyenne, filledCoef, totalCoef)}
-        ${renderNiveau('premiere', coefficients.niveaux.premiere, notes)}
-        ${renderNiveau('terminale', coefficients.niveaux.terminale, notes)}
+        ${renderCycleTerminale(coefficients.epreuves, notes)}
         <details class="sim-calendar">
             <summary>Calendrier complet des épreuves (${epreuves.length})</summary>
             <ul class="sim-calendar-list">
