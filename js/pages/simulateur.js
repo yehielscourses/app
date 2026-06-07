@@ -11,7 +11,6 @@ import {
 const GROUP_LABELS = {
     controle_continu: { short: 'CO', full: 'Contrôle continu', class: 'sim-group-co' },
     epreuves_finales: { short: 'ÉPREUVES FINALES', full: 'Épreuves finales', class: 'sim-group-finales' },
-    options: { short: 'OPT', full: 'Options', class: 'sim-group-opt' },
 };
 
 function clampNote(value) {
@@ -50,6 +49,11 @@ function renderNextExam(epreuve) {
                     ${formatDateFr(epreuve.date)} à ${epreuve.heure_debut}
                     ${epreuve.duree ? ` · ${epreuve.duree.replace(':', 'h')}` : ''}
                 </p>
+                ${epreuve.adresse ? `
+                <p class="sim-next-exam-location">
+                    <span class="sim-next-exam-location-icon" aria-hidden="true">📍</span>
+                    <span>${epreuve.adresse}</span>
+                </p>` : ''}
             </div>
         </div>`;
 }
@@ -128,7 +132,7 @@ function renderGroupTables(groupKey, epreuves, notes) {
 }
 
 function renderCycleTerminale(epreuvesData, notes) {
-    const blocks = ['controle_continu', 'epreuves_finales', 'options']
+    const blocks = ['controle_continu', 'epreuves_finales']
         .map((key) => renderGroupTables(key, epreuvesData[key], notes))
         .join('');
 
@@ -154,7 +158,7 @@ function renderSummary(moyenne, filledCoef, totalCoef) {
             </div>
             <div class="sim-summary-meta">
                 <span>${filledCoef} / ${totalCoef} coef. renseignés (${progress} %)</span>
-                <span class="sim-summary-hint">Total bac : 100 coef. (hors options)</span>
+                <span class="sim-summary-hint">Total bac : 100 coef.</span>
             </div>
         </div>`;
 }
@@ -208,7 +212,7 @@ export async function mountSimulateur(container) {
         <h1>Simulateur de note</h1>
         <div class="profile-box">
             <p>Bac général — Candidat libre, cycle terminale</p>
-            <p>Spécialités : Mathématiques &amp; Physique-chimie · NSI abandonnée</p>
+            <p>Spécialités : Mathématiques &amp; Physique-chimie · NSI abandonnée · Sans matière optionnelle</p>
         </div>
         ${renderNextExam(nextExam)}
         ${renderSummary(moyenne, filledCoef, totalCoef)}
@@ -221,6 +225,7 @@ export async function mountSimulateur(container) {
                         <time datetime="${e.date}">${formatDateFr(e.date)}</time>
                         <span class="sim-calendar-time">${e.heure_debut}</span>
                         <span class="sim-calendar-name">${e.nom}</span>
+                        ${e.adresse ? `<span class="sim-calendar-address">📍 ${e.adresse}</span>` : ''}
                     </li>
                 `).join('')}
             </ul>

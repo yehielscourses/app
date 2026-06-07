@@ -11,4 +11,75 @@
     --text:         #1a202c;
     --muted:        #718096;
     --done-opacity: 0.38;
+
+    --surface-muted:    #f4f7fb;
+    --surface-hover:    #f7fafc;
+    --surface-subtle:   #eef3fb;
+    --heading-sub:      #4a5568;
+    --heading-border:   #a0aec0;
+    --bar-track:        #c8d8ea;
+    --dot-off:          #c8d5e5;
+    --input-bg:         #fafbfc;
+    --input-focus-bg:   #ffffff;
+    --input-placeholder:#cbd5e0;
+    --row-border:       #edf2f7;
+    --shadow-sm:        rgba(0, 0, 0, 0.06);
+    --shadow-md:        rgba(0, 0, 0, 0.07);
+    --shadow-lg:        rgba(0, 0, 0, 0.05);
+    --reset-hover-bg:   #fef2f2;
+    --focus-ring:       rgba(44, 82, 130, 0.15);
+
+    --next-exam-bg:     linear-gradient(135deg, #eef3fb 0%, #e8f0fa 100%);
+    --group-co-bg:      #fef9e7;
+    --group-co-text:    #92710a;
+    --group-co-border:  #f6c90e;
+    --group-fin-bg:     #ebf4ff;
+    --group-fin-text:   #2c5282;
+    --group-fin-border: #63b3ed;
+    --calendar-summary: #f7fafc;
+    --calendar-summary-hover: #edf2f7;
+    --calendar-next:    #eef3fb;
+}
+
+[data-theme="dark"] {
+    --primary:      #90cdf4;
+    --primary-mid:  #63b3ed;
+    --accent:       #fc8181;
+    --success:      #68d391;
+    --success-bg:   #1a3a2a;
+    --warning:      #f6ad55;
+    --bg:           #0f1419;
+    --card:         #1a202c;
+    --border:       #2d3748;
+    --text:         #e2e8f0;
+    --muted:        #a0aec0;
+    --done-opacity: 0.45;
+
+    --surface-muted:    #2d3748;
+    --surface-hover:    #2a3441;
+    --surface-subtle:   #252d3a;
+    --heading-sub:      #a0aec0;
+    --heading-border:   #4a5568;
+    --bar-track:        #2d3748;
+    --dot-off:          #4a5568;
+    --input-bg:         #2d3748;
+    --input-focus-bg:   #1a202c;
+    --input-placeholder:#718096;
+    --row-border:       #2d3748;
+    --shadow-sm:        rgba(0, 0, 0, 0.3);
+    --shadow-md:        rgba(0, 0, 0, 0.4);
+    --shadow-lg:        rgba(0, 0, 0, 0.25);
+    --reset-hover-bg:   #3d2020;
+    --focus-ring:       rgba(99, 179, 237, 0.2);
+
+    --next-exam-bg:     linear-gradient(135deg, #252d3a 0%, #1e2836 100%);
+    --group-co-bg:      #3d3520;
+    --group-co-text:    #f6e05e;
+    --group-co-border:  #d69e2e;
+    --group-fin-bg:     #1a365d;
+    --group-fin-text:   #90cdf4;
+    --group-fin-border: #4299e1;
+    --calendar-summary: #252d3a;
+    --calendar-summary-hover: #2d3748;
+    --calendar-next:    #252d3a;
 }
