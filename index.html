@@ -8,13 +8,19 @@
     <script src="js/base-path.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
 
     <script>
         (function () {
             try {
                 var s = JSON.parse(localStorage.getItem('bac-settings-v1') || '{}');
-                if (s.theme === 'dark') document.documentElement.dataset.theme = 'dark';
+                var mode = s.themeMode || s.theme;
+                var resolved = mode === 'dark' ? 'dark'
+                    : mode === 'light' ? 'light'
+                    : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.dataset.theme = resolved;
             } catch (e) { /* ignore */ }
         })();
     </script>

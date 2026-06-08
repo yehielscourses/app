@@ -1,114 +1,568 @@
-/* ── Navigation par onglets ─────────────────────────────── */
-.app-shell {
-    max-width: 820px;
-    margin: 0 auto;
-}
-
-.app-header {
+/* ── Top App Bar (Material 3) ───────────────────────────── */
+.top-app-bar {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    margin-bottom: 8px;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 64px;
+    padding: 8px 16px;
+    background: var(--m3-surface);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-shrink: 0;
 }
 
-.app-header-actions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.profile-toggle {
-    width: 36px;
-    height: 36px;
+.top-app-bar-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--m3-on-surface);
+    letter-spacing: 0;
+    border: none;
     padding: 0;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    background: var(--card);
-    font-size: 1.1rem;
-    line-height: 1;
+    margin: 0;
+    text-align: left;
+}
+
+.top-bar-avatar {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 2px solid var(--m3-outline);
+    border-radius: 50%;
+    background: var(--m3-surface-container-high);
     cursor: pointer;
-    transition: background 0.18s, border-color 0.18s;
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: box-shadow 0.18s;
 }
 
-.profile-toggle:hover {
-    background: var(--surface-subtle);
-    border-color: var(--primary-mid);
+.top-bar-avatar:hover {
+    box-shadow: 0 0 0 2px var(--m3-outline);
 }
 
-.profile-toggle:focus-visible {
-    outline: 2px solid var(--primary-mid);
+.top-bar-avatar:focus-visible {
+    outline: 2px solid var(--m3-primary);
     outline-offset: 2px;
+}
+
+.top-bar-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.top-bar-avatar-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--m3-on-primary-container);
+    background: var(--m3-primary-container);
+}
+
+/* ── Bottom Navigation Bar (Material 3) ─────────────────── */
+.bottom-nav {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 820px;
+    min-height: 80px;
+    padding: 0 8px 8px;
+    background: var(--m3-surface-container);
+    border-top: 1px solid var(--m3-outline);
+    z-index: 100;
+}
+
+.bottom-nav-item {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-width: 0;
+    padding: 12px 4px 8px;
+    border: none;
+    background: transparent;
+    color: var(--m3-on-surface-variant);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: color 0.18s;
+}
+
+.bottom-nav-indicator {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 32px;
+    border-radius: 16px;
+    background: transparent;
+    transition: background 0.2s;
+    pointer-events: none;
+}
+
+.bottom-nav-icon {
+    font-size: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+.bottom-nav-label {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bottom-nav-item:hover {
+    color: var(--m3-on-surface);
+}
+
+.bottom-nav-item.active {
+    color: var(--m3-on-primary-container);
+}
+
+.bottom-nav-item.active .bottom-nav-indicator {
+    background: var(--m3-nav-indicator);
+}
+
+.bottom-nav-item:focus-visible {
+    outline: 2px solid var(--m3-primary);
+    outline-offset: -2px;
+    border-radius: 16px;
 }
 
 .tab-panel[hidden] {
     display: none !important;
 }
 
-.theme-toggle {
-    padding: 6px 12px;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    background: var(--card);
-    color: var(--muted);
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.18s, color 0.18s, border-color 0.18s;
+/* ── Settings Sheet ─────────────────────────────────────── */
+.settings-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
 }
 
-.theme-toggle:hover {
-    background: var(--surface-subtle);
-    color: var(--primary);
-    border-color: var(--primary-mid);
+.settings-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
 }
 
-.theme-toggle:focus-visible {
-    outline: 2px solid var(--primary-mid);
-    outline-offset: 2px;
-}
-
-.app-tabs {
+.settings-sheet {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(100%, 420px);
+    background: var(--m3-surface);
+    z-index: 201;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
     display: flex;
-    gap: 6px;
-    margin-bottom: 16px;
-    padding: 6px;
-    background: var(--card);
-    border-radius: 12px;
-    box-shadow: 0 2px 6px var(--shadow-sm), 0 4px 16px var(--shadow-lg);
-    overflow-x: auto;
+    flex-direction: column;
+    box-shadow: -4px 0 24px var(--shadow-lg);
+}
+
+.settings-sheet.open {
+    transform: translateX(0);
+}
+
+.settings-sheet-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 8px 0;
+    flex-shrink: 0;
+}
+
+.settings-close {
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--m3-on-surface-variant);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-close:hover {
+    background: var(--m3-surface-container-high);
+}
+
+.settings-sheet-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 16px 32px;
     -webkit-overflow-scrolling: touch;
 }
 
-.app-tab {
-    flex: 1;
-    min-width: max-content;
+.settings-profile {
+    text-align: center;
+    padding: 8px 0 24px;
+}
+
+.settings-avatar-wrap {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.settings-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--m3-primary-container);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.settings-avatar-fallback {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--m3-on-primary-container);
+}
+
+.settings-avatar-edit {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--m3-surface-container);
+    border: 2px solid var(--m3-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--m3-on-surface-variant);
+}
+
+.settings-avatar-edit .material-symbols-rounded {
+    font-size: 18px;
+}
+
+.settings-greeting {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--m3-on-surface);
+    margin-bottom: 16px;
+}
+
+.settings-display-name-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+.settings-display-name-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--m3-on-surface-variant);
+}
+
+.settings-display-name-field input {
     padding: 10px 14px;
-    border: none;
-    border-radius: 8px;
-    background: transparent;
-    color: var(--muted);
+    border: 1.5px solid var(--m3-outline);
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    background: var(--m3-surface-container);
+    color: var(--text);
+}
+
+.settings-card {
+    background: var(--m3-surface-container);
+    border-radius: 20px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+.settings-card-title {
     font-family: 'Nunito', sans-serif;
     font-size: 0.88rem;
     font-weight: 700;
+    color: var(--m3-on-surface-variant);
+    margin-bottom: 12px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 0;
+    display: block;
+}
+
+.settings-card-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+.settings-theme-options {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.settings-theme-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: background 0.18s, color 0.18s;
-    white-space: nowrap;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--m3-on-surface);
+    transition: background 0.15s;
 }
 
-.app-tab:hover {
-    background: var(--surface-subtle);
-    color: var(--primary);
+.settings-theme-option:hover {
+    background: var(--m3-surface-container-high);
 }
 
-.app-tab.active {
-    background: var(--primary);
-    color: #fff;
+.settings-theme-option input {
+    accent-color: var(--m3-primary);
 }
 
-.app-tab:focus-visible {
-    outline: 2px solid var(--primary-mid);
-    outline-offset: 2px;
+.settings-theme-icon {
+    font-size: 20px;
+    color: var(--m3-on-surface-variant);
+}
+
+.settings-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.settings-field-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--heading-sub);
+}
+
+.settings-field input {
+    padding: 8px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    background: var(--input-bg);
+    color: var(--text);
+}
+
+.settings-save-btn {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.settings-data-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.settings-list-btn,
+.settings-link-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    padding: 14px 12px;
+    border: none;
+    background: transparent;
+    color: var(--m3-on-surface);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background 0.15s;
+}
+
+.settings-list-btn:hover,
+.settings-link-item:hover {
+    background: var(--m3-surface-container-high);
+}
+
+.settings-list-btn .material-symbols-rounded,
+.settings-link-item .material-symbols-rounded {
+    font-size: 22px;
+    color: var(--m3-on-surface-variant);
+}
+
+.settings-link-chevron {
+    margin-left: auto;
+    font-size: 20px !important;
+}
+
+.settings-import-label {
+    cursor: pointer;
+}
+
+.settings-card--links {
+    padding: 4px;
+}
+
+.settings-card--links .settings-link-item + .settings-link-item {
+    border-top: 1px solid var(--m3-outline);
+    border-radius: 0;
+}
+
+.settings-logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--accent);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.settings-logout-btn:hover {
+    background: var(--reset-hover-bg);
+}
+
+/* ── Legal overlay ──────────────────────────────────────── */
+.legal-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--m3-surface);
+    z-index: 300;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.legal-overlay.open {
+    transform: translateY(0);
+}
+
+.legal-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.legal-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 64px;
+    padding: 8px 8px 8px 4px;
+    border-bottom: 1px solid var(--m3-outline);
+    flex-shrink: 0;
+}
+
+.legal-back {
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--m3-on-surface);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.legal-back:hover {
+    background: var(--m3-surface-container-high);
+}
+
+.legal-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--m3-on-surface);
+}
+
+.legal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 20px 40px;
+    font-size: 0.95rem;
+    color: var(--text);
+}
+
+.legal-body h3 {
+    margin-top: 20px;
+    margin-bottom: 8px;
+    border: none;
+    padding: 0;
+}
+
+.legal-body ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 8px 0;
+}
+
+.legal-body li {
+    margin-bottom: 6px;
+}
+
+.legal-body a {
+    color: var(--primary-mid);
+}
+
+@media (max-width: 620px) {
+    .settings-sheet {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .bottom-nav-label {
+        font-size: 0.68rem;
+    }
 }
 
 /* ── Profile box ────────────────────────────────────────── */

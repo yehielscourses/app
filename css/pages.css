@@ -1,6 +1,181 @@
+/* ── Home (tracker + épreuves) ───────────────────────────── */
+.home-section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--m3-on-surface);
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 24px 0 14px;
+}
+
+.home-section-title .material-symbols-rounded {
+    font-size: 22px;
+    color: var(--m3-primary);
+}
+
+.home-exams {
+    margin-bottom: 8px;
+}
+
+.home-exams--error p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    padding: 12px;
+    background: var(--surface-subtle);
+    border-radius: 12px;
+}
+
+.home-next-exam {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--next-exam-bg);
+    border-left: 5px solid var(--primary-mid);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+}
+
+.home-next-exam--done {
+    border-left-color: var(--success);
+    background: var(--success-bg);
+}
+
+.home-next-exam-icon {
+    font-size: 28px;
+    color: var(--primary-mid);
+    flex-shrink: 0;
+}
+
+.home-next-exam-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--primary-mid);
+    margin-bottom: 4px;
+}
+
+.home-next-exam-title {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.4;
+}
+
+.home-next-exam-meta {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+.home-next-exam-location {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 8px;
+    line-height: 1.45;
+}
+
+.home-next-exam-location .material-symbols-rounded {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.home-calendar {
+    background: var(--m3-surface-container);
+    border-radius: 16px;
+    padding: 4px 12px;
+}
+
+.home-calendar summary {
+    padding: 12px 4px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--m3-on-surface);
+    cursor: pointer;
+    list-style: none;
+}
+
+.home-calendar summary::-webkit-details-marker {
+    display: none;
+}
+
+.home-calendar-list {
+    padding: 0 0 8px;
+}
+
+.home-calendar-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2px 12px;
+    padding: 10px 8px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    border-bottom: 1px solid var(--row-border);
+}
+
+.home-calendar-item:last-child {
+    border-bottom: none;
+}
+
+.home-calendar-item--next {
+    background: var(--calendar-next);
+    border-left: 3px solid var(--primary-mid);
+    padding-left: 10px;
+}
+
+.home-calendar-item--past {
+    opacity: 0.55;
+}
+
+.home-calendar-item[data-sim-target] {
+    cursor: pointer;
+}
+
+.home-calendar-item[data-sim-target]:hover {
+    background: var(--surface-hover);
+}
+
+.home-calendar-time {
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+.home-calendar-name {
+    grid-column: 1 / -1;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.home-calendar-link-hint {
+    font-size: 0.78rem;
+    color: var(--primary-mid);
+    font-weight: 600;
+}
+
+.page-home .profile-box {
+    margin-bottom: 16px;
+}
+
 /* ── Simulateur ──────────────────────────────────────────── */
-.page-simulateur h1 {
-    margin-bottom: 20px;
+.page-simulateur > h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: left;
+    border: none;
+    padding: 0;
+    margin: 8px 0 16px;
+    color: var(--m3-on-surface);
 }
 
 .sim-next-exam {
@@ -589,8 +764,10 @@
 }
 
 .page-placeholder-icon {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 12px;
+    color: var(--m3-on-surface-variant);
+    display: block;
 }
 
 .page-placeholder h2 {
