@@ -95,11 +95,20 @@ function renderEpreuveCard(epreuve, notes, groupMeta) {
         </article>`;
 }
 
+function isMobileLayout() {
+    return window.matchMedia('(max-width: 720px)').matches;
+}
+
 function renderGroupTables(groupKey, epreuves, notes) {
     const meta = GROUP_LABELS[groupKey];
-    const rows = epreuves.map((e, i) => renderEpreuveRow(e, notes, meta, i === 0, epreuves.length)).join('');
-    const cards = epreuves.map((e) => renderEpreuveCard(e, notes, meta)).join('');
+    const mobile = isMobileLayout();
 
+    if (mobile) {
+        const cards = epreuves.map((e) => renderEpreuveCard(e, notes, meta)).join('');
+        return `<div class="sim-block" data-group="${groupKey}"><div class="sim-cards">${cards}</div></div>`;
+    }
+
+    const rows = epreuves.map((e, i) => renderEpreuveRow(e, notes, meta, i === 0, epreuves.length)).join('');
     return `
         <div class="sim-block" data-group="${groupKey}">
             <div class="sim-table-wrap">
@@ -115,7 +124,6 @@ function renderGroupTables(groupKey, epreuves, notes) {
                     <tbody>${rows}</tbody>
                 </table>
             </div>
-            <div class="sim-cards">${cards}</div>
         </div>`;
 }
 
@@ -333,9 +341,23 @@ export function invalidateSimulateurCache() {
     coefficientsData = null;
 }
 
+function handleNoteInput(container, coefficients, input) {
+    const clamped = clampNote(input.value);
+    if (clamped !== '' && String(clamped) !== input.value) {
+        input.value = clamped;
+    }
+    persistNotes(container, coefficients);
+}
+
 export async function mountSimulateur(container) {
     if (container._simCleanup) container._simCleanup();
+    if (container._simAbort) container._simAbort.abort();
+
+    const abort = new AbortController();
+    container._simAbort = abort;
+
     container.className = 'container page-simulateur';
+    container.dataset.layout = isMobileLayout() ? 'mobile' : 'desktop';
 
     let coefficients, epreuves;
     try {
@@ -373,14 +395,13 @@ export async function mountSimulateur(container) {
         </div>
     `;
 
-    container.addEventListener('input', (ev) => {
+    const onNoteEdit = (ev) => {
         if (!ev.target.classList.contains('sim-note-input')) return;
-        const clamped = clampNote(ev.target.value);
-        if (clamped !== '' && String(clamped) !== ev.target.value) {
-            ev.target.value = clamped;
-        }
-        persistNotes(container, coefficients);
-    });
+        handleNoteInput(container, coefficients, ev.target);
+    };
+
+    container.addEventListener('input', onNoteEdit, { signal: abort.signal });
+    container.addEventListener('change', onNoteEdit, { signal: abort.signal });
 
     container.addEventListener('blur', (ev) => {
         if (!ev.target.classList.contains('sim-note-input')) return;
@@ -389,7 +410,8 @@ export async function mountSimulateur(container) {
             const n = parseFloat(val);
             ev.target.value = Number.isInteger(n) ? String(n) : n.toFixed(2);
         }
-    }, true);
+        handleNoteInput(container, coefficients, ev.target);
+    }, { capture: true, signal: abort.signal });
 
     container.querySelectorAll('.sim-calendar-item[data-sim-target]').forEach((item) => {
         const go = () => scrollToSimRow(container, item.dataset.simTarget);
@@ -447,5 +469,20 @@ export async function mountSimulateur(container) {
         }
     };
     scheduleExamRefresh();
-    container._simCleanup = () => clearTimeout(examRefreshTimer);
+
+    const layoutMq = window.matchMedia('(max-width: 720px)');
+    const onLayoutChange = () => {
+        const mode = layoutMq.matches ? 'mobile' : 'desktop';
+        if (container.dataset.layout !== mode) {
+            saveState(collectNotes(container), SIMULATOR_STORAGE_KEY);
+            mountSimulateur(container);
+        }
+    };
+    layoutMq.addEventListener('change', onLayoutChange);
+
+    container._simCleanup = () => {
+        clearTimeout(examRefreshTimer);
+        layoutMq.removeEventListener('change', onLayoutChange);
+        abort.abort();
+    };
 }
