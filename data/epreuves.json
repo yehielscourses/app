@@ -81,11 +81,11 @@
   },
   {
     "id": "nsi-ecrit",
-    "nom": "Spécialité: Numérique et sciences informatiques (écrite)",
+    "nom": "Spécialité abandonnée — NSI (contrôle continu, coef. 8)",
     "date": "2026-06-05",
     "heure_debut": "10:00",
     "duree": "03:30",
-    "coefficient": 16,
+    "coefficient": 8,
     "adresse": "LPO DES METIERS LOUIS LACHENAL-BAC, 335 ROUTE CHAMP FARCON, BP 38, 74372 PRINGY CEDEX (Salle: G SOMMEILLER (BAC))",
     "matiere": "spe-abandonnee"
   },
