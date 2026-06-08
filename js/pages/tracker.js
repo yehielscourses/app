@@ -5,7 +5,7 @@ import { loadState, saveState, clearState, pruneState, didLastSaveFail } from '.
 import { getProfile } from '../lib/profile.js';
 import { showConfirm } from '../components/modal.js';
 import { showToast } from '../components/toast.js';
-import { downloadExport, readImportFile, importBundle } from '../lib/import-export.js';
+import { createExamSection, loadEpreuves } from '../components/exam-calendar.js';
 
 const COLLAPSE_STORAGE_KEY = 'bac-tracker-collapse-v1';
 
@@ -189,10 +189,10 @@ export async function mountTracker(container) {
     try {
         notions = await loadData();
     } catch {
-        container.className = 'container page-tracker';
+        container.className = 'page-home';
         container.innerHTML = `
             <div class="page-placeholder">
-                <div class="page-placeholder-icon">⚠️</div>
+                <span class="material-symbols-rounded page-placeholder-icon">warning</span>
                 <h2>Erreur de chargement</h2>
                 <p>Impossible de charger les notions. Vérifiez votre connexion et réessayez.</p>
                 <button type="button" class="btn-primary" id="tracker-retry">Réessayer</button>
@@ -219,11 +219,24 @@ export async function mountTracker(container) {
     const collapseState = loadCollapseState();
 
     container.innerHTML = '';
-    container.className = 'container page-tracker';
+    container.className = 'page-home';
 
-    const h1 = document.createElement('h1');
-    h1.textContent = notions.title;
-    container.append(h1);
+    try {
+        const epreuves = await loadEpreuves();
+        container.append(createExamSection(epreuves));
+    } catch {
+        const errSection = document.createElement('section');
+        errSection.className = 'home-exams home-exams--error';
+        errSection.innerHTML = '<p>Impossible de charger le calendrier des épreuves.</p>';
+        container.append(errSection);
+    }
+
+    const trackerTitle = document.createElement('h2');
+    trackerTitle.className = 'home-section-title';
+    trackerTitle.innerHTML = `
+        <span class="material-symbols-rounded" aria-hidden="true">checklist</span>
+        ${notions.title}`;
+    container.append(trackerTitle);
 
     const profileBox = document.createElement('div');
     profileBox.className = 'profile-box';
@@ -249,10 +262,7 @@ export async function mountTracker(container) {
     const actions = document.createElement('div');
     actions.className = 'actions';
     actions.innerHTML = `
-        <button type="button" class="btn-reset" id="tracker-export">⬇ Exporter</button>
-        <button type="button" class="btn-reset" id="tracker-import-btn">⬆ Importer</button>
-        <input type="file" id="tracker-import" accept="application/json,.json" hidden>
-        <button type="button" class="btn-reset" id="tracker-reset">↺ Réinitialiser tout</button>
+        <button type="button" class="btn-reset" id="tracker-reset">↺ Réinitialiser la progression</button>
     `;
     container.append(actions);
 
@@ -289,38 +299,6 @@ export async function mountTracker(container) {
         }
         updateTrackerUI(container, sectionMap, total, notions.completionMessage);
         showToast('Progression réinitialisée.');
-    });
-
-    container.querySelector('#tracker-export')?.addEventListener('click', () => {
-        downloadExport();
-        showToast('Export téléchargé.');
-    });
-
-    container.querySelector('#tracker-import-btn')?.addEventListener('click', () => {
-        container.querySelector('#tracker-import')?.click();
-    });
-
-    container.querySelector('#tracker-import')?.addEventListener('change', async (ev) => {
-        const file = ev.target.files?.[0];
-        if (!file) return;
-        try {
-            const bundle = await readImportFile(file);
-            const ok = await showConfirm({
-                title: 'Importer les données',
-                message: 'Remplacer la progression et les notes par le contenu du fichier ?',
-                confirmLabel: 'Importer',
-                danger: true,
-            });
-            if (!ok) return;
-            importBundle(bundle, { saveState });
-            applyState(container, pruneState(loadState(storageKey), allIds));
-            updateTrackerUI(container, sectionMap, total, notions.completionMessage);
-            window.dispatchEvent(new CustomEvent('profile-updated'));
-            showToast('Import réussi.');
-        } catch (err) {
-            showToast(err.message || 'Import impossible.', { variant: 'error' });
-        }
-        ev.target.value = '';
     });
 
     if (didLastSaveFail()) {

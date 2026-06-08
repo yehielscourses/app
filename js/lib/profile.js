@@ -1,6 +1,8 @@
 import { loadState, PROFILE_STORAGE_KEY } from '../storage.js';
 
 export const DEFAULT_PROFILE = {
+    displayName: 'Élève',
+    avatarUrl: '',
     candidat: 'libre',
     filiere: 'general',
     cycle: 'terminale',
@@ -17,6 +19,14 @@ export const DEFAULT_PROFILE = {
 export function getProfile() {
     const stored = loadState(PROFILE_STORAGE_KEY);
     return { ...DEFAULT_PROFILE, ...stored, langues: { ...DEFAULT_PROFILE.langues, ...stored.langues } };
+}
+
+export function getDisplayName(profile = getProfile()) {
+    return (profile.displayName || DEFAULT_PROFILE.displayName).trim() || DEFAULT_PROFILE.displayName;
+}
+
+export function getAvatarUrl(profile = getProfile()) {
+    return profile.avatarUrl || '';
 }
 
 export function buildEpreuveLabels(profile) {

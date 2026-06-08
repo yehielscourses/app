@@ -2,33 +2,36 @@ import { mountTracker, invalidateTrackerCache } from './pages/tracker.js';
 import { mountCours } from './pages/cours.js';
 import { mountExercices } from './pages/exercices.js';
 import { mountSimulateur, invalidateSimulateurCache } from './pages/simulateur.js';
-import { mountSettings } from './pages/settings.js';
 import { showLoading } from './components/loading.js';
 
 const ROUTES = {
+    home: mountTracker,
     tracker: mountTracker,
     cours: mountCours,
     exercices: mountExercices,
     simulateur: mountSimulateur,
-    settings: mountSettings,
 };
 
-const DEFAULT_ROUTE = 'tracker';
+const DEFAULT_ROUTE = 'home';
 
 const mounted = new Set();
 const panels = new Map();
 let parentEl = null;
 let activeRoute = null;
 
-export function getRouteFromHash() {
-    const hash = location.hash.replace(/^#\/?/, '');
-    if (hash === 'settings') return 'settings';
+function normalizeRoute(hash) {
+    if (hash === 'tracker') return 'home';
     return ROUTES[hash] ? hash : DEFAULT_ROUTE;
 }
 
+export function getRouteFromHash() {
+    const hash = location.hash.replace(/^#\/?/, '');
+    return normalizeRoute(hash);
+}
+
 export function navigate(route) {
-    const target = ROUTES[route] ? route : (route === 'settings' ? 'settings' : DEFAULT_ROUTE);
-    const hash = target === 'settings' ? 'settings' : target;
+    const target = normalizeRoute(route);
+    const hash = target;
     if (location.hash !== `#${hash}`) {
         location.hash = hash;
     }
@@ -56,7 +59,7 @@ function getOrCreatePanel(route) {
 
 export async function renderRoute(route, container) {
     parentEl = container;
-    const target = ROUTES[route] ? route : (route === 'settings' ? 'settings' : DEFAULT_ROUTE);
+    const target = normalizeRoute(route);
 
     for (const [name, panel] of panels) {
         panel.hidden = name !== target;
@@ -73,7 +76,7 @@ export async function renderRoute(route, container) {
             console.error(err);
             panel.innerHTML = `
                 <div class="page-placeholder">
-                    <div class="page-placeholder-icon">⚠️</div>
+                    <span class="material-symbols-rounded page-placeholder-icon">warning</span>
                     <h2>Erreur</h2>
                     <p>Une erreur est survenue lors du chargement de cette page.</p>
                 </div>`;
@@ -85,17 +88,10 @@ export async function renderRoute(route, container) {
     return target;
 }
 
-export function openSettings() {
-    return renderRoute('settings', parentEl).then(() => {
-        if (location.hash !== '#settings') location.hash = 'settings';
-        return 'settings';
-    });
-}
-
 async function refreshDataRoutes() {
     invalidateSimulateurCache();
     invalidateTrackerCache();
-    for (const route of ['simulateur', 'tracker']) {
+    for (const route of ['simulateur', 'home']) {
         if (!mounted.has(route)) continue;
         invalidateRoute(route);
         if (activeRoute === route && parentEl) {

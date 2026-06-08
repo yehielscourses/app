@@ -356,7 +356,7 @@ export async function mountSimulateur(container) {
     const abort = new AbortController();
     container._simAbort = abort;
 
-    container.className = 'container page-simulateur';
+    container.className = 'page-simulateur';
     container.dataset.layout = isMobileLayout() ? 'mobile' : 'desktop';
 
     let coefficients, epreuves;
@@ -386,7 +386,6 @@ export async function mountSimulateur(container) {
         </div>
         ${renderDisclaimer()}
         ${renderRattrapageBanner(rattrapage)}
-        ${renderNextExam(nextExam)}
         ${renderSummary(averages)}
         ${renderCycleTerminale(coefficients.epreuves, notes)}
         ${renderCalendar(epreuves, nextExam)}
@@ -412,6 +411,11 @@ export async function mountSimulateur(container) {
         }
         handleNoteInput(container, coefficients, ev.target);
     }, { capture: true, signal: abort.signal });
+
+    const onScrollSimRow = (ev) => {
+        if (ev.detail) scrollToSimRow(container, ev.detail);
+    };
+    window.addEventListener('scroll-sim-row', onScrollSimRow);
 
     container.querySelectorAll('.sim-calendar-item[data-sim-target]').forEach((item) => {
         const go = () => scrollToSimRow(container, item.dataset.simTarget);
@@ -456,20 +460,6 @@ export async function mountSimulateur(container) {
         showToast('Attention : la dernière sauvegarde a échoué. Vérifiez l\'espace de stockage du navigateur.', { variant: 'error', duration: 8000 });
     }
 
-    let examRefreshTimer = null;
-    const scheduleExamRefresh = () => {
-        if (!nextExam) return;
-        const datetime = new Date(`${nextExam.date}T${nextExam.heure_debut}:00`);
-        const ms = datetime - new Date() + 1000;
-        if (ms > 0 && ms < 24 * 60 * 60 * 1000) {
-            examRefreshTimer = setTimeout(() => {
-                const el = container.querySelector('.sim-next-exam');
-                if (el) el.outerHTML = renderNextExam(findNextExam(epreuves));
-            }, ms);
-        }
-    };
-    scheduleExamRefresh();
-
     const layoutMq = window.matchMedia('(max-width: 720px)');
     const onLayoutChange = () => {
         const mode = layoutMq.matches ? 'mobile' : 'desktop';
@@ -481,8 +471,8 @@ export async function mountSimulateur(container) {
     layoutMq.addEventListener('change', onLayoutChange);
 
     container._simCleanup = () => {
-        clearTimeout(examRefreshTimer);
         layoutMq.removeEventListener('change', onLayoutChange);
+        window.removeEventListener('scroll-sim-row', onScrollSimRow);
         abort.abort();
     };
 }

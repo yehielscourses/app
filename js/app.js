@@ -1,50 +1,49 @@
-import { createTabs, setActiveTab } from './components/tabs.js';
-import { getRouteFromHash, navigate, renderRoute, openSettings } from './router.js';
-import { initTheme, createThemeToggle } from './theme.js';
+import { createBottomNav, setActiveTab } from './components/bottom-nav.js';
+import { createTopBar, updateTopBarAvatar } from './components/top-bar.js';
+import { getRouteFromHash, navigate, renderRoute } from './router.js';
+import { initTheme } from './theme.js';
+import { openSettingsSheet } from './components/settings-sheet.js';
+import { initLegalPages } from './pages/legal.js';
 
 const app = document.getElementById('app');
 const shell = document.createElement('div');
 shell.className = 'app-shell';
 
-const header = document.createElement('div');
-header.className = 'app-header';
-
 const content = document.createElement('main');
 content.id = 'page-content';
+content.className = 'app-content';
 content.setAttribute('role', 'presentation');
 
-let tabsNav = null;
+let bottomNav = null;
+let topBar = null;
 
 async function showPage(route) {
     const active = navigate(route);
-    if (tabsNav && active !== 'settings') setActiveTab(tabsNav, active);
+    if (bottomNav) setActiveTab(bottomNav, active);
     await renderRoute(active, content);
-}
-
-function createProfileButton() {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'profile-toggle';
-    btn.setAttribute('aria-label', 'Paramètres du profil');
-    btn.textContent = '👤';
-    btn.addEventListener('click', () => openSettings());
-    return btn;
 }
 
 function init() {
     initTheme();
+    initLegalPages();
 
-    const headerActions = document.createElement('div');
-    headerActions.className = 'app-header-actions';
-    headerActions.append(createProfileButton(), createThemeToggle());
-    header.append(headerActions);
+    topBar = createTopBar(() => openSettingsSheet());
+    bottomNav = createBottomNav(getRouteFromHash(), showPage);
 
-    tabsNav = createTabs(getRouteFromHash(), showPage);
-    shell.append(header, tabsNav, content);
+    shell.append(topBar, content, bottomNav);
     app.append(shell);
 
     window.addEventListener('hashchange', () => {
         showPage(getRouteFromHash());
+    });
+
+    window.addEventListener('profile-updated', () => {
+        if (topBar) updateTopBarAvatar(topBar);
+    });
+
+    window.addEventListener('navigate-sim-row', async (ev) => {
+        await showPage('simulateur');
+        window.dispatchEvent(new CustomEvent('scroll-sim-row', { detail: ev.detail }));
     });
 
     showPage(getRouteFromHash());
