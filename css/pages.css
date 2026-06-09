@@ -247,7 +247,8 @@
     line-height: 1.45;
 }
 
-.sim-next-exam-location-icon {
+.sim-next-exam-location .material-symbols-rounded {
+    font-size: 18px;
     flex-shrink: 0;
     line-height: 1.45;
 }
@@ -694,6 +695,10 @@
 .sim-calendar-item--next {
     background: var(--calendar-next);
     font-weight: 600;
+}
+
+.sim-calendar-item--past {
+    opacity: 0.55;
 }
 
 .sim-calendar-item time {

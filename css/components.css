@@ -1007,7 +1007,7 @@
     padding: 12px 16px 4px;
 }
 
-.container.math-pending {
+.math-pending .notion-list {
     opacity: 0;
     transition: opacity 0.25s ease;
 }

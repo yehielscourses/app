@@ -235,11 +235,12 @@ function renderCalendar(epreuves, nextExam) {
                 ${epreuves.map((e) => {
                     const simId = mapExamToSimulatorId(e);
                     const isNext = nextExam && e.id === nextExam.id;
+                    const isPast = new Date(`${e.date}T${e.heure_debut}:00`) < new Date();
                     const ariaLabel = simId
                         ? `Saisir les notes pour ${e.nom}, ${formatDateFr(e.date)}`
                         : undefined;
                     return `
-                    <li class="sim-calendar-item${isNext ? ' sim-calendar-item--next' : ''}"
+                    <li class="sim-calendar-item${isNext ? ' sim-calendar-item--next' : ''}${isPast ? ' sim-calendar-item--past' : ''}"
                         ${simId ? `data-sim-target="${simId}" tabindex="0" role="button"` : ''}
                         ${ariaLabel ? `aria-label="${ariaLabel.replace(/"/g, '&quot;')}"` : ''}>
                         <time datetime="${e.date}">${formatDateFr(e.date)}</time>
@@ -357,7 +358,7 @@ export async function mountSimulateur(container) {
             <p>${buildSimulatorSubline(profile)}</p>
         </div>
         ${renderDisclaimer()}
-        ${renderRattrapageBanner(rattrapage)}
+        ${renderRattrapageBanner(rattrapage) || '<div class="sim-rattrapage sim-rattrapage--empty" hidden></div>'}
         ${renderNextExamCard(nextExam, { cssPrefix: 'sim-next-exam' })}
         ${renderSummary(averages)}
         ${renderCycleTerminale(coefficients.epreuves, notes)}
