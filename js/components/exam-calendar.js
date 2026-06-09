@@ -5,7 +5,6 @@ import {
 } from '../lib/grade-calculator.js';
 import { navigate } from '../router.js';
 import { renderNextExamCard } from './next-exam.js';
-import { showToast } from './toast.js';
 
 function renderCalendarList(epreuves, nextExam) {
     return `
@@ -52,7 +51,6 @@ export function createExamSection(epreuves) {
         const go = () => {
             navigate('simulateur');
             window.dispatchEvent(new CustomEvent('navigate-sim-row', { detail: item.dataset.simTarget }));
-            showToast('Épreuve sélectionnée — saisissez vos notes ci-dessous.');
         };
         item.addEventListener('click', go);
         item.addEventListener('keydown', (ev) => {

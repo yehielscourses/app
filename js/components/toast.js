@@ -4,8 +4,6 @@ function ensureRoot() {
     if (!toastRoot) {
         toastRoot = document.createElement('div');
         toastRoot.className = 'toast-root';
-        toastRoot.setAttribute('aria-live', 'polite');
-        toastRoot.setAttribute('aria-atomic', 'true');
         document.body.append(toastRoot);
     }
     return toastRoot;

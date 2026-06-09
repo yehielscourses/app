@@ -653,12 +653,10 @@
 
 /* ── Profile box ────────────────────────────────────────── */
 .profile-box {
-    background: var(--m3-surface-container);
-    border-left: 4px solid var(--m3-primary);
+    background: var(--m3-surface-container-high);
     padding: 16px 20px;
-    border-radius: var(--m3-shape-md);
+    border-radius: var(--m3-shape-lg);
     margin-bottom: 22px;
-    box-shadow: var(--m3-elevation-1);
 }
 .profile-box p { font-size: var(--m3-body-medium-size); font-weight: 600; margin-bottom: 3px; }
 .profile-box p:last-of-type { margin-bottom: 12px; font-weight: 400; color: var(--m3-on-surface-variant); }
@@ -1007,7 +1005,7 @@
     padding: 12px 16px 4px;
 }
 
-.container.math-pending {
+.math-pending .notion-list {
     opacity: 0;
     transition: opacity 0.25s ease;
 }

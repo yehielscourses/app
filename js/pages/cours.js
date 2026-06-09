@@ -1,5 +1,5 @@
 export function mountCours(container) {
-    container.className = 'page-cours';
+    container.classList.add('page-cours');
     container.innerHTML = `
         <div class="page-placeholder">
             <span class="material-symbols-rounded page-placeholder-icon">menu_book</span>
