@@ -329,7 +329,7 @@ export async function mountSimulateur(container) {
     const abort = new AbortController();
     container._simAbort = abort;
 
-    container.className = 'page-simulateur';
+    container.classList.add('page-simulateur');
     container.dataset.layout = isMobileLayout() ? 'mobile' : 'desktop';
 
     let coefficients, epreuves;

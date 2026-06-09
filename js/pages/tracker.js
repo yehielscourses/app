@@ -200,7 +200,7 @@ export async function mountTracker(container) {
     try {
         notions = await loadData();
     } catch {
-        container.className = 'page-home';
+        container.classList.add('page-home');
         container.innerHTML = `
             <div class="page-placeholder">
                 <span class="material-symbols-rounded page-placeholder-icon">warning</span>
@@ -230,7 +230,7 @@ export async function mountTracker(container) {
     const collapseState = loadCollapseState();
 
     container.innerHTML = '';
-    container.className = 'page-home';
+    container.classList.add('page-home');
 
     try {
         const epreuves = await loadEpreuves();

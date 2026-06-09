@@ -35,17 +35,13 @@
     align-items: flex-start;
     gap: 14px;
     background: var(--m3-primary-container);
-    border: 1px solid var(--m3-outline-variant);
-    border-left: 4px solid var(--m3-primary);
-    border-radius: 12px;
+    border-radius: var(--m3-shape-lg);
     padding: 16px 18px;
     margin-bottom: 12px;
-    box-shadow: var(--m3-elevation-1);
 }
 
 .home-next-exam--done {
-    border-left-color: var(--success);
-    background: var(--success-bg);
+    background: var(--m3-success-container);
 }
 
 .home-next-exam-icon {
@@ -196,15 +192,12 @@
     align-items: flex-start;
     gap: 14px;
     background: var(--m3-primary-container);
-    border-left: 4px solid var(--m3-primary);
-    border-radius: var(--m3-shape-md);
+    border-radius: var(--m3-shape-lg);
     padding: 16px 18px;
     margin-bottom: 20px;
-    box-shadow: var(--m3-elevation-1);
 }
 
 .sim-next-exam--done {
-    border-left-color: var(--m3-success);
     background: var(--m3-success-container);
 }
 
@@ -255,9 +248,8 @@
 
 .sim-disclaimer {
     background: var(--m3-surface-container-high);
-    border-left: 4px solid var(--m3-warning);
-    padding: 12px 16px;
-    border-radius: var(--m3-shape-sm);
+    padding: 14px 16px;
+    border-radius: var(--m3-shape-md);
     font-size: var(--m3-body-medium-size);
     margin-bottom: 16px;
     color: var(--m3-on-surface-variant);
@@ -265,9 +257,9 @@
 
 .sim-rattrapage {
     background: var(--m3-warning-container);
-    border-left: 4px solid var(--m3-warning);
-    padding: 12px 16px;
-    border-radius: var(--m3-shape-sm);
+    color: var(--m3-on-warning-container);
+    padding: 14px 16px;
+    border-radius: var(--m3-shape-md);
     margin-bottom: 16px;
     font-size: var(--m3-body-medium-size);
 }
@@ -324,18 +316,20 @@
 }
 
 .sim-scenario-score {
-    font-family: 'Lora', serif;
-    font-size: 1.75rem;
-    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
     color: var(--primary);
     line-height: 1.1;
+    letter-spacing: -0.01em;
 }
 
 .sim-scenario-range {
-    font-family: 'Lora', serif;
-    font-size: 1.35rem;
-    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 800;
     color: var(--primary);
+    letter-spacing: -0.01em;
 }
 
 .sim-summary-unit {
@@ -386,14 +380,15 @@
 }
 
 .sim-niveau-title {
-    font-family: 'Lora', serif;
-    font-size: 1.15rem;
-    color: var(--primary);
+    font-family: 'Nunito', sans-serif;
+    font-size: var(--m3-title-medium-size);
+    font-weight: 700;
+    line-height: var(--m3-title-medium-line);
+    color: var(--m3-on-surface);
     background: none;
     border: none;
-    border-bottom: 2px solid var(--border);
     border-radius: 0;
-    padding: 0 0 8px;
+    padding: 0;
     margin: 0 0 6px;
     display: block;
 }
@@ -758,7 +753,7 @@
 
 .settings-form legend,
 .settings-section h2 {
-    font-family: 'Lora', serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 1rem;
     color: var(--primary);
     font-weight: 700;

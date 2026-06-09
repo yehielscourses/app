@@ -1,5 +1,5 @@
 export function mountExercices(container) {
-    container.className = 'page-exercices';
+    container.classList.add('page-exercices');
     container.innerHTML = `
         <div class="page-placeholder">
             <span class="material-symbols-rounded page-placeholder-icon">edit_note</span>
