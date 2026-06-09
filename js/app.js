@@ -1,4 +1,4 @@
-import { createBottomNav, setActiveTab } from './components/bottom-nav.js';
+import { createBottomNav, createNavRail, setActiveTabs } from './components/app-nav.js';
 import { createTopBar, updateTopBarAvatar } from './components/top-bar.js';
 import { getRouteFromHash, navigate, renderRoute } from './router.js';
 import { initTheme } from './theme.js';
@@ -9,17 +9,21 @@ const app = document.getElementById('app');
 const shell = document.createElement('div');
 shell.className = 'app-shell';
 
+const main = document.createElement('div');
+main.className = 'app-main';
+
 const content = document.createElement('main');
 content.id = 'page-content';
 content.className = 'app-content';
 content.setAttribute('role', 'presentation');
 
 let bottomNav = null;
+let navRail = null;
 let topBar = null;
 
 async function showPage(route) {
     const active = navigate(route);
-    if (bottomNav) setActiveTab(bottomNav, active);
+    setActiveTabs([bottomNav, navRail], active);
     await renderRoute(active, content);
 }
 
@@ -29,8 +33,10 @@ function init() {
 
     topBar = createTopBar(() => openSettingsSheet());
     bottomNav = createBottomNav(getRouteFromHash(), showPage);
+    navRail = createNavRail(getRouteFromHash(), showPage);
 
-    shell.append(topBar, content, bottomNav);
+    main.append(topBar, content);
+    shell.append(navRail, main, bottomNav);
     app.append(shell);
 
     window.addEventListener('hashchange', () => {
