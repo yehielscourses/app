@@ -33,8 +33,12 @@ export function createFocusTrap(container, { onEscape, initialFocus } = {}) {
 
     document.addEventListener('keydown', handleKeyDown);
 
-    const target = initialFocus ?? getFocusable(container)[0];
-    target?.focus();
+    const focusTarget = () => {
+        const target = initialFocus ?? getFocusable(container)[0];
+        target?.focus({ preventScroll: true });
+    };
+    // Defer so the opening click does not steal focus back to the trigger.
+    requestAnimationFrame(() => requestAnimationFrame(focusTarget));
 
     return {
         release() {
