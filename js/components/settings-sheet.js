@@ -4,6 +4,7 @@ import { getThemeMode, setThemeMode, getThemeModeLabel } from '../theme.js';
 import { downloadExport, readImportFile, importBundle } from '../lib/import-export.js';
 import { showConfirm } from './modal.js';
 import { showToast } from './toast.js';
+import { createFocusTrap } from '../lib/focus-trap.js';
 import {
     TRACKER_STORAGE_KEY,
     SIMULATOR_STORAGE_KEY,
@@ -12,6 +13,9 @@ import {
 
 let sheetEl = null;
 let backdropEl = null;
+let focusTrap = null;
+let openTrigger = null;
+let displayNameTimer = null;
 
 function esc(str) {
     return String(str ?? '')
@@ -22,10 +26,14 @@ function esc(str) {
 
 function closeSheet() {
     if (!sheetEl) return;
+    focusTrap?.release();
+    focusTrap = null;
     sheetEl.classList.remove('open');
     backdropEl?.classList.remove('open');
     document.body.classList.remove('settings-open');
     sheetEl.setAttribute('aria-hidden', 'true');
+    if (openTrigger?.focus) openTrigger.focus();
+    openTrigger = null;
 }
 
 function openLegalPage(page) {
@@ -59,19 +67,22 @@ function renderProfileHeader(profile) {
 
 function renderThemeSection() {
     const current = getThemeMode();
-    const modes = ['system', 'light', 'dark'];
+    const modes = [
+        { id: 'system', icon: 'brightness_auto' },
+        { id: 'light', icon: 'light_mode' },
+        { id: 'dark', icon: 'dark_mode' },
+    ];
     return `
         <div class="settings-card">
             <h2 class="settings-card-title">Apparence</h2>
-            <div class="settings-theme-options" role="radiogroup" aria-label="Thème">
+            <div class="settings-theme-segmented" role="group" aria-label="Thème">
                 ${modes.map((mode) => `
-                    <label class="settings-theme-option">
-                        <input type="radio" name="theme-mode" value="${mode}" ${mode === current ? 'checked' : ''}>
-                        <span class="material-symbols-rounded settings-theme-icon" aria-hidden="true">${
-                            mode === 'system' ? 'brightness_auto' : mode === 'light' ? 'light_mode' : 'dark_mode'
-                        }</span>
-                        <span>${getThemeModeLabel(mode)}</span>
-                    </label>
+                    <button type="button" class="settings-theme-segment m3-state-layer"
+                        data-theme-mode="${mode.id}"
+                        aria-pressed="${mode.id === current ? 'true' : 'false'}">
+                        <span class="material-symbols-rounded" aria-hidden="true">${mode.icon}</span>
+                        <span>${getThemeModeLabel(mode.id)}</span>
+                    </button>
                 `).join('')}
             </div>
         </div>`;
@@ -195,6 +206,10 @@ function saveSubjectsForm(sheet) {
 function wireSheetEvents(sheet) {
     sheet.querySelector('.settings-close')?.addEventListener('click', closeSheet);
 
+    sheet.querySelector('#settings-display-name')?.addEventListener('input', () => {
+        clearTimeout(displayNameTimer);
+        displayNameTimer = setTimeout(() => saveDisplayName(sheet), 400);
+    });
     sheet.querySelector('#settings-display-name')?.addEventListener('change', () => saveDisplayName(sheet));
 
     sheet.querySelector('#settings-avatar-input')?.addEventListener('change', (ev) => {
@@ -218,12 +233,14 @@ function wireSheetEvents(sheet) {
         ev.target.value = '';
     });
 
-    sheet.querySelectorAll('input[name="theme-mode"]').forEach((radio) => {
-        radio.addEventListener('change', () => {
-            if (radio.checked) {
-                setThemeMode(radio.value);
-                showToast(`Thème : ${getThemeModeLabel(radio.value)}.`);
-            }
+    sheet.querySelectorAll('.settings-theme-segment').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const mode = btn.dataset.themeMode;
+            setThemeMode(mode);
+            sheet.querySelectorAll('.settings-theme-segment').forEach((b) => {
+                b.setAttribute('aria-pressed', b.dataset.themeMode === mode ? 'true' : 'false');
+            });
+            showToast(`Thème : ${getThemeModeLabel(mode)}.`);
         });
     });
 
@@ -265,9 +282,9 @@ function wireSheetEvents(sheet) {
 
     sheet.querySelector('#settings-logout')?.addEventListener('click', async () => {
         const ok = await showConfirm({
-            title: 'Se déconnecter',
+            title: 'Effacer toutes les données',
             message: 'Toutes vos données locales (progression, notes, paramètres) seront effacées. Continuer ?',
-            confirmLabel: 'Se déconnecter',
+            confirmLabel: 'Effacer',
             danger: true,
         });
         if (!ok) return;
@@ -292,8 +309,8 @@ function refreshSheetContent() {
         ${renderLinksSection()}
         <div class="settings-card settings-card--logout">
             <button type="button" class="settings-logout-btn" id="settings-logout">
-                <span class="material-symbols-rounded">logout</span>
-                Se déconnecter
+                <span class="material-symbols-rounded">delete_forever</span>
+                Effacer toutes les données
             </button>
         </div>
     `;
@@ -312,7 +329,8 @@ function createSheet() {
     sheetEl.setAttribute('aria-hidden', 'true');
     sheetEl.innerHTML = `
         <div class="settings-sheet-header">
-            <button type="button" class="settings-close" aria-label="Fermer">
+            <h2 class="settings-sheet-heading">Paramètres</h2>
+            <button type="button" class="settings-close m3-state-layer" aria-label="Fermer">
                 <span class="material-symbols-rounded">close</span>
             </button>
         </div>
@@ -335,14 +353,19 @@ export function initSettingsSheet() {
     if (!sheetEl) createSheet();
 }
 
-export function openSettingsSheet() {
+export function openSettingsSheet(triggerEl) {
     initSettingsSheet();
+    openTrigger = triggerEl ?? document.activeElement;
     refreshSheetContent();
     sheetEl.classList.add('open');
     backdropEl.classList.add('open');
     document.body.classList.add('settings-open');
     sheetEl.setAttribute('aria-hidden', 'false');
-    sheetEl.querySelector('.settings-close')?.focus();
+    focusTrap?.release();
+    focusTrap = createFocusTrap(sheetEl, {
+        onEscape: closeSheet,
+        initialFocus: sheetEl.querySelector('.settings-close'),
+    });
 }
 
 export function isSettingsOpen() {

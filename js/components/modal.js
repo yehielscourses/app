@@ -1,3 +1,5 @@
+import { createFocusTrap } from '../lib/focus-trap.js';
+
 export function showConfirm({ title, message, confirmLabel = 'Confirmer', cancelLabel = 'Annuler', danger = false } = {}) {
     return new Promise((resolve) => {
         const backdrop = document.createElement('div');
@@ -26,22 +28,20 @@ export function showConfirm({ title, message, confirmLabel = 'Confirmer', cancel
 
         const cancelBtn = document.createElement('button');
         cancelBtn.type = 'button';
-        cancelBtn.className = 'btn-modal btn-modal--cancel';
+        cancelBtn.className = 'btn-modal btn-modal--cancel m3-state-layer';
         cancelBtn.textContent = cancelLabel;
 
         const confirmBtn = document.createElement('button');
         confirmBtn.type = 'button';
-        confirmBtn.className = 'btn-modal btn-modal--confirm' + (danger ? ' btn-modal--danger' : '');
+        confirmBtn.className = 'btn-modal btn-modal--confirm m3-state-layer' + (danger ? ' btn-modal--danger' : '');
         confirmBtn.textContent = confirmLabel;
 
-        const close = (result) => {
-            backdrop.remove();
-            document.removeEventListener('keydown', onKey);
-            resolve(result);
-        };
+        let trap = null;
 
-        const onKey = (ev) => {
-            if (ev.key === 'Escape') close(false);
+        const close = (result) => {
+            trap?.release();
+            backdrop.remove();
+            resolve(result);
         };
 
         cancelBtn.addEventListener('click', () => close(false));
@@ -49,13 +49,16 @@ export function showConfirm({ title, message, confirmLabel = 'Confirmer', cancel
         backdrop.addEventListener('click', (ev) => {
             if (ev.target === backdrop) close(false);
         });
-        document.addEventListener('keydown', onKey);
 
         actions.append(cancelBtn, confirmBtn);
         dialog.append(titleEl, messageEl, actions);
         backdrop.append(dialog);
         document.body.append(backdrop);
-        confirmBtn.focus();
+
+        trap = createFocusTrap(dialog, {
+            onEscape: () => close(false),
+            initialFocus: danger ? cancelBtn : confirmBtn,
+        });
     });
 }
 
@@ -68,9 +71,11 @@ export function showPrompt({ title, message, label, defaultValue = '', inputType
         dialog.className = 'modal-dialog';
         dialog.setAttribute('role', 'dialog');
         dialog.setAttribute('aria-modal', 'true');
+        dialog.setAttribute('aria-labelledby', 'modal-prompt-title');
 
         const titleEl = document.createElement('h2');
         titleEl.className = 'modal-title';
+        titleEl.id = 'modal-prompt-title';
         titleEl.textContent = title;
 
         const messageEl = document.createElement('p');
@@ -95,23 +100,27 @@ export function showPrompt({ title, message, label, defaultValue = '', inputType
 
         const cancelBtn = document.createElement('button');
         cancelBtn.type = 'button';
-        cancelBtn.className = 'btn-modal btn-modal--cancel';
+        cancelBtn.className = 'btn-modal btn-modal--cancel m3-state-layer';
         cancelBtn.textContent = 'Annuler';
 
         const confirmBtn = document.createElement('button');
         confirmBtn.type = 'button';
-        confirmBtn.className = 'btn-modal btn-modal--confirm';
+        confirmBtn.className = 'btn-modal btn-modal--confirm m3-state-layer';
         confirmBtn.textContent = 'Appliquer';
 
+        let trap = null;
+
         const close = (result) => {
+            trap?.release();
             backdrop.remove();
-            document.removeEventListener('keydown', onKey);
             resolve(result);
         };
 
-        const onKey = (ev) => {
-            if (ev.key === 'Escape') close(null);
-            if (ev.key === 'Enter') close(input.value);
+        const onEnter = (ev) => {
+            if (ev.key === 'Enter' && document.activeElement === input) {
+                ev.preventDefault();
+                close(input.value);
+            }
         };
 
         cancelBtn.addEventListener('click', () => close(null));
@@ -119,13 +128,17 @@ export function showPrompt({ title, message, label, defaultValue = '', inputType
         backdrop.addEventListener('click', (ev) => {
             if (ev.target === backdrop) close(null);
         });
-        document.addEventListener('keydown', onKey);
+        input.addEventListener('keydown', onEnter);
 
         actions.append(cancelBtn, confirmBtn);
         dialog.append(titleEl, messageEl, field, actions);
         backdrop.append(dialog);
         document.body.append(backdrop);
-        input.focus();
+
+        trap = createFocusTrap(dialog, {
+            onEscape: () => close(null),
+            initialFocus: input,
+        });
         input.select();
     });
 }

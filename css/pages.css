@@ -101,12 +101,28 @@
 }
 
 .home-calendar summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     padding: 12px 4px;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: var(--m3-body-medium-size);
     color: var(--m3-on-surface);
     cursor: pointer;
     list-style: none;
+    min-height: 48px;
+}
+
+.home-calendar summary::before {
+    content: 'expand_more';
+    font-family: 'Material Symbols Rounded', sans-serif;
+    font-size: 24px;
+    color: var(--m3-on-surface-variant);
+    transition: transform 0.2s;
+}
+
+.home-calendar[open] summary::before {
+    transform: rotate(180deg);
 }
 
 .home-calendar summary::-webkit-details-marker {
@@ -171,36 +187,30 @@
 }
 
 /* ── Simulateur ──────────────────────────────────────────── */
-.page-simulateur > h1 {
-    font-family: 'Nunito', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-align: left;
-    border: none;
-    padding: 0;
+.page-simulateur > .page-title {
     margin: 8px 0 16px;
-    color: var(--m3-on-surface);
 }
 
 .sim-next-exam {
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    background: var(--next-exam-bg);
-    border-left: 5px solid var(--primary-mid);
-    border-radius: 8px;
+    background: var(--m3-primary-container);
+    border-left: 4px solid var(--m3-primary);
+    border-radius: var(--m3-shape-md);
     padding: 16px 18px;
     margin-bottom: 20px;
+    box-shadow: var(--m3-elevation-1);
 }
 
 .sim-next-exam--done {
-    border-left-color: var(--success);
-    background: var(--success-bg);
+    border-left-color: var(--m3-success);
+    background: var(--m3-success-container);
 }
 
 .sim-next-exam-icon {
-    font-size: 1.5rem;
-    line-height: 1;
+    font-size: 28px;
+    color: var(--m3-primary);
     flex-shrink: 0;
 }
 
@@ -243,36 +253,32 @@
 }
 
 .sim-disclaimer {
-    background: var(--surface-subtle);
-    border-left: 4px solid var(--warning);
+    background: var(--m3-surface-container-high);
+    border-left: 4px solid var(--m3-warning);
     padding: 12px 16px;
-    border-radius: 6px;
-    font-size: 0.88rem;
+    border-radius: var(--m3-shape-sm);
+    font-size: var(--m3-body-medium-size);
     margin-bottom: 16px;
-    color: var(--heading-sub);
+    color: var(--m3-on-surface-variant);
 }
 
 .sim-rattrapage {
-    background: var(--warning-bg, #fef3c7);
-    border-left: 4px solid var(--warning);
+    background: var(--m3-warning-container);
+    border-left: 4px solid var(--m3-warning);
     padding: 12px 16px;
-    border-radius: 6px;
+    border-radius: var(--m3-shape-sm);
     margin-bottom: 16px;
-    font-size: 0.88rem;
+    font-size: var(--m3-body-medium-size);
 }
 
-.sim-rattrapage p { margin-top: 4px; color: var(--heading-sub); }
-
-[data-theme="dark"] .sim-rattrapage {
-    background: #3d3520;
-}
+.sim-rattrapage p { margin-top: 4px; color: var(--m3-on-warning-container); }
 
 .sim-summary {
-    background: var(--surface-subtle);
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
+    background: var(--m3-surface-container);
+    border-radius: var(--m3-shape-md);
     padding: 18px 20px;
     margin-bottom: 28px;
+    box-shadow: var(--m3-elevation-1);
 }
 
 .sim-summary-intro {
@@ -289,13 +295,23 @@
 }
 
 .sim-scenario-card {
-    background: var(--card);
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
+    background: var(--m3-surface-container-high);
+    border-radius: var(--m3-shape-md);
     padding: 14px 16px;
     display: flex;
     flex-direction: column;
     gap: 4px;
+}
+
+.sim-scenario-card--primary {
+    background: var(--m3-primary-container);
+    border: 2px solid var(--m3-primary);
+}
+
+@media (max-width: 720px) {
+    .sim-scenario-card--primary {
+        order: -1;
+    }
 }
 
 .sim-scenario-label {
@@ -354,22 +370,15 @@
     align-self: flex-start;
 }
 
-.sim-mention.mention-tb { background: #f6c90e; color: #3d3200; }
-.sim-mention.mention-b  { background: #bee3f8; color: #1a365d; }
-.sim-mention.mention-ab { background: #9ae6b4; color: #1a4731; }
-.sim-mention.mention-p  { background: #fbd38d; color: #5c3d0e; }
-.sim-mention.mention-i  { background: #fed7d7; color: #63171b; }
+.sim-mention.mention-tb { background: var(--m3-warning-container); color: var(--m3-on-warning-container); }
+.sim-mention.mention-b  { background: var(--m3-primary-container); color: var(--m3-on-primary-container); }
+.sim-mention.mention-ab { background: var(--m3-success-container); color: var(--m3-on-success-container); }
+.sim-mention.mention-p  { background: var(--m3-tertiary-container); color: var(--m3-on-tertiary-container); }
+.sim-mention.mention-i  { background: var(--m3-error-container); color: var(--m3-on-error-container); }
 .sim-mention--partial {
-    background: var(--surface-muted);
-    color: var(--muted);
-    border: 1px solid var(--border);
+    background: var(--m3-surface-container-highest);
+    color: var(--m3-on-surface-variant);
 }
-
-[data-theme="dark"] .sim-mention.mention-tb { background: #d69e2e; color: #1a1a0a; }
-[data-theme="dark"] .sim-mention.mention-b  { background: #4299e1; color: #0d1b2a; }
-[data-theme="dark"] .sim-mention.mention-ab { background: #48bb78; color: #0d2618; }
-[data-theme="dark"] .sim-mention.mention-p  { background: #ed8936; color: #1a0f05; }
-[data-theme="dark"] .sim-mention.mention-i  { background: #fc8181; color: #1a0505; }
 
 .sim-niveau {
     margin-bottom: 32px;
@@ -546,13 +555,32 @@
 }
 
 .sim-calendar summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     padding: 12px 16px;
     font-weight: 700;
-    font-size: 0.9rem;
-    color: var(--primary);
+    font-size: var(--m3-body-medium-size);
+    color: var(--m3-on-surface);
     cursor: pointer;
-    background: var(--calendar-summary);
+    background: var(--m3-surface-container-high);
     user-select: none;
+    min-height: 48px;
+    list-style: none;
+}
+
+.sim-calendar summary::-webkit-details-marker { display: none; }
+
+.sim-calendar summary::before {
+    content: 'expand_more';
+    font-family: 'Material Symbols Rounded', sans-serif;
+    font-size: 24px;
+    color: var(--m3-on-surface-variant);
+    transition: transform 0.2s;
+}
+
+.sim-calendar[open] summary::before {
+    transform: rotate(180deg);
 }
 
 .sim-calendar summary:hover {
@@ -649,10 +677,18 @@
 }
 
 .sim-calendar-address {
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
     grid-column: 1 / -1;
     font-size: 0.8rem;
-    color: var(--muted);
+    color: var(--m3-on-surface-variant);
     line-height: 1.4;
+}
+
+.sim-calendar-address .material-symbols-rounded {
+    font-size: 16px;
+    flex-shrink: 0;
 }
 
 .sim-calendar-item--next {
