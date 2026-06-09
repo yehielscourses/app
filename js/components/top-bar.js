@@ -4,7 +4,7 @@ function createAvatarButton(onOpenSettings) {
     const profile = getProfile();
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'top-bar-avatar';
+    btn.className = 'top-bar-avatar m3-state-layer';
     btn.setAttribute('aria-label', 'Ouvrir les paramètres');
 
     const img = document.createElement('img');
@@ -31,7 +31,7 @@ function createAvatarButton(onOpenSettings) {
     }
 
     btn.append(img, fallback);
-    btn.addEventListener('click', onOpenSettings);
+    btn.addEventListener('click', () => onOpenSettings(btn));
     return btn;
 }
 

@@ -1,45 +1,11 @@
 import {
     findNextExam,
     formatDateFr,
-    formatTimeUntil,
     mapExamToSimulatorId,
 } from '../lib/grade-calculator.js';
 import { navigate } from '../router.js';
-
-function renderNextExam(epreuve) {
-    if (!epreuve) {
-        return `
-            <div class="home-next-exam home-next-exam--done">
-                <span class="material-symbols-rounded home-next-exam-icon" aria-hidden="true">event_available</span>
-                <div>
-                    <strong>Toutes les épreuves sont passées</strong>
-                    <p>Bon courage pour les résultats !</p>
-                </div>
-            </div>`;
-    }
-
-    const now = new Date();
-    const datetime = new Date(`${epreuve.date}T${epreuve.heure_debut}:00`);
-    const countdown = formatTimeUntil(datetime, now);
-
-    return `
-        <div class="home-next-exam" data-exam-id="${epreuve.id}">
-            <span class="material-symbols-rounded home-next-exam-icon" aria-hidden="true">event</span>
-            <div class="home-next-exam-body">
-                <span class="home-next-exam-label">Prochaine épreuve — ${countdown.label}</span>
-                <strong class="home-next-exam-title">${epreuve.nom}</strong>
-                <p class="home-next-exam-meta">
-                    ${formatDateFr(epreuve.date)} à ${epreuve.heure_debut}
-                    ${epreuve.duree ? ` · ${epreuve.duree.replace(':', 'h')}` : ''}
-                </p>
-                ${epreuve.adresse ? `
-                <p class="home-next-exam-location">
-                    <span class="material-symbols-rounded" aria-hidden="true">location_on</span>
-                    <span>${epreuve.adresse}</span>
-                </p>` : ''}
-            </div>
-        </div>`;
-}
+import { renderNextExamCard } from './next-exam.js';
+import { showToast } from './toast.js';
 
 function renderCalendarList(epreuves, nextExam) {
     return `
@@ -48,9 +14,13 @@ function renderCalendarList(epreuves, nextExam) {
                 const simId = mapExamToSimulatorId(e);
                 const isNext = nextExam && e.id === nextExam.id;
                 const isPast = new Date(`${e.date}T${e.heure_debut}:00`) < new Date();
+                const ariaLabel = simId
+                    ? `Saisir les notes pour ${e.nom}, ${formatDateFr(e.date)}`
+                    : undefined;
                 return `
                 <li class="home-calendar-item${isNext ? ' home-calendar-item--next' : ''}${isPast ? ' home-calendar-item--past' : ''}"
-                    ${simId ? `data-sim-target="${simId}" tabindex="0" role="button"` : ''}>
+                    ${simId ? `data-sim-target="${simId}" tabindex="0" role="button"` : ''}
+                    ${ariaLabel ? `aria-label="${ariaLabel.replace(/"/g, '&quot;')}"` : ''}>
                     <time datetime="${e.date}">${formatDateFr(e.date)}</time>
                     <span class="home-calendar-time">${e.heure_debut}</span>
                     <span class="home-calendar-name">${e.nom}</span>
@@ -71,7 +41,7 @@ export function createExamSection(epreuves) {
             <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
             Épreuves
         </h2>
-        ${renderNextExam(nextExam)}
+        ${renderNextExamCard(nextExam)}
         <details class="home-calendar">
             <summary>Calendrier complet (${epreuves.length} épreuves)</summary>
             ${renderCalendarList(epreuves, nextExam)}
@@ -82,6 +52,7 @@ export function createExamSection(epreuves) {
         const go = () => {
             navigate('simulateur');
             window.dispatchEvent(new CustomEvent('navigate-sim-row', { detail: item.dataset.simTarget }));
+            showToast('Épreuve sélectionnée — saisissez vos notes ci-dessous.');
         };
         item.addEventListener('click', go);
         item.addEventListener('keydown', (ev) => {

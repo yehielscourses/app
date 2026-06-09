@@ -6,6 +6,7 @@ import { getProfile } from '../lib/profile.js';
 import { showConfirm } from '../components/modal.js';
 import { showToast } from '../components/toast.js';
 import { createExamSection, loadEpreuves } from '../components/exam-calendar.js';
+import { openSettingsSheet } from '../components/settings-sheet.js';
 
 const COLLAPSE_STORAGE_KEY = 'bac-tracker-collapse-v1';
 
@@ -126,9 +127,19 @@ function renderSection(section, collapseState) {
     const summary = document.createElement('summary');
     summary.className = 'tracker-section-summary';
 
+    const titleWrap = document.createElement('span');
+    titleWrap.className = 'tracker-section-summary-title';
+
+    const expandIcon = document.createElement('span');
+    expandIcon.className = 'material-symbols-rounded tracker-section-expand-icon';
+    expandIcon.setAttribute('aria-hidden', 'true');
+    expandIcon.textContent = 'expand_more';
+
     const title = document.createElement('span');
     title.className = 'h2-title';
     title.textContent = section.title;
+
+    titleWrap.append(expandIcon, title);
 
     const meta = document.createElement('span');
     meta.className = 'h2-meta';
@@ -143,7 +154,7 @@ function renderSection(section, collapseState) {
     badge.textContent = `0 / ${section.subsections.reduce((n, s) => n + s.notions.length, 0)}`;
     meta.append(badge);
 
-    summary.append(title, meta);
+    summary.append(titleWrap, meta);
     details.append(summary);
 
     section.subsections.forEach((sub) => {
@@ -243,8 +254,15 @@ export async function mountTracker(container) {
     profileBox.innerHTML = `
         <p>${profile.headline || notions.profile.headline}</p>
         <p>${profile.objective || notions.profile.objective}</p>
+        <button type="button" class="profile-box-link m3-state-layer" id="tracker-edit-profile">
+            <span class="material-symbols-rounded" aria-hidden="true">edit</span>
+            Modifier le parcours
+        </button>
     `;
     container.append(profileBox);
+    profileBox.querySelector('#tracker-edit-profile')?.addEventListener('click', (ev) => {
+        openSettingsSheet(ev.currentTarget);
+    });
 
     const progressSection = createProgressSection();
     container.append(progressSection);
@@ -252,17 +270,32 @@ export async function mountTracker(container) {
     const toolbar = document.createElement('div');
     toolbar.className = 'tracker-toolbar';
     toolbar.innerHTML = `
-        <label class="filter-unchecked-label">
-            <input type="checkbox" id="filter-unchecked" checked>
-            Afficher uniquement les notions non cochées
-        </label>
+        <div class="tracker-toolbar-row">
+            <label class="filter-unchecked-label">
+                <input type="checkbox" id="filter-unchecked">
+                Afficher uniquement les notions non cochées
+            </label>
+            <div class="tracker-toolbar-actions">
+                <button type="button" class="btn-text m3-state-layer" id="tracker-expand-all">
+                    <span class="material-symbols-rounded" aria-hidden="true">unfold_more</span>
+                    Tout déplier
+                </button>
+                <button type="button" class="btn-text m3-state-layer" id="tracker-collapse-all">
+                    <span class="material-symbols-rounded" aria-hidden="true">unfold_less</span>
+                    Tout replier
+                </button>
+            </div>
+        </div>
     `;
     container.append(toolbar);
 
     const actions = document.createElement('div');
     actions.className = 'actions';
     actions.innerHTML = `
-        <button type="button" class="btn-reset" id="tracker-reset">↺ Réinitialiser la progression</button>
+        <button type="button" class="btn-reset m3-state-layer" id="tracker-reset">
+            <span class="material-symbols-rounded" aria-hidden="true">restart_alt</span>
+            Réinitialiser la progression
+        </button>
     `;
     container.append(actions);
 
@@ -283,6 +316,20 @@ export async function mountTracker(container) {
 
     container.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
         cb.addEventListener('change', onChange);
+    });
+
+    container.querySelector('#tracker-expand-all')?.addEventListener('click', () => {
+        container.querySelectorAll('.tracker-section').forEach((el) => { el.open = true; });
+        const state = {};
+        notions.sections.forEach((s) => { state[s.id] = true; });
+        saveCollapseState(state);
+    });
+
+    container.querySelector('#tracker-collapse-all')?.addEventListener('click', () => {
+        container.querySelectorAll('.tracker-section').forEach((el) => { el.open = false; });
+        const state = {};
+        notions.sections.forEach((s) => { state[s.id] = false; });
+        saveCollapseState(state);
     });
 
     container.querySelector('#tracker-reset')?.addEventListener('click', async () => {

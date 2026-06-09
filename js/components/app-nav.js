@@ -1,5 +1,12 @@
+export const TAB_LABELS = {
+    home: 'Accueil',
+    cours: 'Cours',
+    exercices: 'Exercices',
+    simulateur: 'Simulateur',
+};
+
 export const TABS = [
-    { id: 'home', label: 'Home', icon: 'home' },
+    { id: 'home', label: 'Accueil', icon: 'home' },
     { id: 'cours', label: 'Cours', icon: 'menu_book' },
     { id: 'exercices', label: 'Exercices', icon: 'edit_note' },
     { id: 'simulateur', label: 'Simulateur', icon: 'calculate', ariaLabel: 'Simulateur des notes' },
@@ -8,8 +15,7 @@ export const TABS = [
 function createNavItem(tab, activeId, variant, onSelect) {
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = `nav-item nav-item--${variant}` + (tab.id === activeId ? ' active' : '');
-    btn.id = `tab-${variant}-${tab.id}`;
+    btn.className = `nav-item nav-item--${variant} m3-state-layer` + (tab.id === activeId ? ' active' : '');
     btn.dataset.tab = tab.id;
     btn.setAttribute('role', 'tab');
     btn.setAttribute('aria-selected', tab.id === activeId ? 'true' : 'false');
@@ -101,5 +107,18 @@ export function setActiveTab(nav, activeId) {
 export function setActiveTabs(navElements, activeId) {
     navElements.forEach((nav) => {
         if (nav) setActiveTab(nav, activeId);
+    });
+}
+
+export function updateNavAccessibility(bottomNav, navRail) {
+    if (!bottomNav || !navRail) return;
+    const isWide = window.matchMedia('(min-width: 840px)').matches;
+    bottomNav.setAttribute('aria-hidden', isWide ? 'true' : 'false');
+    navRail.setAttribute('aria-hidden', isWide ? 'true' : 'false');
+    bottomNav.querySelectorAll('.nav-item').forEach((btn) => {
+        btn.tabIndex = isWide ? -1 : (btn.classList.contains('active') ? 0 : -1);
+    });
+    navRail.querySelectorAll('.nav-item').forEach((btn) => {
+        btn.tabIndex = isWide ? (btn.classList.contains('active') ? 0 : -1) : -1;
     });
 }

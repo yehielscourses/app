@@ -6,13 +6,13 @@ import {
     getMention,
     findNextExam,
     formatDateFr,
-    formatTimeUntil,
     findRattrapageCandidates,
     mapExamToSimulatorId,
     SCENARIOS,
 } from '../lib/grade-calculator.js';
 import { showPrompt } from '../components/modal.js';
 import { showToast } from '../components/toast.js';
+import { renderNextExamCard } from '../components/next-exam.js';
 
 const GROUP_LABELS = {
     controle_continu: { short: 'CO', full: 'Contrôle continu', class: 'sim-group-co' },
@@ -145,8 +145,9 @@ function renderScenarioCard(scenario, averages, totalCoef) {
             ? `<span class="sim-scenario-range">${lowStr} — ${highStr}</span>`
             : '<span class="sim-scenario-range">—</span>';
         const progress = totalCoef > 0 ? Math.round((filledCoef / totalCoef) * 100) : 0;
+        const primaryClass = id === 'reelle' ? ' sim-scenario-card--primary' : '';
         return `
-            <div class="sim-scenario-card" data-scenario="${id}">
+            <div class="sim-scenario-card${primaryClass}" data-scenario="${id}">
                 <span class="sim-scenario-label">${label}</span>
                 <span class="sim-scenario-score">${scoreHtml}<span class="sim-summary-unit">/20</span></span>
                 <span class="sim-scenario-meta">${filledCoef} / ${totalCoef} coef. (${progress} %)</span>
@@ -167,8 +168,9 @@ function renderScenarioCard(scenario, averages, totalCoef) {
         mentionHtml = '<span class="sim-mention sim-mention--partial">Partielle</span>';
     }
 
+    const primaryClass = id === 'reelle' ? ' sim-scenario-card--primary' : '';
     return `
-        <div class="sim-scenario-card" data-scenario="${id}">
+        <div class="sim-scenario-card${primaryClass}" data-scenario="${id}">
             <span class="sim-scenario-label">${label}</span>
             <span class="sim-scenario-score">${formatMoyenne(moyenne)}<span class="sim-summary-unit">/20</span></span>
             ${mentionHtml}
@@ -211,41 +213,6 @@ function renderRattrapageBanner(candidates) {
         </div>`;
 }
 
-function renderNextExam(epreuve) {
-    if (!epreuve) {
-        return `
-            <div class="sim-next-exam sim-next-exam--done">
-                <span class="sim-next-exam-icon">✓</span>
-                <div>
-                    <strong>Toutes les épreuves sont passées</strong>
-                    <p>Bon courage pour les résultats !</p>
-                </div>
-            </div>`;
-    }
-
-    const now = new Date();
-    const datetime = new Date(`${epreuve.date}T${epreuve.heure_debut}:00`);
-    const countdown = formatTimeUntil(datetime, now);
-
-    return `
-        <div class="sim-next-exam" data-exam-id="${epreuve.id}">
-            <span class="sim-next-exam-icon">📅</span>
-            <div class="sim-next-exam-body">
-                <span class="sim-next-exam-label">Prochaine épreuve — ${countdown.label}</span>
-                <strong class="sim-next-exam-title">${epreuve.nom}</strong>
-                <p class="sim-next-exam-meta">
-                    ${formatDateFr(epreuve.date)} à ${epreuve.heure_debut}
-                    ${epreuve.duree ? ` · ${epreuve.duree.replace(':', 'h')}` : ''}
-                </p>
-                ${epreuve.adresse ? `
-                <p class="sim-next-exam-location">
-                    <span class="sim-next-exam-location-icon" aria-hidden="true">📍</span>
-                    <span>${epreuve.adresse}</span>
-                </p>` : ''}
-            </div>
-        </div>`;
-}
-
 function renderCycleTerminale(epreuvesData, notes) {
     const blocks = ['controle_continu', 'epreuves_finales']
         .map((key) => renderGroupTables(key, epreuvesData[key], notes))
@@ -268,14 +235,18 @@ function renderCalendar(epreuves, nextExam) {
                 ${epreuves.map((e) => {
                     const simId = mapExamToSimulatorId(e);
                     const isNext = nextExam && e.id === nextExam.id;
+                    const ariaLabel = simId
+                        ? `Saisir les notes pour ${e.nom}, ${formatDateFr(e.date)}`
+                        : undefined;
                     return `
                     <li class="sim-calendar-item${isNext ? ' sim-calendar-item--next' : ''}"
-                        ${simId ? `data-sim-target="${simId}" tabindex="0" role="button"` : ''}>
+                        ${simId ? `data-sim-target="${simId}" tabindex="0" role="button"` : ''}
+                        ${ariaLabel ? `aria-label="${ariaLabel.replace(/"/g, '&quot;')}"` : ''}>
                         <time datetime="${e.date}">${formatDateFr(e.date)}</time>
                         <span class="sim-calendar-time">${e.heure_debut}</span>
                         <span class="sim-calendar-name">${e.nom}</span>
-                        ${simId ? '<span class="sim-calendar-link-hint">↗ Saisir les notes</span>' : ''}
-                        ${e.adresse ? `<span class="sim-calendar-address">📍 ${e.adresse}</span>` : ''}
+                        ${simId ? '<span class="sim-calendar-link-hint">Saisir les notes</span>' : ''}
+                        ${e.adresse ? `<span class="sim-calendar-address"><span class="material-symbols-rounded" aria-hidden="true">location_on</span> ${e.adresse}</span>` : ''}
                     </li>`;
                 }).join('')}
             </ul>
@@ -314,6 +285,7 @@ function scrollToSimRow(root, simId) {
     const input = target.querySelector('.sim-note-input[data-field="reelle"]')
         || target.querySelector('.sim-note-input');
     if (input) input.focus();
+    showToast('Épreuve sélectionnée — saisissez vos notes ci-dessous.');
     setTimeout(() => target.classList.remove('sim-highlight'), 2000);
 }
 
@@ -365,7 +337,7 @@ export async function mountSimulateur(container) {
     } catch {
         container.innerHTML = `
             <div class="page-placeholder">
-                <div class="page-placeholder-icon">⚠️</div>
+                <span class="material-symbols-rounded page-placeholder-icon">warning</span>
                 <h2>Erreur de chargement</h2>
                 <p>Impossible de charger les données du simulateur.</p>
             </div>`;
@@ -379,18 +351,22 @@ export async function mountSimulateur(container) {
     const rattrapage = findRattrapageCandidates(coefficients, notes);
 
     container.innerHTML = `
-        <h1>Simulateur de note</h1>
+        <h2 class="page-title">Simulateur de note</h2>
         <div class="profile-box">
             <p>${profile.simulatorHeadline}</p>
             <p>${buildSimulatorSubline(profile)}</p>
         </div>
         ${renderDisclaimer()}
         ${renderRattrapageBanner(rattrapage)}
+        ${renderNextExamCard(nextExam, { cssPrefix: 'sim-next-exam' })}
         ${renderSummary(averages)}
         ${renderCycleTerminale(coefficients.epreuves, notes)}
         ${renderCalendar(epreuves, nextExam)}
         <div class="sim-actions">
-            <button type="button" class="btn-reset" id="sim-reset-notes">↺ Remplir toutes les notes…</button>
+            <button type="button" class="btn-outlined" id="sim-reset-notes">
+                <span class="material-symbols-rounded">edit_square</span>
+                Remplissage rapide
+            </button>
         </div>
     `;
 
@@ -430,7 +406,7 @@ export async function mountSimulateur(container) {
 
     container.querySelector('#sim-reset-notes')?.addEventListener('click', async () => {
         const value = await showPrompt({
-            title: 'Remplir toutes les notes',
+            title: 'Remplissage rapide',
             message: 'Cette action remplace toutes les notes (réelle, min et max) par la valeur choisie.',
             label: 'Note / 20',
             defaultValue: '10',

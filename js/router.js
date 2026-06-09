@@ -1,3 +1,4 @@
+import { TAB_LABELS } from './components/app-nav.js';
 import { mountTracker, invalidateTrackerCache } from './pages/tracker.js';
 import { mountCours } from './pages/cours.js';
 import { mountExercices } from './pages/exercices.js';
@@ -49,7 +50,7 @@ function getOrCreatePanel(route) {
     panel.className = 'tab-panel';
     panel.id = `panel-${route}`;
     panel.setAttribute('role', 'tabpanel');
-    panel.setAttribute('aria-labelledby', `tab-${route}`);
+    panel.setAttribute('aria-label', TAB_LABELS[route] ?? route);
     panel.hidden = true;
     panel.tabIndex = 0;
     parentEl.append(panel);
