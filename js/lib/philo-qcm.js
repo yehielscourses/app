@@ -11,6 +11,7 @@ function emptyPhiloState() {
         global: emptyStats(),
         themes: {},
         questions: {},
+        learnedCards: [],
     };
 }
 
@@ -21,6 +22,7 @@ export function loadPhiloState() {
         global: { ...emptyStats(), ...all[PHILO_KEY].global },
         themes: { ...all[PHILO_KEY].themes },
         questions: { ...all[PHILO_KEY].questions },
+        learnedCards: [...(all[PHILO_KEY].learnedCards ?? [])],
     };
 }
 
@@ -154,4 +156,32 @@ export function groupThemesByPerspective(themes, perspectives) {
     });
 
     return groups;
+}
+
+export function getLearningCardsForTheme(cards, themeId) {
+    if (!cards?.length) return [];
+    if (themeId === 'all') return [...cards];
+    return cards.filter((c) => c.theme === themeId);
+}
+
+export function buildLearningSeries(cards, themeId) {
+    const pool = getLearningCardsForTheme(cards, themeId);
+    return shuffleArray(
+        pool.sort((a, b) => (b.importance ?? 1) - (a.importance ?? 1)),
+    );
+}
+
+export function getLearnedCardIds() {
+    const state = loadPhiloState();
+    return state.learnedCards ?? [];
+}
+
+export function markCardLearned(cardId) {
+    const state = loadPhiloState();
+    if (!state.learnedCards) state.learnedCards = [];
+    if (!state.learnedCards.includes(cardId)) {
+        state.learnedCards.push(cardId);
+        persistPhiloState(state);
+    }
+    return state;
 }

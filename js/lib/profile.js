@@ -10,7 +10,16 @@ export const DEFAULT_PROFILE = {
     specialite_abandonnee: 'NSI',
     langues: { lva: 'Anglais', lvb: 'Hébreu' },
     headline: 'Profil : Candidat Libre — Parcours adapté Post-5e',
-    objective: "Objectif : cocher chaque case une fois la notion maîtrisée (cours compris + exercices d'application faits).",
+    objective: "Objectif : lire la fiche cours, parcourir le mode Apprendre, puis valider les QCM — précision avant vitesse.",
+    apprentissage: {
+        label: 'Parcours adapté (bilan neuropsy)',
+        forces: ['Raisonnement logique et plans structurés', 'Analyse de problèmes nouveaux'],
+        adaptations: [
+            'Contenus par catégories explicites',
+            'Pas de chronomètre — prendre le temps de développer',
+            'Mode Apprendre avant les QCM',
+        ],
+    },
     simulatorHeadline: 'Bac général — Candidat libre, cycle terminale',
     simulatorSubline: 'Spécialités : Mathématiques & Physique-chimie · NSI abandonnée · Sans matière optionnelle',
     cycleHint: 'Candidat libre — toutes les épreuves en une session (40 % ponctuelles · 60 % finales)',

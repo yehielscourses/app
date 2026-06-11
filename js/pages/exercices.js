@@ -8,8 +8,11 @@ import {
     getThemeAccuracy,
     pickNextQuestion,
     buildThemeSeries,
+    buildLearningSeries,
     getThemeLabel,
     groupThemesByPerspective,
+    markCardLearned,
+    getLearnedCardIds,
 } from '../lib/philo-qcm.js';
 
 const matiereCache = new Map();
@@ -94,10 +97,29 @@ function renderMatiereList(container, matieres) {
     });
 }
 
+function renderPedagogieBanner(pedagogie) {
+    if (!pedagogie) return null;
+    const banner = document.createElement('aside');
+    banner.className = 'exercices-pedago-banner';
+    banner.innerHTML = `
+        <span class="material-symbols-rounded" aria-hidden="true">psychology_alt</span>
+        <div>
+            <strong>${pedagogie.label ?? 'Parcours adapté'}</strong>
+            <p>${pedagogie.conseil ?? ''}</p>
+            <ul class="exercices-pedago-list">
+                ${(pedagogie.adaptations ?? []).slice(0, 3).map((a) => `<li>${a}</li>`).join('')}
+            </ul>
+        </div>
+    `;
+    return banner;
+}
+
 function renderPhiloHub(container, matiereMeta, matiereData) {
     const state = loadPhiloState();
     const globalPct = getGlobalAccuracy(state);
     const questionCount = matiereData.questions.length;
+    const cardCount = matiereData.learningCards?.length ?? 0;
+    const learnedCount = getLearnedCardIds().length;
 
     container.innerHTML = '';
     container.append(createBackButton('Toutes les matières', ''));
@@ -109,6 +131,9 @@ function renderPhiloHub(container, matiereMeta, matiereData) {
         <p class="exercices-intro">${matiereData.description}</p>
     `;
     container.append(header);
+
+    const pedagoBanner = renderPedagogieBanner(matiereData.pedagogie);
+    if (pedagoBanner) container.append(pedagoBanner);
 
     const scoreCard = document.createElement('section');
     scoreCard.className = 'exercices-score-card';
@@ -137,6 +162,22 @@ function renderPhiloHub(container, matiereMeta, matiereData) {
     `;
     unlimitedBtn.addEventListener('click', () => setExercicesHash(`${matiereMeta.id}/serie/illimitee`));
     container.append(unlimitedBtn);
+
+    if (cardCount > 0) {
+        const learnBtn = document.createElement('button');
+        learnBtn.type = 'button';
+        learnBtn.className = 'exercices-mode-card exercices-mode-card--learn m3-state-layer';
+        learnBtn.innerHTML = `
+            <span class="material-symbols-rounded exercices-mode-icon" aria-hidden="true">menu_book</span>
+            <span class="exercices-mode-text">
+                <strong>Mode Apprendre</strong>
+                <span>${cardCount} cartes (citations, repères, notions) — ${learnedCount} vues · sans chronomètre</span>
+            </span>
+            <span class="material-symbols-rounded exercices-matiere-chevron" aria-hidden="true">school</span>
+        `;
+        learnBtn.addEventListener('click', () => setExercicesHash(`${matiereMeta.id}/apprendre/all`));
+        container.append(learnBtn);
+    }
 
     const themesTitle = document.createElement('h2');
     themesTitle.className = 'exercices-section-title';
@@ -172,20 +213,31 @@ function renderPhiloHub(container, matiereMeta, matiereData) {
             const themeQuestions = matiereData.questions.filter((q) => q.theme === theme.id).length;
             const themeStats = state.themes[theme.id];
 
-            const card = document.createElement('button');
-            card.type = 'button';
-            card.className = 'exercices-theme-card m3-state-layer';
+            const themeCards = matiereData.learningCards?.filter((c) => c.theme === theme.id).length ?? 0;
+            const card = document.createElement('div');
+            card.className = 'exercices-theme-card';
             card.setAttribute('role', 'listitem');
             card.innerHTML = `
-                <span class="material-symbols-rounded exercices-theme-icon" aria-hidden="true">${theme.icon}</span>
-                <span class="exercices-theme-label">${theme.label}</span>
-                <span class="exercices-theme-meta">${themeQuestions} questions</span>
-                <span class="exercices-theme-score" aria-label="Score : ${themePct !== null ? `${themePct} pour cent` : 'aucune réponse'}">
-                    ${themePct !== null ? `${themePct}%` : '—'}
-                    ${themeStats ? `<span class="exercices-theme-score-detail">${themeStats.correct}/${themeStats.total}</span>` : ''}
-                </span>
+                <button type="button" class="exercices-theme-main m3-state-layer">
+                    <span class="material-symbols-rounded exercices-theme-icon" aria-hidden="true">${theme.icon}</span>
+                    <span class="exercices-theme-label">${theme.label}</span>
+                    <span class="exercices-theme-meta">${themeQuestions} questions</span>
+                    <span class="exercices-theme-score" aria-label="Score : ${themePct !== null ? `${themePct} pour cent` : 'aucune réponse'}">
+                        ${themePct !== null ? `${themePct}%` : '—'}
+                        ${themeStats ? `<span class="exercices-theme-score-detail">${themeStats.correct}/${themeStats.total}</span>` : ''}
+                    </span>
+                </button>
+                ${themeCards > 0 ? `<button type="button" class="exercices-theme-learn m3-state-layer" title="Apprendre avant le QCM">Apprendre</button>` : ''}
             `;
-            card.addEventListener('click', () => setExercicesHash(`${matiereMeta.id}/serie/${theme.id}`));
+            card.querySelector('.exercices-theme-main').addEventListener('click', () => {
+                setExercicesHash(`${matiereMeta.id}/serie/${theme.id}`);
+            });
+            const learnBtn = card.querySelector('.exercices-theme-learn');
+            if (learnBtn) {
+                learnBtn.addEventListener('click', () => {
+                    setExercicesHash(`${matiereMeta.id}/apprendre/${theme.id}`);
+                });
+            }
             grid.append(card);
         });
 
@@ -269,10 +321,15 @@ function createQcmSession(container, matiereMeta, matiereData, mode, themeId) {
             container.append(sessionBar);
         }
 
+        const hintHtml = q.hint
+            ? `<div class="exercices-qcm-hint"><span class="material-symbols-rounded" aria-hidden="true">lightbulb</span><p><strong>Indice :</strong> ${q.hint}</p></div>`
+            : '';
+
         const card = document.createElement('article');
         card.className = 'exercices-qcm-card';
         card.innerHTML = `
             <h2 class="exercices-qcm-prompt">${q.prompt}</h2>
+            ${hintHtml}
             <div class="exercices-qcm-choices" role="radiogroup" aria-label="Choix de réponse"></div>
             <div class="exercices-qcm-feedback" hidden></div>
             <div class="exercices-qcm-actions">
@@ -390,6 +447,118 @@ function createQcmSession(container, matiereMeta, matiereData, mode, themeId) {
     loadNextQuestion();
 }
 
+function createLearnSession(container, matiereMeta, matiereData, themeId) {
+    const series = buildLearningSeries(matiereData.learningCards ?? [], themeId);
+    let index = 0;
+    let revealed = false;
+
+    function getLabel() {
+        if (themeId === 'all') return 'Toutes les cartes';
+        return getThemeLabel(matiereData.themes, themeId);
+    }
+
+    function render() {
+        if (!series.length) {
+            container.innerHTML = `
+                <div class="page-placeholder">
+                    <span class="material-symbols-rounded page-placeholder-icon">menu_book</span>
+                    <h2>Aucune carte disponible</h2>
+                    <p>Revenez au menu pour choisir un autre thème.</p>
+                </div>`;
+            return;
+        }
+
+        if (index >= series.length) {
+            container.innerHTML = '';
+            container.append(createBackButton(getLabel(), matiereMeta.id));
+            const end = document.createElement('section');
+            end.className = 'exercices-session-end';
+            end.innerHTML = `
+                <span class="material-symbols-rounded exercices-learn-done-icon" aria-hidden="true">celebration</span>
+                <h2>Cartes terminées !</h2>
+                <p class="exercices-session-end-score">${series.length} cartes parcourues. Passez au QCM pour vérifier vos acquis.</p>
+                <div class="exercices-session-end-actions">
+                    <button type="button" class="btn-primary exercices-learn-to-qcm">
+                        <span class="material-symbols-rounded" aria-hidden="true">quiz</span>
+                        Lancer le QCM
+                    </button>
+                    <button type="button" class="btn-outlined exercices-learn-restart">Revoir les cartes</button>
+                </div>
+            `;
+            container.append(end);
+            end.querySelector('.exercices-learn-to-qcm').addEventListener('click', () => {
+                if (themeId === 'all') setExercicesHash(`${matiereMeta.id}/serie/illimitee`);
+                else setExercicesHash(`${matiereMeta.id}/serie/${themeId}`);
+            });
+            end.querySelector('.exercices-learn-restart').addEventListener('click', () => {
+                index = 0;
+                revealed = false;
+                render();
+            });
+            return;
+        }
+
+        const card = series[index];
+        revealed = false;
+
+        container.innerHTML = '';
+        container.append(createBackButton(getLabel(), matiereMeta.id));
+
+        const header = document.createElement('div');
+        header.className = 'exercices-qcm-header';
+        header.innerHTML = `
+            <span class="exercices-qcm-badge">Mode Apprendre</span>
+            <span class="exercices-qcm-progress">Carte ${index + 1} / ${series.length}</span>
+        `;
+        container.append(header);
+
+        const tip = document.createElement('p');
+        tip.className = 'exercices-learn-tip';
+        tip.textContent = 'Lisez la question, essayez de répondre mentalement, puis révélez la réponse. Prenez votre temps.';
+        container.append(tip);
+
+        const flip = document.createElement('article');
+        flip.className = 'exercices-learn-card';
+        flip.innerHTML = `
+            <div class="exercices-learn-front">
+                <h2>${card.front}</h2>
+            </div>
+            <div class="exercices-learn-back" hidden>
+                <p>${card.back}</p>
+            </div>
+            <div class="exercices-learn-actions">
+                <button type="button" class="btn-outlined exercices-learn-reveal">Révéler la réponse</button>
+                <button type="button" class="btn-primary exercices-learn-next" hidden>
+                    Carte suivante
+                    <span class="material-symbols-rounded" aria-hidden="true">arrow_forward</span>
+                </button>
+            </div>
+        `;
+        container.append(flip);
+
+        const backEl = flip.querySelector('.exercices-learn-back');
+        const revealBtn = flip.querySelector('.exercices-learn-reveal');
+        const nextBtn = flip.querySelector('.exercices-learn-next');
+
+        revealBtn.addEventListener('click', () => {
+            revealed = true;
+            backEl.hidden = false;
+            flip.classList.add('exercices-learn-card--revealed');
+            revealBtn.hidden = true;
+            nextBtn.hidden = false;
+            markCardLearned(card.id);
+            nextBtn.focus();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            index += 1;
+            render();
+        });
+    }
+
+    render();
+}
+
 async function renderExercicesView(container, index) {
     const sub = getExercicesSubPath();
     const parts = sub.split('/').filter(Boolean);
@@ -414,6 +583,11 @@ async function renderExercicesView(container, index) {
 
     if (parts.length === 1) {
         renderPhiloHub(container, matiereMeta, matiereData);
+        return;
+    }
+
+    if (parts[1] === 'apprendre' && parts[2]) {
+        createLearnSession(container, matiereMeta, matiereData, parts[2]);
         return;
     }
 

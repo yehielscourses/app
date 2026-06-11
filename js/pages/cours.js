@@ -79,6 +79,20 @@ function renderMatiereList(container, matieres) {
     });
 }
 
+function renderPedagogieBanner(pedagogie) {
+    if (!pedagogie) return null;
+    const banner = document.createElement('aside');
+    banner.className = 'cours-pedago-banner';
+    banner.innerHTML = `
+        <span class="material-symbols-rounded" aria-hidden="true">psychology_alt</span>
+        <div>
+            <strong>${pedagogie.label ?? 'Parcours adapté'}</strong>
+            <p>${pedagogie.conseil ?? ''}</p>
+        </div>
+    `;
+    return banner;
+}
+
 function renderNotionList(container, matiereMeta, matiereData) {
     container.innerHTML = '';
     container.append(createBackButton('Toutes les matières', ''));
@@ -90,6 +104,9 @@ function renderNotionList(container, matiereMeta, matiereData) {
         <p class="cours-intro">${matiereData.description}</p>
     `;
     container.append(header);
+
+    const pedagoBanner = renderPedagogieBanner(matiereData.pedagogie);
+    if (pedagoBanner) container.append(pedagoBanner);
 
     const methodBtn = document.createElement('button');
     methodBtn.type = 'button';

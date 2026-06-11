@@ -1,22 +1,38 @@
 {
   "id": "philo",
   "label": "Philosophie",
-  "description": "QCM couvrant les 17 notions du programme, la méthodologie, les citations essentielles et les repères philosophiques pour l'épreuve du bac.",
+  "description": "Parcours progressif : cartes d'apprentissage, QCM guidés (indices et explications détaillées), citations et notions essentielles pour le bac.",
   "icon": "psychology",
   "perspectives": [
-    {
-      "id": "existence",
-      "label": "L'existence humaine et la culture"
-    },
-    {
-      "id": "morale",
-      "label": "La morale et la politique"
-    },
-    {
-      "id": "connaissance",
-      "label": "La connaissance"
-    }
+    [
+      "existence",
+      "L'existence humaine et la culture"
+    ],
+    [
+      "morale",
+      "La morale et la politique"
+    ],
+    [
+      "connaissance",
+      "La connaissance"
+    ]
   ],
+  "pedagogie": {
+    "label": "Parcours adapté",
+    "forces": [
+      "Raisonnement logique et structuration (plans dialectiques, tableaux, schémas)",
+      "Analyse de problèmes nouveaux et déduction de règles",
+      "Planification quand le cadre est clair et rappelé"
+    ],
+    "adaptations": [
+      "Contenus organisés par catégories explicites (facilite l'encodage en mémoire)",
+      "Pas de chronomètre : la précision prime sur la vitesse",
+      "Développements guidés : on passe du descriptif à l'abstraction pas à pas",
+      "Rappels et fiches « à retenir » avant les exercices",
+      "Révisions espacées : mode Apprendre puis QCM"
+    ],
+    "conseil": "Avant chaque série d'exercices, lisez la fiche cours correspondante et parcourez les cartes « À retenir ». Prenez le temps de reformuler avec vos mots."
+  },
   "themes": [
     {
       "id": "methodologie",
@@ -139,11 +155,511 @@
       "perspective": "La connaissance"
     }
   ],
+  "learningCards": [
+    {
+      "id": "learn-cogito",
+      "theme": "citations",
+      "front": "« Je pense, donc je suis »",
+      "back": "Descartes — Méditations métaphysiques. Certitude de la conscience de soi. Partie I sur la conscience.",
+      "importance": 3
+    },
+    {
+      "id": "learn-kant-ic",
+      "theme": "citations",
+      "front": "« Agis uniquement d'après la maxime qui peut valoir loi universelle »",
+      "back": "Kant — Impératif catégorique. Fondement du devoir. Notions devoir, liberté, justice.",
+      "importance": 3
+    },
+    {
+      "id": "learn-sartre",
+      "theme": "citations",
+      "front": "« L'homme est condamné à être libre »",
+      "back": "Sartre — L'existentialisme est un humanisme (1946). Liberté et responsabilité. Notion liberté.",
+      "importance": 3
+    },
+    {
+      "id": "learn-hobbes",
+      "theme": "citations",
+      "front": "« L'homme est un loup pour l'homme »",
+      "back": "Hobbes — De cive. État de nature et nécessité de l'État. Notion État.",
+      "importance": 3
+    },
+    {
+      "id": "learn-rousseau",
+      "theme": "citations",
+      "front": "« L'homme naît libre, et partout il est dans les fers »",
+      "back": "Rousseau — Contrat social (1762). Liberté naturelle vs aliénation sociale. Notions liberté, État, nature.",
+      "importance": 3
+    },
+    {
+      "id": "learn-marx",
+      "theme": "citations",
+      "front": "« La religion est l'opium du peuple »",
+      "back": "Marx — 1844. Critique sociale de la religion. Notion religion.",
+      "importance": 3
+    },
+    {
+      "id": "learn-freud",
+      "theme": "citations",
+      "front": "« La conscience n'est pas maîtresse en sa maison »",
+      "back": "Freud — 1917. L'inconscient détermine nos actes. Notions conscience, inconscient.",
+      "importance": 3
+    },
+    {
+      "id": "learn-aristote-bonheur",
+      "theme": "citations",
+      "front": "« Le bonheur est l'activité de l'âme conforme à la vertu »",
+      "back": "Aristote — Éthique à Nicomaque. Eudaimonia. Notion bonheur.",
+      "importance": 3
+    },
+    {
+      "id": "learn-wittgenstein",
+      "theme": "citations",
+      "front": "« Les limites de mon langage sont les limites de mon monde »",
+      "back": "Wittgenstein — Tractatus (1921). Langage et pensée. Notion langage.",
+      "importance": 3
+    },
+    {
+      "id": "learn-nietzsche",
+      "theme": "citations",
+      "front": "« Il n'y a pas de faits, il n'y a que des interprétations »",
+      "back": "Nietzsche — Fragment posthume. Relativisme. Notion vérité.",
+      "importance": 3
+    },
+    {
+      "id": "learn-plan-dialectique",
+      "theme": "methodologie",
+      "front": "Plan dialectique en 3 parties",
+      "back": "I = Thèse (on montre que le sujet semble vrai). II = Antithèse (mais l'opposé se défend). III = Dépassement (nuance, synthèse, sens plus profond).",
+      "importance": 3
+    },
+    {
+      "id": "learn-problematique",
+      "theme": "methodologie",
+      "front": "Qu'est-ce qu'une problématique ?",
+      "back": "La question précise à laquelle le sujet invite à répondre. Elle reformule le sujet en question philosophique, pas une simple recopie.",
+      "importance": 3
+    },
+    {
+      "id": "learn-legal-legitime",
+      "theme": "reperes",
+      "front": "Légal vs légitime",
+      "back": "Légal = conforme à la loi écrite. Légitime = moralement fondé. Une loi peut être légale sans être légitime.",
+      "importance": 3
+    },
+    {
+      "id": "learn-obj-subj",
+      "theme": "reperes",
+      "front": "Objectif vs subjectif",
+      "back": "Objectif = indépendant du sujet qui observe. Subjectif = relatif à la perception ou au jugement personnel.",
+      "importance": 2
+    },
+    {
+      "id": "learn-liberte-berlin",
+      "theme": "reperes",
+      "front": "Liberté négative vs positive (Berlin)",
+      "back": "Négative = absence d'entraves extérieures. Positive = capacité d'être auteur de ses choix (autonomie).",
+      "importance": 3
+    },
+    {
+      "id": "learn-art-16",
+      "theme": "art",
+      "front": "« L'art est l'activité qui permet à la vérité de prendre son essor. »",
+      "back": "Heidegger — L'Origine de l'œuvre d'art. Défendre que l'art accède à une vérité que la science ne donne pas.",
+      "importance": 2
+    },
+    {
+      "id": "learn-art-17",
+      "theme": "art",
+      "front": "« La poésie est plus philosophique que l'histoire. »",
+      "back": "Aristote — Poétique. Montrer que l'art universalise l'expérience humaine.",
+      "importance": 2
+    },
+    {
+      "id": "learn-art-memo-18",
+      "theme": "art",
+      "front": "Notion « art » — qu'est-ce qu'il faut retenir ?",
+      "back": "Mimesis = imitation (Platon la critique, Aristote la valorise)",
+      "importance": 2
+    },
+    {
+      "id": "learn-art-memo-19",
+      "theme": "art",
+      "front": "Notion « art » — qu'est-ce qu'il faut retenir ?",
+      "back": "Catharsis = purification des passions par la tragédie",
+      "importance": 2
+    },
+    {
+      "id": "learn-bonheur-20",
+      "theme": "bonheur",
+      "front": "« Le bonheur est l'activité de l'âme conforme à la vertu. »",
+      "back": "Aristote — Éthique à Nicomaque. Définir le bonheur comme excellence et non comme plaisir.",
+      "importance": 2
+    },
+    {
+      "id": "learn-bonheur-21",
+      "theme": "bonheur",
+      "front": "« Mieux vaut être Socrate insatisfait qu'un imbécile satisfait. »",
+      "back": "Mill — Utilitarisme. Distinguer qualité et quantité des plaisirs.",
+      "importance": 2
+    },
+    {
+      "id": "learn-bonheur-memo-22",
+      "theme": "bonheur",
+      "front": "Notion « bonheur » — qu'est-ce qu'il faut retenir ?",
+      "back": "Eudaimonia ≠ plaisir passager (Aristote)",
+      "importance": 2
+    },
+    {
+      "id": "learn-bonheur-memo-23",
+      "theme": "bonheur",
+      "front": "Notion « bonheur » — qu'est-ce qu'il faut retenir ?",
+      "back": "Ataraxie = tranquillité de l'âme (Épicure)",
+      "importance": 2
+    },
+    {
+      "id": "learn-conscience-24",
+      "theme": "conscience",
+      "front": "« Je pense, donc je suis. »",
+      "back": "Descartes — Méditations métaphysiques. Fonder la certitude sur la conscience de soi.",
+      "importance": 2
+    },
+    {
+      "id": "learn-conscience-25",
+      "theme": "conscience",
+      "front": "« La conscience n'est pas maîtresse en sa maison. »",
+      "back": "Freud — 1917. Introduire l'inconscient en partie ii.",
+      "importance": 2
+    },
+    {
+      "id": "learn-conscience-memo-26",
+      "theme": "conscience",
+      "front": "Notion « conscience » — qu'est-ce qu'il faut retenir ?",
+      "back": "Cogito = conscience de soi comme certitude (Descartes)",
+      "importance": 2
+    },
+    {
+      "id": "learn-conscience-memo-27",
+      "theme": "conscience",
+      "front": "Notion « conscience » — qu'est-ce qu'il faut retenir ?",
+      "back": "Conscience morale = loi en moi (Kant)",
+      "importance": 2
+    },
+    {
+      "id": "learn-devoir-28",
+      "theme": "devoir",
+      "front": "« Agis uniquement d'après la maxime qui peut valoir loi universelle. »",
+      "back": "Kant — Fondement de la métaphysique des mœurs. Formuler l'impératif catégorique.",
+      "importance": 2
+    },
+    {
+      "id": "learn-devoir-29",
+      "theme": "devoir",
+      "front": "« Agis de telle sorte que tu traites l'humanité toujours comme une fin, jamais comme un moyen. »",
+      "back": "Kant — idem. Critiquer l'utilisation instrumentale des personnes.",
+      "importance": 2
+    },
+    {
+      "id": "learn-devoir-memo-30",
+      "theme": "devoir",
+      "front": "Notion « devoir » — qu'est-ce qu'il faut retenir ?",
+      "back": "Devoir ≠ contrainte physique",
+      "importance": 2
+    },
+    {
+      "id": "learn-devoir-memo-31",
+      "theme": "devoir",
+      "front": "Notion « devoir » — qu'est-ce qu'il faut retenir ?",
+      "back": "Impératif catégorique = loi universelle (Kant)",
+      "importance": 2
+    },
+    {
+      "id": "learn-etat-32",
+      "theme": "etat",
+      "front": "« L'homme est un loup pour l'homme. »",
+      "back": "Hobbes — De cive. Justifier la nécessité de l'état.",
+      "importance": 2
+    },
+    {
+      "id": "learn-etat-33",
+      "theme": "etat",
+      "front": "« L'homme naît libre, et partout il est dans les fers. »",
+      "back": "Rousseau — Contrat social. Critiquer les chaînes sociales.",
+      "importance": 2
+    },
+    {
+      "id": "learn-etat-memo-34",
+      "theme": "etat",
+      "front": "Notion « etat » — qu'est-ce qu'il faut retenir ?",
+      "back": "État de nature = concept hypothétique, pas un fait historique",
+      "importance": 2
+    },
+    {
+      "id": "learn-etat-memo-35",
+      "theme": "etat",
+      "front": "Notion « etat » — qu'est-ce qu'il faut retenir ?",
+      "back": "Volonté générale (Rousseau)",
+      "importance": 2
+    },
+    {
+      "id": "learn-inconscient-36",
+      "theme": "inconscient",
+      "front": "« La conscience n'est pas maîtresse en sa maison. »",
+      "back": "Freud — 1917. Argument central en partie i.",
+      "importance": 2
+    },
+    {
+      "id": "learn-inconscient-memo-37",
+      "theme": "inconscient",
+      "front": "Notion « inconscient » — qu'est-ce qu'il faut retenir ?",
+      "back": "Refoulement = exclusion de la conscience (Freud)",
+      "importance": 2
+    },
+    {
+      "id": "learn-inconscient-memo-38",
+      "theme": "inconscient",
+      "front": "Notion « inconscient » — qu'est-ce qu'il faut retenir ?",
+      "back": "Inconscient ≠ sommeil",
+      "importance": 2
+    },
+    {
+      "id": "learn-justice-39",
+      "theme": "justice",
+      "front": "« La justice, c'est donner à chacun ce qui lui revient. »",
+      "back": "Platon — République. Définition canonique.",
+      "importance": 2
+    },
+    {
+      "id": "learn-justice-memo-40",
+      "theme": "justice",
+      "front": "Notion « justice » — qu'est-ce qu'il faut retenir ?",
+      "back": "Justice distributive vs corrective",
+      "importance": 2
+    },
+    {
+      "id": "learn-justice-memo-41",
+      "theme": "justice",
+      "front": "Notion « justice » — qu'est-ce qu'il faut retenir ?",
+      "back": "Égalité ≠ équité (Aristote)",
+      "importance": 2
+    },
+    {
+      "id": "learn-langage-42",
+      "theme": "langage",
+      "front": "« Les limites de mon langage sont les limites de mon monde. »",
+      "back": "Wittgenstein — Tractatus. Langage constitue la pensée.",
+      "importance": 2
+    },
+    {
+      "id": "learn-langage-memo-43",
+      "theme": "langage",
+      "front": "Notion « langage » — qu'est-ce qu'il faut retenir ?",
+      "back": "Langue (système) vs parole (acte)",
+      "importance": 2
+    },
+    {
+      "id": "learn-langage-memo-44",
+      "theme": "langage",
+      "front": "Notion « langage » — qu'est-ce qu'il faut retenir ?",
+      "back": "Signe arbitraire (Saussure)",
+      "importance": 2
+    },
+    {
+      "id": "learn-liberte-45",
+      "theme": "liberte",
+      "front": "« L'homme est condamné à être libre. »",
+      "back": "Sartre — L'existentialisme est un humanisme. Défendre la liberté existentielle.",
+      "importance": 2
+    },
+    {
+      "id": "learn-liberte-memo-46",
+      "theme": "liberte",
+      "front": "Notion « liberte » — qu'est-ce qu'il faut retenir ?",
+      "back": "Liberté négative vs positive (Berlin)",
+      "importance": 2
+    },
+    {
+      "id": "learn-liberte-memo-47",
+      "theme": "liberte",
+      "front": "Notion « liberte » — qu'est-ce qu'il faut retenir ?",
+      "back": "Libre arbitre vs déterminisme",
+      "importance": 2
+    },
+    {
+      "id": "learn-nature-48",
+      "theme": "nature",
+      "front": "« L'homme naît libre, et partout il est dans les fers. »",
+      "back": "Rousseau — Contrat social. Lien nature/corruption sociale.",
+      "importance": 2
+    },
+    {
+      "id": "learn-nature-memo-49",
+      "theme": "nature",
+      "front": "Notion « nature » — qu'est-ce qu'il faut retenir ?",
+      "back": "Physis = nature (ce qui croît)",
+      "importance": 2
+    },
+    {
+      "id": "learn-nature-memo-50",
+      "theme": "nature",
+      "front": "Notion « nature » — qu'est-ce qu'il faut retenir ?",
+      "back": "Nature / culture",
+      "importance": 2
+    },
+    {
+      "id": "learn-raison-51",
+      "theme": "raison",
+      "front": "« Le cœur a ses raisons que la raison ne connaît point. »",
+      "back": "Pascal — Pensées. Limites de la raison discursive.",
+      "importance": 2
+    },
+    {
+      "id": "learn-raison-memo-52",
+      "theme": "raison",
+      "front": "Notion « raison » — qu'est-ce qu'il faut retenir ?",
+      "back": "Raison théorique vs pratique (Kant)",
+      "importance": 2
+    },
+    {
+      "id": "learn-raison-memo-53",
+      "theme": "raison",
+      "front": "Notion « raison » — qu'est-ce qu'il faut retenir ?",
+      "back": "Hume : raison esclave des passions",
+      "importance": 2
+    },
+    {
+      "id": "learn-religion-54",
+      "theme": "religion",
+      "front": "« La religion est l'opium du peuple. »",
+      "back": "Marx — 1844. Critique sociale de la religion.",
+      "importance": 2
+    },
+    {
+      "id": "learn-religion-memo-55",
+      "theme": "religion",
+      "front": "Notion « religion » — qu'est-ce qu'il faut retenir ?",
+      "back": "Foi vs raison",
+      "importance": 2
+    },
+    {
+      "id": "learn-religion-memo-56",
+      "theme": "religion",
+      "front": "Notion « religion » — qu'est-ce qu'il faut retenir ?",
+      "back": "Credo ut intelligam (Augustin)",
+      "importance": 2
+    },
+    {
+      "id": "learn-science-57",
+      "theme": "science",
+      "front": "« La science ne pense pas. »",
+      "back": "Heidegger — 1953. Limites de la science.",
+      "importance": 2
+    },
+    {
+      "id": "learn-science-memo-58",
+      "theme": "science",
+      "front": "Notion « science » — qu'est-ce qu'il faut retenir ?",
+      "back": "Falsifiabilité (Popper)",
+      "importance": 2
+    },
+    {
+      "id": "learn-science-memo-59",
+      "theme": "science",
+      "front": "Notion « science » — qu'est-ce qu'il faut retenir ?",
+      "back": "Paradigme et révolutions (Kuhn)",
+      "importance": 2
+    },
+    {
+      "id": "learn-technique-60",
+      "theme": "technique",
+      "front": "« Partout où il y a la technique, il y a le danger. »",
+      "back": "Heidegger — La question de la technique. Technique et risque.",
+      "importance": 2
+    },
+    {
+      "id": "learn-technique-memo-61",
+      "theme": "technique",
+      "front": "Notion « technique » — qu'est-ce qu'il faut retenir ?",
+      "back": "Techne = savoir-faire",
+      "importance": 2
+    },
+    {
+      "id": "learn-technique-memo-62",
+      "theme": "technique",
+      "front": "Notion « technique » — qu'est-ce qu'il faut retenir ?",
+      "back": "Gestell = arrimage (Heidegger)",
+      "importance": 2
+    },
+    {
+      "id": "learn-temps-63",
+      "theme": "temps",
+      "front": "« Qu'est-ce donc que le temps ? Si personne ne m'interroge, je le sais ; si je veux l'expliquer, je ne le sais plus. »",
+      "back": "Augustin — Confessions XI. Difficulté à définir le temps.",
+      "importance": 2
+    },
+    {
+      "id": "learn-temps-memo-64",
+      "theme": "temps",
+      "front": "Notion « temps » — qu'est-ce qu'il faut retenir ?",
+      "back": "Temps chronologique vs durée vécue",
+      "importance": 2
+    },
+    {
+      "id": "learn-temps-memo-65",
+      "theme": "temps",
+      "front": "Notion « temps » — qu'est-ce qu'il faut retenir ?",
+      "back": "Temps cyclique vs linéaire",
+      "importance": 2
+    },
+    {
+      "id": "learn-travail-66",
+      "theme": "travail",
+      "front": "« Le travail libère l'homme, le travail aliéné l'asservit. »",
+      "back": "Marx — Manuscrits de 1844. Distinction travail libre/aliéné.",
+      "importance": 2
+    },
+    {
+      "id": "learn-travail-memo-67",
+      "theme": "travail",
+      "front": "Notion « travail » — qu'est-ce qu'il faut retenir ?",
+      "back": "Aliénation (Marx)",
+      "importance": 2
+    },
+    {
+      "id": "learn-travail-memo-68",
+      "theme": "travail",
+      "front": "Notion « travail » — qu'est-ce qu'il faut retenir ?",
+      "back": "Travail / œuvre / action (Arendt)",
+      "importance": 2
+    },
+    {
+      "id": "learn-verite-69",
+      "theme": "verite",
+      "front": "« Il n'y a pas de faits, il n'y a que des interprétations. »",
+      "back": "Nietzsche — Fragment posthume. Relativisme de la vérité.",
+      "importance": 2
+    },
+    {
+      "id": "learn-verite-memo-70",
+      "theme": "verite",
+      "front": "Notion « verite » — qu'est-ce qu'il faut retenir ?",
+      "back": "Adaequatio = correspondance",
+      "importance": 2
+    },
+    {
+      "id": "learn-verite-memo-71",
+      "theme": "verite",
+      "front": "Notion « verite » — qu'est-ce qu'il faut retenir ?",
+      "back": "Aletheia = dévoilement (Heidegger)",
+      "importance": 2
+    }
+  ],
   "questions": [
     {
       "id": "methodologie-epreuve-format",
       "theme": "methodologie",
       "importance": 3,
+      "level": "decouverte",
       "prompt": "Quelle est la durée de l'épreuve de philosophie au baccalauréat (voie générale) ?",
       "choices": [
         "2 heures",
@@ -158,6 +674,7 @@
       "id": "methodologie-epreuve-choix",
       "theme": "methodologie",
       "importance": 3,
+      "level": "decouverte",
       "prompt": "Quels sont les deux types d'exercices proposés au bac de philo ?",
       "choices": [
         "Commentaire et résumé",
@@ -172,6 +689,7 @@
       "id": "methodologie-dissertation-plan",
       "theme": "methodologie",
       "importance": 3,
+      "level": "decouverte",
       "prompt": "Quel type de plan est attendu dans une dissertation de philosophie ?",
       "choices": [
         "Plan thématique en trois parties",
@@ -186,6 +704,7 @@
       "id": "methodologie-dissertation-intro",
       "theme": "methodologie",
       "importance": 3,
+      "level": "decouverte",
       "prompt": "Que doit contenir l'introduction d'une dissertation ?",
       "choices": [
         "Uniquement la problématique",
@@ -200,6 +719,7 @@
       "id": "methodologie-dissertation-conclusion",
       "theme": "methodologie",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "Que doit faire la conclusion d'une dissertation ?",
       "choices": [
         "Introduire de nouveaux arguments",
@@ -214,6 +734,7 @@
       "id": "methodologie-explication-intro",
       "theme": "methodologie",
       "importance": 3,
+      "level": "decouverte",
       "prompt": "Que doit contenir l'introduction d'une explication de texte ?",
       "choices": [
         "Une critique du texte",
@@ -228,6 +749,7 @@
       "id": "methodologie-explication-lineaire",
       "theme": "methodologie",
       "importance": 3,
+      "level": "decouverte",
       "prompt": "Qu'est-ce qu'une explication linéaire ?",
       "choices": [
         "Un résumé du texte",
@@ -242,6 +764,7 @@
       "id": "methodologie-explication-discussion",
       "theme": "methodologie",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "Quelle est la différence entre explication et discussion dans l'explication de texte ?",
       "choices": [
         "Il n'y en a pas",
@@ -256,6 +779,7 @@
       "id": "methodologie-problematique",
       "theme": "methodologie",
       "importance": 3,
+      "level": "decouverte",
       "prompt": "Qu'est-ce qu'une problématique en dissertation ?",
       "choices": [
         "La question à laquelle le sujet invite à répondre",
@@ -270,6 +794,7 @@
       "id": "methodologie-auteur-usage",
       "theme": "methodologie",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "Comment doit-on utiliser les auteurs dans une dissertation ?",
       "choices": [
         "Les citer le plus possible sans les expliquer",
@@ -284,6 +809,7 @@
       "id": "methodologie-coefficient",
       "theme": "methodologie",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "Quel est le coefficient de l'épreuve de philosophie en voie générale ?",
       "choices": [
         "4",
@@ -298,6 +824,7 @@
       "id": "methodologie-perspectives",
       "theme": "methodologie",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "Combien de perspectives structurent le programme officiel de terminale ?",
       "choices": [
         "2",
@@ -312,6 +839,7 @@
       "id": "methodologie-perspective-existence",
       "theme": "methodologie",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "Quelles notions appartiennent à la perspective « L'existence humaine et la culture » ?",
       "choices": [
         "Liberté, justice, devoir",
@@ -326,6 +854,7 @@
       "id": "methodologie-perspective-morale",
       "theme": "methodologie",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "Quelles notions appartiennent à la perspective « La morale et la politique » ?",
       "choices": [
         "Langage, raison, science",
@@ -340,6 +869,7 @@
       "id": "methodologie-perspective-connaissance",
       "theme": "methodologie",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "Quelles notions appartiennent à la perspective « La connaissance » ?",
       "choices": [
         "Bonheur, nature, religion",
@@ -354,6 +884,7 @@
       "id": "citations-descartes-cogito",
       "theme": "citations",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « Je pense, donc je suis » ?",
       "choices": [
         "Spinoza",
@@ -362,12 +893,14 @@
         "Hume"
       ],
       "correct": 1,
-      "explanation": "Formule du cogito dans les Méditations métaphysiques (Descartes)."
+      "explanation": "Formule du cogito dans les Méditations métaphysiques (Descartes).<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Descartes."
     },
     {
       "id": "citations-kant-devoir",
       "theme": "citations",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « Agis uniquement d'après la maxime qui peut valoir loi universelle » ?",
       "choices": [
         "Mill",
@@ -376,12 +909,14 @@
         "Hegel"
       ],
       "correct": 1,
-      "explanation": "Formulation de l'impératif catégorique (Kant, Fondement de la métaphysique des mœurs)."
+      "explanation": "Formulation de l'impératif catégorique (Kant, Fondement de la métaphysique des mœurs).<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Kant."
     },
     {
       "id": "citations-kant-fin",
       "theme": "citations",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « Agis de telle sorte que tu traites l'humanité toujours en même temps comme une fin, jamais simplement comme un moyen » ?",
       "choices": [
         "Kant",
@@ -390,12 +925,14 @@
         "Hobbes"
       ],
       "correct": 0,
-      "explanation": "Deuxième formulation de l'impératif catégorique (Kant)."
+      "explanation": "Deuxième formulation de l'impératif catégorique (Kant).<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Kant."
     },
     {
       "id": "citations-sartre-liberte",
       "theme": "citations",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « L'homme est condamné à être libre » ?",
       "choices": [
         "Sartre",
@@ -404,12 +941,14 @@
         "Mill"
       ],
       "correct": 0,
-      "explanation": "L'Existentialisme est un humanisme (Sartre, 1946)."
+      "explanation": "L'Existentialisme est un humanisme (Sartre, 1946).<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Sartre."
     },
     {
       "id": "citations-hobbes-loup",
       "theme": "citations",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « L'homme est un loup pour l'homme » ?",
       "choices": [
         "Rousseau",
@@ -418,12 +957,14 @@
         "Marx"
       ],
       "correct": 1,
-      "explanation": "Attribué à Hobbes (De cive) pour décrire l'état de nature."
+      "explanation": "Attribué à Hobbes (De cive) pour décrire l'état de nature.<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Hobbes."
     },
     {
       "id": "citations-rousseau-libre",
       "theme": "citations",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « L'homme naît libre, et partout il est dans les fers » ?",
       "choices": [
         "Hobbes",
@@ -432,12 +973,14 @@
         "Montesquieu"
       ],
       "correct": 2,
-      "explanation": "Première phrase du Contrat social (Rousseau, 1762)."
+      "explanation": "Première phrase du Contrat social (Rousseau, 1762).<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Rousseau."
     },
     {
       "id": "citations-marx-opium",
       "theme": "citations",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « La religion est l'opium du peuple » ?",
       "choices": [
         "Feuerbach",
@@ -446,12 +989,14 @@
         "Freud"
       ],
       "correct": 1,
-      "explanation": "Contribution à la critique de la philosophie du droit de Hegel (Marx, 1844)."
+      "explanation": "Contribution à la critique de la philosophie du droit de Hegel (Marx, 1844).<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Marx."
     },
     {
       "id": "citations-freud-maitresse",
       "theme": "citations",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « La conscience n'est pas maîtresse en sa maison » ?",
       "choices": [
         "Freud",
@@ -460,12 +1005,14 @@
         "Sartre"
       ],
       "correct": 0,
-      "explanation": "Une difficulté de la psychanalyse (Freud, 1917)."
+      "explanation": "Une difficulté de la psychanalyse (Freud, 1917).<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Freud."
     },
     {
       "id": "citations-platon-justice",
       "theme": "citations",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « La justice, c'est donner à chacun ce qui lui revient » ?",
       "choices": [
         "Aristote",
@@ -474,12 +1021,14 @@
         "Mill"
       ],
       "correct": 1,
-      "explanation": "La République (Platon) — définition classique de la justice."
+      "explanation": "La République (Platon) — définition classique de la justice.<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Platon."
     },
     {
       "id": "citations-aristote-bonheur",
       "theme": "citations",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « Le bonheur est l'activité de l'âme conforme à la vertu » ?",
       "choices": [
         "Épicure",
@@ -488,12 +1037,14 @@
         "Mill"
       ],
       "correct": 1,
-      "explanation": "Éthique à Nicomaque, livre I (Aristote)."
+      "explanation": "Éthique à Nicomaque, livre I (Aristote).<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Aristote."
     },
     {
       "id": "citations-wittgenstein-limites",
       "theme": "citations",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « Les limites de mon langage sont les limites de mon monde » ?",
       "choices": [
         "Heidegger",
@@ -502,12 +1053,14 @@
         "Austin"
       ],
       "correct": 1,
-      "explanation": "Tractatus logico-philosophicus (Wittgenstein, 1921)."
+      "explanation": "Tractatus logico-philosophicus (Wittgenstein, 1921).<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Wittgenstein."
     },
     {
       "id": "citations-pascal-coeur",
       "theme": "citations",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « Le cœur a ses raisons que la raison ne connaît point » ?",
       "choices": [
         "Pascal",
@@ -516,12 +1069,14 @@
         "Hume"
       ],
       "correct": 0,
-      "explanation": "Pensées, fragment 277 (Pascal)."
+      "explanation": "Pensées, fragment 277 (Pascal).<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Pascal."
     },
     {
       "id": "citations-heidegger-art",
       "theme": "citations",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « L'art est l'activité qui permet à la vérité de prendre son essor » ?",
       "choices": [
         "Platon",
@@ -530,12 +1085,14 @@
         "Adorno"
       ],
       "correct": 2,
-      "explanation": "L'Origine de l'œuvre d'art (Heidegger)."
+      "explanation": "L'Origine de l'œuvre d'art (Heidegger).<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Heidegger."
     },
     {
       "id": "citations-heidegger-science",
       "theme": "citations",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « La science ne pense pas » ?",
       "choices": [
         "Bacon",
@@ -544,12 +1101,14 @@
         "Comte"
       ],
       "correct": 2,
-      "explanation": "La question de la technique (Heidegger, 1953)."
+      "explanation": "La question de la technique (Heidegger, 1953).<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Heidegger."
     },
     {
       "id": "citations-heidegger-technique",
       "theme": "citations",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « Partout où il y a la technique, il y a le danger » ?",
       "choices": [
         "Ellul",
@@ -558,12 +1117,14 @@
         "Marx"
       ],
       "correct": 2,
-      "explanation": "La question de la technique (Heidegger)."
+      "explanation": "La question de la technique (Heidegger).<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Heidegger."
     },
     {
       "id": "citations-nietzsche-faits",
       "theme": "citations",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « Il n'y a pas de faits, il n'y a que des interprétations » ?",
       "choices": [
         "Nietzsche",
@@ -572,12 +1133,14 @@
         "Platon"
       ],
       "correct": 0,
-      "explanation": "Fragment posthume (Nietzsche) — relativisme de la vérité."
+      "explanation": "Fragment posthume (Nietzsche) — relativisme de la vérité.<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Nietzsche."
     },
     {
       "id": "citations-augustin-temps",
       "theme": "citations",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « Qu'est-ce donc que le temps ? Si personne ne m'interroge, je le sais ; si je veux l'expliquer, je ne le sais plus » ?",
       "choices": [
         "Kant",
@@ -586,12 +1149,14 @@
         "Aristote"
       ],
       "correct": 1,
-      "explanation": "Confessions, livre XI (Augustin)."
+      "explanation": "Confessions, livre XI (Augustin).<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Augustin."
     },
     {
       "id": "citations-hegel-conscience",
       "theme": "citations",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « La conscience fait l'unité de l'être en le rendant présent à soi » ?",
       "choices": [
         "Descartes",
@@ -600,12 +1165,14 @@
         "Sartre"
       ],
       "correct": 1,
-      "explanation": "Phénoménologie de l'esprit (Hegel)."
+      "explanation": "Phénoménologie de l'esprit (Hegel).<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Hegel."
     },
     {
       "id": "citations-platon-grotte",
       "theme": "citations",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : L'allégorie de la caverne illustre principalement : ?",
       "choices": [
         "Le bonheur stoïcien",
@@ -614,12 +1181,14 @@
         "La volonté de puissance"
       ],
       "correct": 1,
-      "explanation": "L'allégorie de la caverne (République, livre VII) oppose ombres et Idées."
+      "explanation": "L'allégorie de la caverne (République, livre VII) oppose ombres et Idées.<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Platon."
     },
     {
       "id": "citations-aristote-politique",
       "theme": "citations",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « L'homme est un animal politique » ?",
       "choices": [
         "Hobbes",
@@ -628,12 +1197,14 @@
         "Locke"
       ],
       "correct": 2,
-      "explanation": "Politique, livre I (Aristote) — zôon politikon."
+      "explanation": "Politique, livre I (Aristote) — zôon politikon.<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Aristote."
     },
     {
       "id": "citations-mill-socrate",
       "theme": "citations",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « Mieux vaut être Socrate insatisfait qu'un imbécile satisfait » ?",
       "choices": [
         "Aristote",
@@ -642,12 +1213,14 @@
         "Kant"
       ],
       "correct": 2,
-      "explanation": "Utilitarisme (Mill) — qualité des plaisirs."
+      "explanation": "Utilitarisme (Mill) — qualité des plaisirs.<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Mill."
     },
     {
       "id": "citations-rawls-voile",
       "theme": "citations",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : Le « voile d'ignorance » est un concept de : ?",
       "choices": [
         "Nozick",
@@ -656,12 +1229,14 @@
         "Rousseau"
       ],
       "correct": 1,
-      "explanation": "Théorie de la justice (Rawls, 1971) — choix des principes de justice."
+      "explanation": "Théorie de la justice (Rawls, 1971) — choix des principes de justice.<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Rawls."
     },
     {
       "id": "citations-popper-falsification",
       "theme": "citations",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : Pour Karl Popper, une théorie scientifique doit être : ?",
       "choices": [
         "Vérifiable",
@@ -670,12 +1245,14 @@
         "Métaphysique"
       ],
       "correct": 1,
-      "explanation": "La logique de la recherche scientifique (Popper) — critère de falsifiabilité."
+      "explanation": "La logique de la recherche scientifique (Popper) — critère de falsifiabilité.<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Popper."
     },
     {
       "id": "citations-comte-positivisme",
       "theme": "citations",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : Auguste Comte défend le positivisme, selon lequel : ?",
       "choices": [
         "La métaphysique prime sur la science",
@@ -684,12 +1261,14 @@
         "L'art est supérieur à la science"
       ],
       "correct": 1,
-      "explanation": "Cours de philosophie positive (Comte) — hiérarchie des sciences."
+      "explanation": "Cours de philosophie positive (Comte) — hiérarchie des sciences.<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Comte."
     },
     {
       "id": "citations-leibniz-meilleur",
       "theme": "citations",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "À qui attribue-t-on : « Tout est pour le mieux dans le meilleur des mondes possibles » est associé à : ?",
       "choices": [
         "Spinoza",
@@ -698,12 +1277,14 @@
         "Kant"
       ],
       "correct": 1,
-      "explanation": "Essais de théodicée (Leibniz) — optimisme rationnel."
+      "explanation": "Essais de théodicée (Leibniz) — optimisme rationnel.<br><br><strong>Pour aller plus loin :</strong> Retrouvez le contexte de cette citation dans la fiche cours.",
+      "hint": "Pensez à la notion principale associée à Leibniz."
     },
     {
       "id": "reperes-obj-subj",
       "theme": "reperes",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "Que distingue le couple objectif / subjectif ?",
       "choices": [
         "Ce qui dépend du sujet vs ce qui est indépendant de lui",
@@ -718,6 +1299,7 @@
       "id": "reperes-legal-legitime",
       "theme": "reperes",
       "importance": 3,
+      "level": "decouverte",
       "prompt": "Quelle est la distinction entre légal et légitime ?",
       "choices": [
         "Synonymes en philosophie du droit",
@@ -732,6 +1314,7 @@
       "id": "reperes-universel-particulier",
       "theme": "reperes",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "Le couple universel / particulier concerne :",
       "choices": [
         "La portée d'une règle ou d'un jugement",
@@ -746,6 +1329,7 @@
       "id": "reperes-raison-passion",
       "theme": "reperes",
       "importance": 3,
+      "level": "decouverte",
       "prompt": "Hume affirme que la raison est :",
       "choices": [
         "Maîtresse des passions",
@@ -760,6 +1344,7 @@
       "id": "reperes-theorie-pratique",
       "theme": "reperes",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "La raison pratique (Kant) concerne :",
       "choices": [
         "Les mathématiques",
@@ -774,6 +1359,7 @@
       "id": "reperes-croyance-savoir",
       "theme": "reperes",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "Quelle distinction oppose croyance et savoir ?",
       "choices": [
         "La croyance est toujours fausse",
@@ -788,6 +1374,7 @@
       "id": "reperes-liberte-contrainte",
       "theme": "reperes",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "Liberté négative (Berlin) désigne :",
       "choices": [
         "La capacité d'autonomie morale",
@@ -802,6 +1389,7 @@
       "id": "reperes-obligation-contrainte",
       "theme": "reperes",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "L'obligation morale se distingue de la contrainte physique car :",
       "choices": [
         "Elle est toujours plus forte",
@@ -816,6 +1404,7 @@
       "id": "reperes-persuader-convaincre",
       "theme": "reperes",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "Convaincre (Platon) s'oppose à persuader car :",
       "choices": [
         "Convaincre utilise l'émotion",
@@ -830,6 +1419,7 @@
       "id": "reperes-expliquer-comprendre",
       "theme": "reperes",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "Dilthey distingue expliquer (Erklären) et comprendre (Verstehen) :",
       "choices": [
         "Ce sont des synonymes",
@@ -844,6 +1434,7 @@
       "id": "reperes-nature-culture",
       "theme": "reperes",
       "importance": 3,
+      "level": "decouverte",
       "prompt": "L'opposition nature / culture interroge :",
       "choices": [
         "Si l'homme est entièrement déterminé biologiquement",
@@ -858,6 +1449,7 @@
       "id": "reperes-idee-reel",
       "theme": "reperes",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "Pour Platon, l'Idée (eidos) se rapporte au couple :",
       "choices": [
         "Idéal / réel",
@@ -872,6 +1464,7 @@
       "id": "reperes-mediat-immediat",
       "theme": "reperes",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "La connaissance médiat suppose :",
       "choices": [
         "Une intuition directe",
@@ -886,6 +1479,7 @@
       "id": "reperes-analyse-synthese",
       "theme": "reperes",
       "importance": 2,
+      "level": "decouverte",
       "prompt": "En méthode philosophique, analyser c'est :",
       "choices": [
         "Réunir les éléments",
@@ -900,6 +1494,7 @@
       "id": "art-mimesis",
       "theme": "art",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Qu'est-ce que la mimesis chez Platon et Aristote ?",
       "choices": [
         "La création ex nihilo",
@@ -908,12 +1503,14 @@
         "L'art pour l'art"
       ],
       "correct": 1,
-      "explanation": "Mimesis = imitation ; Platon la critique, Aristote la valorise (tragédie)."
+      "explanation": "Mimesis = imitation ; Platon la critique, Aristote la valorise (tragédie).",
+      "hint": "Rappel : Mimesis = imitation (Platon la critique, Aristote la valorise)"
     },
     {
       "id": "art-platon-art",
       "theme": "art",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Pourquoi Platon bannit-il les poètes de la Cité idéale ?",
       "choices": [
         "Parce qu'ils sont trop pauvres",
@@ -922,12 +1519,14 @@
         "Parce qu'ils refusent la politique"
       ],
       "correct": 1,
-      "explanation": "L'art est une copie trompeuse des apparences (République)."
+      "explanation": "L'art est une copie trompeuse des apparences (République).",
+      "hint": "Rappel : Mimesis = imitation (Platon la critique, Aristote la valorise)"
     },
     {
       "id": "art-kant-beau",
       "theme": "art",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Pour Kant, le jugement de goût est :",
       "choices": [
         "Intéressé et utile",
@@ -936,12 +1535,14 @@
         "Relatif à chaque culture uniquement"
       ],
       "correct": 1,
-      "explanation": "Critique de la faculté de juger — le beau est jugé sans intérêt."
+      "explanation": "Critique de la faculté de juger — le beau est jugé sans intérêt.",
+      "hint": "Rappel : Mimesis = imitation (Platon la critique, Aristote la valorise)"
     },
     {
       "id": "art-catharsis",
       "theme": "art",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "La catharsis aristotélicienne désigne :",
       "choices": [
         "La censure des passions",
@@ -950,12 +1551,14 @@
         "Le rejet de l'art"
       ],
       "correct": 1,
-      "explanation": "Poétique — la tragédie purifie la pitié et la crainte."
+      "explanation": "Poétique — la tragédie purifie la pitié et la crainte.",
+      "hint": "Rappel : Mimesis = imitation (Platon la critique, Aristote la valorise)"
     },
     {
       "id": "art-art-verite",
       "theme": "art",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Heidegger affirme que l'œuvre d'art :",
       "choices": [
         "Est une simple décoration",
@@ -964,12 +1567,14 @@
         "Remplace la science"
       ],
       "correct": 1,
-      "explanation": "L'art révèle l'être (aletheia) selon Heidegger."
+      "explanation": "L'art révèle l'être (aletheia) selon Heidegger.",
+      "hint": "Rappel : Mimesis = imitation (Platon la critique, Aristote la valorise)"
     },
     {
       "id": "art-art-moral",
       "theme": "art",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "L'« art pour l'art » affirme que l'œuvre :",
       "choices": [
         "Doit être morale",
@@ -978,12 +1583,14 @@
         "Doit être religieuse"
       ],
       "correct": 1,
-      "explanation": "Doctrine esthétique du XIXe siècle (Gautier, Wilde)."
+      "explanation": "Doctrine esthétique du XIXe siècle (Gautier, Wilde).",
+      "hint": "Rappel : Mimesis = imitation (Platon la critique, Aristote la valorise)"
     },
     {
       "id": "art-hegel-art",
       "theme": "art",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Pour Hegel, l'art est :",
       "choices": [
         "Éternel et supérieur à tout",
@@ -992,12 +1599,14 @@
         "Inférieur à la technique"
       ],
       "correct": 1,
-      "explanation": "Esthétique — l'art exprime une époque avant de céder à la philosophie."
+      "explanation": "Esthétique — l'art exprime une époque avant de céder à la philosophie.",
+      "hint": "Rappel : Mimesis = imitation (Platon la critique, Aristote la valorise)"
     },
     {
       "id": "bonheur-eudaimonia",
       "theme": "bonheur",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "L'eudaimonia aristotélicienne est :",
       "choices": [
         "Un plaisir passager",
@@ -1006,12 +1615,14 @@
         "Un droit politique"
       ],
       "correct": 1,
-      "explanation": "Éthique à Nicomaque — bonheur = vie vertueuse active."
+      "explanation": "Éthique à Nicomaque — bonheur = vie vertueuse active.",
+      "hint": "Rappel : Eudaimonia ≠ plaisir passager (Aristote)"
     },
     {
       "id": "bonheur-epicure",
       "theme": "bonheur",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Pour Épicure, le bonheur est l'ataraxie, c'est-à-dire :",
       "choices": [
         "La richesse",
@@ -1020,12 +1631,14 @@
         "La guerre"
       ],
       "correct": 1,
-      "explanation": "Lettre à Ménécée — modération des désirs."
+      "explanation": "Lettre à Ménécée — modération des désirs.",
+      "hint": "Rappel : Eudaimonia ≠ plaisir passager (Aristote)"
     },
     {
       "id": "bonheur-kant-bonheur",
       "theme": "bonheur",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Kant oppose le bonheur et le devoir car :",
       "choices": [
         "Le bonheur est immoral",
@@ -1034,12 +1647,14 @@
         "Le devoir est hédoniste"
       ],
       "correct": 1,
-      "explanation": "Fondement de la métaphysique des mœurs — morale autonome."
+      "explanation": "Fondement de la métaphysique des mœurs — morale autonome.",
+      "hint": "Rappel : Eudaimonia ≠ plaisir passager (Aristote)"
     },
     {
       "id": "bonheur-schopenhauer",
       "theme": "bonheur",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Schopenhauer considère que la vie est :",
       "choices": [
         "Essentiellement heureuse",
@@ -1048,12 +1663,14 @@
         "Divine"
       ],
       "correct": 1,
-      "explanation": "Le monde comme volonté et comme représentation."
+      "explanation": "Le monde comme volonté et comme représentation.",
+      "hint": "Rappel : Eudaimonia ≠ plaisir passager (Aristote)"
     },
     {
       "id": "bonheur-stoiciens",
       "theme": "bonheur",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Les stoïciens (Épictète) lient le bonheur à :",
       "choices": [
         "La fortune",
@@ -1062,12 +1679,14 @@
         "Le pouvoir"
       ],
       "correct": 1,
-      "explanation": "Le bonheur dépend de ce que nous contrôlons (nos jugements)."
+      "explanation": "Le bonheur dépend de ce que nous contrôlons (nos jugements).",
+      "hint": "Rappel : Eudaimonia ≠ plaisir passager (Aristote)"
     },
     {
       "id": "bonheur-bonheur-devoir",
       "theme": "bonheur",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Peut-on sacrifier son bonheur pour le devoir selon Kant ?",
       "choices": [
         "Non, jamais",
@@ -1076,12 +1695,14 @@
         "Le bonheur est le devoir"
       ],
       "correct": 1,
-      "explanation": "Agir par devoir, non par inclination."
+      "explanation": "Agir par devoir, non par inclination.",
+      "hint": "Rappel : Eudaimonia ≠ plaisir passager (Aristote)"
     },
     {
       "id": "conscience-cogito",
       "theme": "conscience",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Le cogito cartésien prouve :",
       "choices": [
         "L'existence du monde",
@@ -1090,12 +1711,14 @@
         "L'inexistence de l'âme"
       ],
       "correct": 1,
-      "explanation": "Méditation II — douter de tout sauf de penser."
+      "explanation": "Méditation II — douter de tout sauf de penser.",
+      "hint": "Rappel : Cogito = conscience de soi comme certitude (Descartes)"
     },
     {
       "id": "conscience-conscience-morale",
       "theme": "conscience",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "La conscience morale kantienne révèle :",
       "choices": [
         "Les passions",
@@ -1104,12 +1727,14 @@
         "Le hasard"
       ],
       "correct": 1,
-      "explanation": "La loi morale est rationnelle et universelle."
+      "explanation": "La loi morale est rationnelle et universelle.",
+      "hint": "Rappel : Cogito = conscience de soi comme certitude (Descartes)"
     },
     {
       "id": "conscience-rousseau-conscience",
       "theme": "conscience",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Rousseau considère la conscience morale comme :",
       "choices": [
         "Artificielle",
@@ -1118,12 +1743,14 @@
         "Divine uniquement"
       ],
       "correct": 1,
-      "explanation": "Émile — la conscience naturelle précède la société."
+      "explanation": "Émile — la conscience naturelle précède la société.",
+      "hint": "Rappel : Cogito = conscience de soi comme certitude (Descartes)"
     },
     {
       "id": "conscience-freud-conscience",
       "theme": "conscience",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Freud remet en cause la conscience en montrant :",
       "choices": [
         "Qu'elle est totale",
@@ -1132,12 +1759,14 @@
         "Qu'elle est identique à la raison"
       ],
       "correct": 1,
-      "explanation": "La conscience n'est pas maîtresse en sa maison."
+      "explanation": "La conscience n'est pas maîtresse en sa maison.",
+      "hint": "Rappel : Cogito = conscience de soi comme certitude (Descartes)"
     },
     {
       "id": "conscience-sartre-conscience",
       "theme": "conscience",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Pour Sartre, la conscience est :",
       "choices": [
         "Une substance",
@@ -1146,12 +1775,14 @@
         "Identique à l'inconscient"
       ],
       "correct": 1,
-      "explanation": "L'être et le néant — conscience = liberté."
+      "explanation": "L'être et le néant — conscience = liberté.",
+      "hint": "Rappel : Cogito = conscience de soi comme certitude (Descartes)"
     },
     {
       "id": "conscience-locke-identite",
       "theme": "conscience",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Locke fonde l'identité personnelle sur :",
       "choices": [
         "Le corps",
@@ -1160,12 +1791,14 @@
         "La nationalité"
       ],
       "correct": 1,
-      "explanation": "Essai sur l'entendement humain."
+      "explanation": "Essai sur l'entendement humain.",
+      "hint": "Rappel : Cogito = conscience de soi comme certitude (Descartes)"
     },
     {
       "id": "inconscient-freud-refoulement",
       "theme": "inconscient",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Le refoulement freudien consiste à :",
       "choices": [
         "Oublier volontairement",
@@ -1174,12 +1807,14 @@
         "Dormir"
       ],
       "correct": 1,
-      "explanation": "Mécanisme de défense de la pulsion."
+      "explanation": "Mécanisme de défense de la pulsion.",
+      "hint": "Rappel : Refoulement = exclusion de la conscience (Freud)"
     },
     {
       "id": "inconscient-schopenhauer-volonte",
       "theme": "inconscient",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Schopenhauer identifie l'essence du monde à :",
       "choices": [
         "La raison",
@@ -1188,12 +1823,14 @@
         "Le hasard"
       ],
       "correct": 1,
-      "explanation": "Le monde comme volonté et comme représentation."
+      "explanation": "Le monde comme volonté et comme représentation.",
+      "hint": "Rappel : Refoulement = exclusion de la conscience (Freud)"
     },
     {
       "id": "inconscient-sartre-inconscient",
       "theme": "inconscient",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Sartre critique l'inconscient freudien car il :",
       "choices": [
         "Est trop scientifique",
@@ -1202,12 +1839,14 @@
         "N'existe pas du tout"
       ],
       "correct": 1,
-      "explanation": "L'existentialisme refuse l'alibi de l'inconscient."
+      "explanation": "L'existentialisme refuse l'alibi de l'inconscient.",
+      "hint": "Rappel : Refoulement = exclusion de la conscience (Freud)"
     },
     {
       "id": "inconscient-nietzsche-instincts",
       "theme": "inconscient",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Nietzsche affirme que :",
       "choices": [
         "La conscience est tout",
@@ -1216,12 +1855,14 @@
         "La raison domine tout"
       ],
       "correct": 1,
-      "explanation": "La généalogie de la morale — critique de la conscience."
+      "explanation": "La généalogie de la morale — critique de la conscience.",
+      "hint": "Rappel : Refoulement = exclusion de la conscience (Freud)"
     },
     {
       "id": "inconscient-inconscient-liberte",
       "theme": "inconscient",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "L'inconscient menace-t-il la liberté ?",
       "choices": [
         "Non, jamais",
@@ -1230,12 +1871,14 @@
         "La liberté n'existe pas"
       ],
       "correct": 1,
-      "explanation": "Problème central : déterminisme psychique vs libre arbitre."
+      "explanation": "Problème central : déterminisme psychique vs libre arbitre.",
+      "hint": "Rappel : Refoulement = exclusion de la conscience (Freud)"
     },
     {
       "id": "nature-rousseau-nature",
       "theme": "nature",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Rousseau affirme que l'homme naturel est :",
       "choices": [
         "Méchant",
@@ -1244,12 +1887,14 @@
         "Divin"
       ],
       "correct": 1,
-      "explanation": "Discours sur l'origine de l'inégalité."
+      "explanation": "Discours sur l'origine de l'inégalité.",
+      "hint": "Rappel : Physis = nature (ce qui croît)"
     },
     {
       "id": "nature-aristote-nature",
       "theme": "nature",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "La nature (physis) aristotélicienne agit :",
       "choices": [
         "Au hasard",
@@ -1258,12 +1903,14 @@
         "Contre l'homme"
       ],
       "correct": 1,
-      "explanation": "Physique et Métaphysique — finalisme."
+      "explanation": "Physique et Métaphysique — finalisme.",
+      "hint": "Rappel : Physis = nature (ce qui croît)"
     },
     {
       "id": "nature-descartes-nature",
       "theme": "nature",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Descartes conçoit la nature comme :",
       "choices": [
         "Animée",
@@ -1272,12 +1919,14 @@
         "Inexistante"
       ],
       "correct": 1,
-      "explanation": "L'homme « maître et possesseur de la nature »."
+      "explanation": "L'homme « maître et possesseur de la nature ».",
+      "hint": "Rappel : Physis = nature (ce qui croît)"
     },
     {
       "id": "nature-heidegger-nature",
       "theme": "nature",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Heidegger critique la technique moderne car elle :",
       "choices": [
         "Respecte la nature",
@@ -1286,12 +1935,14 @@
         "N'existe pas"
       ],
       "correct": 1,
-      "explanation": "La question de la technique."
+      "explanation": "La question de la technique.",
+      "hint": "Rappel : Physis = nature (ce qui croît)"
     },
     {
       "id": "nature-nature-culture",
       "theme": "nature",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "L'homme est-il un animal comme les autres ?",
       "choices": [
         "Oui, identique",
@@ -1300,12 +1951,14 @@
         "Seule la culture existe"
       ],
       "correct": 1,
-      "explanation": "Aristote : animal politique et rationnel."
+      "explanation": "Aristote : animal politique et rationnel.",
+      "hint": "Rappel : Physis = nature (ce qui croît)"
     },
     {
       "id": "nature-etat-nature",
       "theme": "nature",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "L'état de nature (Hobbes, Locke, Rousseau) est :",
       "choices": [
         "Un fait historique prouvé",
@@ -1314,12 +1967,14 @@
         "L'état actuel"
       ],
       "correct": 1,
-      "explanation": "Outil de la philosophie politique moderne."
+      "explanation": "Outil de la philosophie politique moderne.",
+      "hint": "Rappel : Physis = nature (ce qui croît)"
     },
     {
       "id": "religion-feuerbach",
       "theme": "religion",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Feuerbach affirme que Dieu est :",
       "choices": [
         "Réel",
@@ -1328,12 +1983,14 @@
         "La nature"
       ],
       "correct": 1,
-      "explanation": "L'essence du christianisme (1841)."
+      "explanation": "L'essence du christianisme (1841).",
+      "hint": "Rappel : Foi vs raison"
     },
     {
       "id": "religion-kant-postulats",
       "theme": "religion",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Kant postule Dieu, l'immortalité et la liberté comme :",
       "choices": [
         "Objets de science",
@@ -1342,12 +1999,14 @@
         "Mythes inutiles"
       ],
       "correct": 1,
-      "explanation": "Critique de la raison pratique — postulats de la raison pratique."
+      "explanation": "Critique de la raison pratique — postulats de la raison pratique.",
+      "hint": "Rappel : Foi vs raison"
     },
     {
       "id": "religion-weber-desenchantement",
       "theme": "religion",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Le « désenchantement du monde » (Weber) désigne :",
       "choices": [
         "La magie partout",
@@ -1356,12 +2015,14 @@
         "La fin de la science"
       ],
       "correct": 1,
-      "explanation": "L'éthique protestante et l'esprit du capitalisme."
+      "explanation": "L'éthique protestante et l'esprit du capitalisme.",
+      "hint": "Rappel : Foi vs raison"
     },
     {
       "id": "religion-religion-morale",
       "theme": "religion",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Kant montre que la morale peut-elle s'autonomiser de la religion ?",
       "choices": [
         "Non",
@@ -1370,12 +2031,14 @@
         "La morale n'existe pas"
       ],
       "correct": 1,
-      "explanation": "Fondement de la métaphysique des mœurs."
+      "explanation": "Fondement de la métaphysique des mœurs.",
+      "hint": "Rappel : Foi vs raison"
     },
     {
       "id": "religion-liberte-conscience",
       "theme": "religion",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "La liberté de conscience implique :",
       "choices": [
         "L'obligation de croire",
@@ -1384,12 +2047,14 @@
         "Une seule religion"
       ],
       "correct": 1,
-      "explanation": "Droit fondamental dans les démocraties laïques."
+      "explanation": "Droit fondamental dans les démocraties laïques.",
+      "hint": "Rappel : Foi vs raison"
     },
     {
       "id": "religion-science-religion",
       "theme": "religion",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "La science et la religion :",
       "choices": [
         "Sont toujours identiques",
@@ -1398,12 +2063,14 @@
         "N'ont aucun rapport"
       ],
       "correct": 1,
-      "explanation": "Débat historique (Galilée, évolution, etc.)."
+      "explanation": "Débat historique (Galilée, évolution, etc.).",
+      "hint": "Rappel : Foi vs raison"
     },
     {
       "id": "technique-heidegger-gestell",
       "theme": "technique",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Le Gestell (Heidegger) désigne :",
       "choices": [
         "Un outil",
@@ -1412,12 +2079,14 @@
         "La religion"
       ],
       "correct": 1,
-      "explanation": "Enframing — essence de la technique moderne."
+      "explanation": "Enframing — essence de la technique moderne.",
+      "hint": "Rappel : Techne = savoir-faire"
     },
     {
       "id": "technique-ellul",
       "theme": "technique",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Jacques Ellul affirme que la technique :",
       "choices": [
         "Est neutre",
@@ -1426,12 +2095,14 @@
         "Est toujours bonne"
       ],
       "correct": 1,
-      "explanation": "Le système technicien."
+      "explanation": "Le système technicien.",
+      "hint": "Rappel : Techne = savoir-faire"
     },
     {
       "id": "technique-marx-forces",
       "theme": "technique",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Marx lie technique et :",
       "choices": [
         "Art",
@@ -1440,12 +2111,14 @@
         "Hasard"
       ],
       "correct": 1,
-      "explanation": "Le matérialisme historique."
+      "explanation": "Le matérialisme historique.",
+      "hint": "Rappel : Techne = savoir-faire"
     },
     {
       "id": "technique-technique-neutre",
       "theme": "technique",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "La technique est-elle neutre ?",
       "choices": [
         "Oui, toujours",
@@ -1454,12 +2127,14 @@
         "Elle n'existe pas"
       ],
       "correct": 1,
-      "explanation": "Question centrale : responsabilité et choix."
+      "explanation": "Question centrale : responsabilité et choix.",
+      "hint": "Rappel : Techne = savoir-faire"
     },
     {
       "id": "technique-jonas-responsabilite",
       "theme": "technique",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Hans Jonas propose le « principe responsabilité » face :",
       "choices": [
         "À l'art",
@@ -1468,12 +2143,14 @@
         "À la religion"
       ],
       "correct": 1,
-      "explanation": "Éthique pour l'ère technologique."
+      "explanation": "Éthique pour l'ère technologique.",
+      "hint": "Rappel : Techne = savoir-faire"
     },
     {
       "id": "technique-arendt-vita",
       "theme": "technique",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Arendt distingue travail, œuvre et action. La technique menace :",
       "choices": [
         "Rien",
@@ -1482,12 +2159,14 @@
         "Les mathématiques"
       ],
       "correct": 1,
-      "explanation": "Condition de l'homme moderne."
+      "explanation": "Condition de l'homme moderne.",
+      "hint": "Rappel : Techne = savoir-faire"
     },
     {
       "id": "temps-augustin-temps",
       "theme": "temps",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Augustin situe le temps :",
       "choices": [
         "Dans le corps seul",
@@ -1496,12 +2175,14 @@
         "Dans l'espace"
       ],
       "correct": 1,
-      "explanation": "Confessions XI — temps psychologique."
+      "explanation": "Confessions XI — temps psychologique.",
+      "hint": "Rappel : Temps chronologique vs durée vécue"
     },
     {
       "id": "temps-bergson-duree",
       "theme": "temps",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "La durée vécue (Bergson) :",
       "choices": [
         "Se réduit au chronomètre",
@@ -1510,12 +2191,14 @@
         "Est identique au temps physique"
       ],
       "correct": 1,
-      "explanation": "Essai sur les données immédiates de la conscience."
+      "explanation": "Essai sur les données immédiates de la conscience.",
+      "hint": "Rappel : Temps chronologique vs durée vécue"
     },
     {
       "id": "temps-kant-temps",
       "theme": "temps",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Pour Kant, le temps est :",
       "choices": [
         "Une chose en soi",
@@ -1524,12 +2207,14 @@
         "Éternel dans les choses"
       ],
       "correct": 1,
-      "explanation": "Critique de la raison pure."
+      "explanation": "Critique de la raison pure.",
+      "hint": "Rappel : Temps chronologique vs durée vécue"
     },
     {
       "id": "temps-heidegger-mort",
       "theme": "temps",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Heidegger lie le temps existentiel à :",
       "choices": [
         "L'horloge",
@@ -1538,12 +2223,14 @@
         "Le hasard"
       ],
       "correct": 1,
-      "explanation": "Être et Temps — temporalité du Dasein."
+      "explanation": "Être et Temps — temporalité du Dasein.",
+      "hint": "Rappel : Temps chronologique vs durée vécue"
     },
     {
       "id": "temps-cyclique-lineaire",
       "theme": "temps",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Le temps cyclique s'oppose au temps linéaire car :",
       "choices": [
         "Ils sont identiques",
@@ -1552,12 +2239,14 @@
         "Le cyclique est moderne"
       ],
       "correct": 1,
-      "explanation": "Repères historiques et cosmologiques."
+      "explanation": "Repères historiques et cosmologiques.",
+      "hint": "Rappel : Temps chronologique vs durée vécue"
     },
     {
       "id": "temps-temps-reel",
       "theme": "temps",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Le temps est-il réel ou mental ?",
       "choices": [
         "Uniquement réel",
@@ -1566,12 +2255,14 @@
         "Il n'existe pas"
       ],
       "correct": 1,
-      "explanation": "Question métaphysique classique."
+      "explanation": "Question métaphysique classique.",
+      "hint": "Rappel : Temps chronologique vs durée vécue"
     },
     {
       "id": "travail-marx-alienation",
       "theme": "travail",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "L'aliénation du travail (Marx) signifie :",
       "choices": [
         "Le travailleur s'épanouit",
@@ -1580,12 +2271,14 @@
         "Le travail n'existe pas"
       ],
       "correct": 1,
-      "explanation": "Manuscrits de 1844."
+      "explanation": "Manuscrits de 1844.",
+      "hint": "Rappel : Aliénation (Marx)"
     },
     {
       "id": "travail-arendt-travail",
       "theme": "travail",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Arendt distingue travail (nécessité), œuvre (fabrication) et action (politique). Le travail :",
       "choices": [
         "Est la plus noble activité",
@@ -1594,12 +2287,14 @@
         "Est identique à l'action"
       ],
       "correct": 1,
-      "explanation": "Condition de l'homme moderne."
+      "explanation": "Condition de l'homme moderne.",
+      "hint": "Rappel : Aliénation (Marx)"
     },
     {
       "id": "travail-locke-travail",
       "theme": "travail",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Locke fonde la propriété sur :",
       "choices": [
         "La naissance",
@@ -1608,12 +2303,14 @@
         "Le hasard"
       ],
       "correct": 1,
-      "explanation": "Second traité — travail et propriété."
+      "explanation": "Second traité — travail et propriété.",
+      "hint": "Rappel : Aliénation (Marx)"
     },
     {
       "id": "travail-aristote-loisir",
       "theme": "travail",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Aristote oppose travail servile et :",
       "choices": [
         "Technique",
@@ -1622,12 +2319,14 @@
         "Guerre"
       ],
       "correct": 1,
-      "explanation": "Politique — le loisir permet la philosophie."
+      "explanation": "Politique — le loisir permet la philosophie.",
+      "hint": "Rappel : Aliénation (Marx)"
     },
     {
       "id": "travail-travail-liberte",
       "theme": "travail",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Le travail aliène-t-il l'homme ?",
       "choices": [
         "Jamais",
@@ -1636,12 +2335,14 @@
         "Le travail n'existe pas"
       ],
       "correct": 1,
-      "explanation": "Débat Marx / républicains du travail."
+      "explanation": "Débat Marx / républicains du travail.",
+      "hint": "Rappel : Aliénation (Marx)"
     },
     {
       "id": "travail-automatisation",
       "theme": "travail",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "L'automatisation du travail pose la question :",
       "choices": [
         "De la couleur",
@@ -1650,12 +2351,14 @@
         "Du temps cyclique"
       ],
       "correct": 1,
-      "explanation": "Enjeu contemporain lié à la technique."
+      "explanation": "Enjeu contemporain lié à la technique.",
+      "hint": "Rappel : Aliénation (Marx)"
     },
     {
       "id": "devoir-imperatif",
       "theme": "devoir",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "L'impératif catégorique kantien commande d'agir :",
       "choices": [
         "Selon ses envies",
@@ -1664,12 +2367,14 @@
         "Selon la tradition"
       ],
       "correct": 1,
-      "explanation": "Agir uniquement d'après la maxime qui peut valoir loi universelle."
+      "explanation": "Agir uniquement d'après la maxime qui peut valoir loi universelle.",
+      "hint": "Rappel : Devoir ≠ contrainte physique"
     },
     {
       "id": "devoir-devoir-inclination",
       "theme": "devoir",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Agir par devoir (Kant), c'est agir :",
       "choices": [
         "Par plaisir",
@@ -1678,12 +2383,14 @@
         "Par peur"
       ],
       "correct": 1,
-      "explanation": "La moralité exige l'autonomie de la volonté."
+      "explanation": "La moralité exige l'autonomie de la volonté.",
+      "hint": "Rappel : Devoir ≠ contrainte physique"
     },
     {
       "id": "devoir-levinas",
       "theme": "devoir",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Levinas fonde le devoir sur :",
       "choices": [
         "Le contrat",
@@ -1692,12 +2399,14 @@
         "La force"
       ],
       "correct": 1,
-      "explanation": "Éthique comme philosophie première."
+      "explanation": "Éthique comme philosophie première.",
+      "hint": "Rappel : Devoir ≠ contrainte physique"
     },
     {
       "id": "devoir-desobeissance",
       "theme": "devoir",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "La désobéissance civile (Thoreau, Arendt) consiste à :",
       "choices": [
         "Violer toute loi",
@@ -1706,12 +2415,14 @@
         "Obéir aveuglément"
       ],
       "correct": 1,
-      "explanation": "Refus public et argumenté d'une loi jugée injuste."
+      "explanation": "Refus public et argumenté d'une loi jugée injuste.",
+      "hint": "Rappel : Devoir ≠ contrainte physique"
     },
     {
       "id": "devoir-devoir-universel",
       "theme": "devoir",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Le devoir est-il universel pour Kant ?",
       "choices": [
         "Non, relatif",
@@ -1720,12 +2431,14 @@
         "Seulement pour les philosophes"
       ],
       "correct": 1,
-      "explanation": "Moralité universelle et rationnelle."
+      "explanation": "Moralité universelle et rationnelle.",
+      "hint": "Rappel : Devoir ≠ contrainte physique"
     },
     {
       "id": "etat-hobbes-etat",
       "theme": "etat",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Hobbes justifie l'État (Léviathan) par :",
       "choices": [
         "La volonté divine seule",
@@ -1734,12 +2447,14 @@
         "L'art"
       ],
       "correct": 1,
-      "explanation": "Sans État, guerre de tous contre tous."
+      "explanation": "Sans État, guerre de tous contre tous.",
+      "hint": "Rappel : État de nature = concept hypothétique, pas un fait historique"
     },
     {
       "id": "etat-locke-etat",
       "theme": "etat",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Pour Locke, l'État a pour rôle de protéger :",
       "choices": [
         "Le monarque",
@@ -1748,12 +2463,14 @@
         "L'armée"
       ],
       "correct": 1,
-      "explanation": "Second traité du gouvernement civil."
+      "explanation": "Second traité du gouvernement civil.",
+      "hint": "Rappel : État de nature = concept hypothétique, pas un fait historique"
     },
     {
       "id": "etat-rousseau-souverainete",
       "theme": "etat",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Pour Rousseau, la souveraineté appartient :",
       "choices": [
         "Au roi",
@@ -1762,12 +2479,14 @@
         "À l'armée"
       ],
       "correct": 1,
-      "explanation": "Contrat social — souveraineté populaire."
+      "explanation": "Contrat social — souveraineté populaire.",
+      "hint": "Rappel : État de nature = concept hypothétique, pas un fait historique"
     },
     {
       "id": "etat-marx-etat",
       "theme": "etat",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Marx considère l'État comme :",
       "choices": [
         "Éternel",
@@ -1776,12 +2495,14 @@
         "Neutre"
       ],
       "correct": 1,
-      "explanation": "L'État avecers away dans la société communiste."
+      "explanation": "L'État avecers away dans la société communiste.",
+      "hint": "Rappel : État de nature = concept hypothétique, pas un fait historique"
     },
     {
       "id": "etat-arendt-pouvoir",
       "theme": "etat",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Arendt distingue pouvoir et violence :",
       "choices": [
         "Ce sont synonymes",
@@ -1790,12 +2511,14 @@
         "Le pouvoir n'existe pas"
       ],
       "correct": 1,
-      "explanation": "Du fait agir — le pouvoir n'est pas la force."
+      "explanation": "Du fait agir — le pouvoir n'est pas la force.",
+      "hint": "Rappel : État de nature = concept hypothétique, pas un fait historique"
     },
     {
       "id": "etat-legal-legitime-etat",
       "theme": "etat",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Une loi peut être légale mais illégitime. Cela signifie :",
       "choices": [
         "C'est impossible",
@@ -1804,12 +2527,14 @@
         "Elle n'est pas écrite"
       ],
       "correct": 1,
-      "explanation": "Distinction fondamentale en philosophie du droit."
+      "explanation": "Distinction fondamentale en philosophie du droit.",
+      "hint": "Rappel : État de nature = concept hypothétique, pas un fait historique"
     },
     {
       "id": "justice-platon-justice",
       "theme": "justice",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Pour Platon, la justice est :",
       "choices": [
         "La force du plus fort",
@@ -1818,12 +2543,14 @@
         "Le hasard"
       ],
       "correct": 1,
-      "explanation": "République — chacun à sa place selon sa nature."
+      "explanation": "République — chacun à sa place selon sa nature.",
+      "hint": "Rappel : Justice distributive vs corrective"
     },
     {
       "id": "justice-aristote-equite",
       "theme": "justice",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "L'équité (dikaiosynè) aristotélicienne est :",
       "choices": [
         "L'injustice",
@@ -1832,12 +2559,14 @@
         "La vengeance"
       ],
       "correct": 1,
-      "explanation": "Éthique à Nicomaque, livre V."
+      "explanation": "Éthique à Nicomaque, livre V.",
+      "hint": "Rappel : Justice distributive vs corrective"
     },
     {
       "id": "justice-rawls-equite",
       "theme": "justice",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Pour Rawls, la justice c'est l'équité, choisie :",
       "choices": [
         "Par le plus fort",
@@ -1846,12 +2575,14 @@
         "Par hasard"
       ],
       "correct": 1,
-      "explanation": "Théorie de la justice (1971)."
+      "explanation": "Théorie de la justice (1971).",
+      "hint": "Rappel : Justice distributive vs corrective"
     },
     {
       "id": "justice-nozick",
       "theme": "justice",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Nozick défend une justice fondée sur :",
       "choices": [
         "L'égalité totale",
@@ -1860,12 +2591,14 @@
         "Le bonheur"
       ],
       "correct": 1,
-      "explanation": "Anarchie, État et utopie — libertarianisme."
+      "explanation": "Anarchie, État et utopie — libertarianisme.",
+      "hint": "Rappel : Justice distributive vs corrective"
     },
     {
       "id": "justice-loi-injuste",
       "theme": "justice",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Une loi injuste est-elle une loi ? (question classique)",
       "choices": [
         "Oui, toujours",
@@ -1874,12 +2607,14 @@
         "Seulement si elle est ancienne"
       ],
       "correct": 1,
-      "explanation": "Débat Hart/Kelsen vs droit naturel (Aquinas, Cicéron)."
+      "explanation": "Débat Hart/Kelsen vs droit naturel (Aquinas, Cicéron).",
+      "hint": "Rappel : Justice distributive vs corrective"
     },
     {
       "id": "justice-egalite-equite",
       "theme": "justice",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Égalité et équité se distinguent car :",
       "choices": [
         "Ce sont synonymes",
@@ -1888,12 +2623,14 @@
         "L'égalité est toujours injuste"
       ],
       "correct": 1,
-      "explanation": "Aristote : justice distributive et corrective."
+      "explanation": "Aristote : justice distributive et corrective.",
+      "hint": "Rappel : Justice distributive vs corrective"
     },
     {
       "id": "liberte-liberte-negative",
       "theme": "liberte",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "La liberté négative (Berlin) est :",
       "choices": [
         "L'autonomie morale",
@@ -1902,12 +2639,14 @@
         "L'aliénation"
       ],
       "correct": 1,
-      "explanation": "Two Concepts of Liberty (1958)."
+      "explanation": "Two Concepts of Liberty (1958).",
+      "hint": "Rappel : Liberté négative vs positive (Berlin)"
     },
     {
       "id": "liberte-spinoza-liberte",
       "theme": "liberte",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Pour Spinoza, la liberté est :",
       "choices": [
         "L'absence de causes",
@@ -1916,12 +2655,14 @@
         "La passion"
       ],
       "correct": 1,
-      "explanation": "Éthique — servir Dieu/Nature par la raison."
+      "explanation": "Éthique — servir Dieu/Nature par la raison.",
+      "hint": "Rappel : Liberté négative vs positive (Berlin)"
     },
     {
       "id": "liberte-sartre-liberte",
       "theme": "liberte",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "« Condamné à être libre » signifie (Sartre) :",
       "choices": [
         "La liberté est un choix optionnel",
@@ -1930,12 +2671,14 @@
         "Seul Dieu est libre"
       ],
       "correct": 1,
-      "explanation": "Pas d'essence humaine prédéfinie — existence précède essence."
+      "explanation": "Pas d'essence humaine prédéfinie — existence précède essence.",
+      "hint": "Rappel : Liberté négative vs positive (Berlin)"
     },
     {
       "id": "liberte-determinisme",
       "theme": "liberte",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Le déterminisme affirme que :",
       "choices": [
         "Tout est libre",
@@ -1944,12 +2687,14 @@
         "Seul l'esprit cause"
       ],
       "correct": 1,
-      "explanation": "Problème classique : déterminisme vs libre arbitre."
+      "explanation": "Problème classique : déterminisme vs libre arbitre.",
+      "hint": "Rappel : Liberté négative vs positive (Berlin)"
     },
     {
       "id": "liberte-kant-liberte",
       "theme": "liberte",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Kant concilie liberté et déterminisme par :",
       "choices": [
         "Le rejet de la science",
@@ -1958,12 +2703,14 @@
         "L'inconscient"
       ],
       "correct": 1,
-      "explanation": "L'homme est libre en tant que noumène, déterminé en phénomène."
+      "explanation": "L'homme est libre en tant que noumène, déterminé en phénomène.",
+      "hint": "Rappel : Liberté négative vs positive (Berlin)"
     },
     {
       "id": "liberte-mill-liberte",
       "theme": "liberte",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Mill défend la liberté individuelle sauf si :",
       "choices": [
         "L'État l'ordonne",
@@ -1972,12 +2719,14 @@
         "Elle est économique"
       ],
       "correct": 1,
-      "explanation": "De la liberté — harm principle."
+      "explanation": "De la liberté — harm principle.",
+      "hint": "Rappel : Liberté négative vs positive (Berlin)"
     },
     {
       "id": "langage-saussure",
       "theme": "langage",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Saussure distingue langue et parole :",
       "choices": [
         "Ce sont synonymes",
@@ -1986,12 +2735,14 @@
         "Langue = oral ; parole = écrit"
       ],
       "correct": 1,
-      "explanation": "Cours de linguistique générale (1916)."
+      "explanation": "Cours de linguistique générale (1916).",
+      "hint": "Rappel : Langue (système) vs parole (acte)"
     },
     {
       "id": "langage-wittgenstein-langage",
       "theme": "langage",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Wittgenstein affirme que les limites du langage :",
       "choices": [
         "N'existent pas",
@@ -2000,12 +2751,14 @@
         "Concernent seulement la poésie"
       ],
       "correct": 1,
-      "explanation": "Tractatus — le langage structure la pensée."
+      "explanation": "Tractatus — le langage structure la pensée.",
+      "hint": "Rappel : Langue (système) vs parole (acte)"
     },
     {
       "id": "langage-signe-arbitraire",
       "theme": "langage",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Le signe linguistique (Saussure) est arbitraire car :",
       "choices": [
         "Il est naturel",
@@ -2014,12 +2767,14 @@
         "Il est divin"
       ],
       "correct": 1,
-      "explanation": "Pas de lien naturel entre le mot et la chose."
+      "explanation": "Pas de lien naturel entre le mot et la chose.",
+      "hint": "Rappel : Langue (système) vs parole (acte)"
     },
     {
       "id": "langage-austin-parole",
       "theme": "langage",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "La « parole acte » (Austin) signifie que :",
       "choices": [
         "Parler ne fait rien",
@@ -2028,12 +2783,14 @@
         "Seul l'écrit compte"
       ],
       "correct": 1,
-      "explanation": "Quand dire c'est faire (How to Do Things with Words)."
+      "explanation": "Quand dire c'est faire (How to Do Things with Words).",
+      "hint": "Rappel : Langue (système) vs parole (acte)"
     },
     {
       "id": "langage-heidegger-langage",
       "theme": "langage",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Heidegger dit que le langage est :",
       "choices": [
         "Un simple outil",
@@ -2042,12 +2799,14 @@
         "Inférieur à la technique"
       ],
       "correct": 1,
-      "explanation": "Lettre sur l'humanisme."
+      "explanation": "Lettre sur l'humanisme.",
+      "hint": "Rappel : Langue (système) vs parole (acte)"
     },
     {
       "id": "langage-langage-pensee",
       "theme": "langage",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Le langage détermine-t-il la pensée ?",
       "choices": [
         "Non, jamais",
@@ -2056,12 +2815,14 @@
         "La pensée n'existe pas"
       ],
       "correct": 1,
-      "explanation": "Question centrale de la philosophie du langage."
+      "explanation": "Question centrale de la philosophie du langage.",
+      "hint": "Rappel : Langue (système) vs parole (acte)"
     },
     {
       "id": "raison-descartes-raison",
       "theme": "raison",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Descartes fonde la certitude sur :",
       "choices": [
         "La tradition",
@@ -2070,12 +2831,14 @@
         "L'autorité"
       ],
       "correct": 1,
-      "explanation": "Discours de la méthode — raison naturelle à tous."
+      "explanation": "Discours de la méthode — raison naturelle à tous.",
+      "hint": "Rappel : Raison théorique vs pratique (Kant)"
     },
     {
       "id": "raison-hume-raison",
       "theme": "raison",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Hume affirme que la raison est esclave des passions. Cela signifie :",
       "choices": [
         "La raison domine tout",
@@ -2084,12 +2847,14 @@
         "La raison est inutile"
       ],
       "correct": 1,
-      "explanation": "Traité de la nature humaine."
+      "explanation": "Traité de la nature humaine.",
+      "hint": "Rappel : Raison théorique vs pratique (Kant)"
     },
     {
       "id": "raison-kant-antinomies",
       "theme": "raison",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Kant montre que la raison :",
       "choices": [
         "Est illimitée",
@@ -2098,12 +2863,14 @@
         "Est identique à la foi"
       ],
       "correct": 1,
-      "explanation": "Critique de la raison pure."
+      "explanation": "Critique de la raison pure.",
+      "hint": "Rappel : Raison théorique vs pratique (Kant)"
     },
     {
       "id": "raison-raison-instrumentale",
       "theme": "raison",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "La raison instrumentale (Horkheimer/Adorno) :",
       "choices": [
         "Est toujours émancipatrice",
@@ -2112,12 +2879,14 @@
         "Est religieuse"
       ],
       "correct": 1,
-      "explanation": "Dialectique de la Raison — critique de la modernité."
+      "explanation": "Dialectique de la Raison — critique de la modernité.",
+      "hint": "Rappel : Raison théorique vs pratique (Kant)"
     },
     {
       "id": "raison-pascal-raison",
       "theme": "raison",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Pascal critique la raison en affirmant :",
       "choices": [
         "Qu'elle suffit à tout",
@@ -2126,12 +2895,14 @@
         "Qu'elle est dangereuse uniquement"
       ],
       "correct": 1,
-      "explanation": "Pensées — limites de la raison discursive."
+      "explanation": "Pensées — limites de la raison discursive.",
+      "hint": "Rappel : Raison théorique vs pratique (Kant)"
     },
     {
       "id": "raison-raison-foi",
       "theme": "raison",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Augustin propose :",
       "choices": [
         "Foi contre raison",
@@ -2140,12 +2911,14 @@
         "Rejet de la foi"
       ],
       "correct": 1,
-      "explanation": "Foi et raison concordent."
+      "explanation": "Foi et raison concordent.",
+      "hint": "Rappel : Raison théorique vs pratique (Kant)"
     },
     {
       "id": "science-popper",
       "theme": "science",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Pour Popper, une théorie scientifique doit être :",
       "choices": [
         "Indémontrable",
@@ -2154,12 +2927,14 @@
         "Métaphysique"
       ],
       "correct": 1,
-      "explanation": "Critère de falsifiabilité."
+      "explanation": "Critère de falsifiabilité.",
+      "hint": "Rappel : Falsifiabilité (Popper)"
     },
     {
       "id": "science-kuhn-paradigme",
       "theme": "science",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Kuhn parle de « révolutions scientifiques » car :",
       "choices": [
         "La science ne change jamais",
@@ -2168,12 +2943,14 @@
         "Les scientifiques sont des révolutionnaires politiques"
       ],
       "correct": 1,
-      "explanation": "Structure des révolutions scientifiques."
+      "explanation": "Structure des révolutions scientifiques.",
+      "hint": "Rappel : Falsifiabilité (Popper)"
     },
     {
       "id": "science-bacon",
       "theme": "science",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Francis Bacon affirme « savoir est pouvoir ». Il valorise :",
       "choices": [
         "La scolastique",
@@ -2182,12 +2959,14 @@
         "L'art seul"
       ],
       "correct": 1,
-      "explanation": "Novum Organum — induction expérimentale."
+      "explanation": "Novum Organum — induction expérimentale.",
+      "hint": "Rappel : Falsifiabilité (Popper)"
     },
     {
       "id": "science-comte-science",
       "theme": "science",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Le positivisme de Comte place la science :",
       "choices": [
         "Sous la religion",
@@ -2196,12 +2975,14 @@
         "Dans l'art"
       ],
       "correct": 1,
-      "explanation": "Hiérarchie : théologie, métaphysique, positivisme."
+      "explanation": "Hiérarchie : théologie, métaphysique, positivisme.",
+      "hint": "Rappel : Falsifiabilité (Popper)"
     },
     {
       "id": "science-science-limites",
       "theme": "science",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "La science explique-t-elle tout ?",
       "choices": [
         "Oui",
@@ -2210,12 +2991,14 @@
         "Seule la religion explique"
       ],
       "correct": 1,
-      "explanation": "Question classique au bac."
+      "explanation": "Question classique au bac.",
+      "hint": "Rappel : Falsifiabilité (Popper)"
     },
     {
       "id": "science-bachelard",
       "theme": "science",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Bachelard étudie les « obstacles épistémologiques » :",
       "choices": [
         "Les instruments",
@@ -2224,12 +3007,14 @@
         "Les mathématiques"
       ],
       "correct": 1,
-      "explanation": "Formation de l'esprit scientifique."
+      "explanation": "Formation de l'esprit scientifique.",
+      "hint": "Rappel : Falsifiabilité (Popper)"
     },
     {
       "id": "verite-platon-verite",
       "theme": "verite",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Pour Platon, la vérité est :",
       "choices": [
         "L'opinion",
@@ -2238,12 +3023,14 @@
         "Le hasard"
       ],
       "correct": 1,
-      "explanation": "Allégorie de la caverne — sortir des ombres."
+      "explanation": "Allégorie de la caverne — sortir des ombres.",
+      "hint": "Rappel : Adaequatio = correspondance"
     },
     {
       "id": "verite-descartes-verite",
       "theme": "verite",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "Descartes définit la vérité par :",
       "choices": [
         "L'autorité",
@@ -2252,12 +3039,14 @@
         "Les sens seuls"
       ],
       "correct": 1,
-      "explanation": "Critère de l'évidence rationnelle."
+      "explanation": "Critère de l'évidence rationnelle.",
+      "hint": "Rappel : Adaequatio = correspondance"
     },
     {
       "id": "verite-nietzsche-verite",
       "theme": "verite",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Nietzsche affirme qu'il n'y a pas de faits mais des interprétations. Cela suggère :",
       "choices": [
         "L'absolutisme",
@@ -2266,12 +3055,14 @@
         "Platon avait raison"
       ],
       "correct": 1,
-      "explanation": "Critique de la « vraie vie » platonicienne."
+      "explanation": "Critique de la « vraie vie » platonicienne.",
+      "hint": "Rappel : Adaequatio = correspondance"
     },
     {
       "id": "verite-heidegger-aletheia",
       "theme": "verite",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "L'aletheia (Heidegger) signifie :",
       "choices": [
         "Le mensonge",
@@ -2280,12 +3071,14 @@
         "Le calcul"
       ],
       "correct": 1,
-      "explanation": "Vérité comme événement d'apparition."
+      "explanation": "Vérité comme événement d'apparition.",
+      "hint": "Rappel : Adaequatio = correspondance"
     },
     {
       "id": "verite-correspondance",
       "theme": "verite",
       "importance": 2,
+      "level": "consolidation",
       "prompt": "La théorie de la correspondance définit la vérité comme :",
       "choices": [
         "Cohérence interne",
@@ -2294,12 +3087,14 @@
         "Croyance"
       ],
       "correct": 1,
-      "explanation": "Adaequatio rei et intellectus."
+      "explanation": "Adaequatio rei et intellectus.",
+      "hint": "Rappel : Adaequatio = correspondance"
     },
     {
       "id": "verite-relativisme",
       "theme": "verite",
       "importance": 3,
+      "level": "consolidation",
       "prompt": "Le relativisme affirme que la vérité :",
       "choices": [
         "Est une et universelle",
@@ -2308,7 +3103,104 @@
         "Est toujours scientifique"
       ],
       "correct": 1,
-      "explanation": "Opposé à l'absolutisme platonicien."
+      "explanation": "Opposé à l'absolutisme platonicien.",
+      "hint": "Rappel : Adaequatio = correspondance"
+    },
+    {
+      "id": "reperes-perspectives-existence",
+      "theme": "reperes",
+      "importance": 2,
+      "level": "decouverte",
+      "prompt": "Quelles notions appartiennent à « L'existence humaine et la culture » ?",
+      "choices": [
+        "Art, bonheur, technique",
+        "Devoir, État, justice",
+        "Raison, science, vérité",
+        "Liberté seule"
+      ],
+      "correct": 0,
+      "explanation": "Art, bonheur, conscience, inconscient, nature, religion, technique, temps, travail.",
+      "hint": "Classez mentalement les 17 notions en trois familles avant de répondre."
+    },
+    {
+      "id": "reperes-perspectives-morale",
+      "theme": "reperes",
+      "importance": 2,
+      "level": "decouverte",
+      "prompt": "Quelles notions appartiennent à « La morale et la politique » ?",
+      "choices": [
+        "Langage et science",
+        "Devoir, État, justice, liberté",
+        "Art et religion",
+        "Temps et travail"
+      ],
+      "correct": 1,
+      "explanation": "Devoir, État, justice et liberté structurent cette perspective.",
+      "hint": "Classez mentalement les 17 notions en trois familles avant de répondre."
+    },
+    {
+      "id": "reperes-perspectives-connaissance",
+      "theme": "reperes",
+      "importance": 2,
+      "level": "decouverte",
+      "prompt": "Quelles notions appartiennent à « La connaissance » ?",
+      "choices": [
+        "Langage, raison, science, vérité",
+        "Bonheur et nature",
+        "État et devoir",
+        "Art et technique"
+      ],
+      "correct": 0,
+      "explanation": "Les quatre notions de la connaissance : langage, raison, science, vérité.",
+      "hint": "Classez mentalement les 17 notions en trois familles avant de répondre."
+    },
+    {
+      "id": "liberte-liberte-developper",
+      "theme": "liberte",
+      "importance": 3,
+      "level": "examen",
+      "prompt": "Pourquoi Sartre dit-il que l'homme est « condamné » à être libre ?",
+      "choices": [
+        "Parce que la liberté est un châtiment divin",
+        "Parce qu'il ne peut pas échapper à la responsabilité de ses choix",
+        "Parce que la liberté n'existe pas",
+        "Parce que l'État l'oblige"
+      ],
+      "correct": 1,
+      "explanation": "Sans essence prédéfinie, l'homme doit choisir et assumer — il ne peut pas se dérober à cette responsabilité.<br><br><strong>Pour aller plus loin :</strong> Mobilisez cette idée en Partie II d'un sujet sur la liberté.",
+      "hint": "Pensez à la formule « l'existence précède l'essence »."
+    },
+    {
+      "id": "devoir-kant-developper",
+      "theme": "devoir",
+      "importance": 3,
+      "level": "examen",
+      "prompt": "Que signifie « agir par devoir » chez Kant ?",
+      "choices": [
+        "Suivre ses envies",
+        "Agir par respect de la loi morale, même contre ses inclinations",
+        "Obéir à l'État",
+        "Maximiser le plaisir"
+      ],
+      "correct": 1,
+      "explanation": "La moralité authentique obéit à la raison pratique, non au penchant.<br><br><strong>Pour aller plus loin :</strong> Distinguez agir par devoir vs agir conformément au devoir par inclination.",
+      "hint": "Relisez l'impératif catégorique."
+    },
+    {
+      "id": "verite-platon-developper",
+      "theme": "verite",
+      "importance": 3,
+      "level": "examen",
+      "prompt": "Que montre l'allégorie de la caverne ?",
+      "choices": [
+        "Que la science est inutile",
+        "La distinction entre apparences (ombres) et réalité intelligible (Idées)",
+        "Que l'art est supérieur à la philosophie",
+        "Que le bonheur est impossible"
+      ],
+      "correct": 1,
+      "explanation": "Les prisonniers prennent les ombres pour la réalité ; le philosophe accède au soleil des Idées.<br><br><strong>Pour aller plus loin :</strong> Utilisez cette image pour parler de vérité et d'ignorance.",
+      "hint": "Qui est libéré dans l'allégorie ?"
     }
   ]
 }
