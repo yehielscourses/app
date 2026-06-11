@@ -2,6 +2,7 @@ export const TRACKER_STORAGE_KEY = 'bac-tracker-v2';
 export const SIMULATOR_STORAGE_KEY = 'bac-simulateur-v1';
 export const SETTINGS_STORAGE_KEY = 'bac-settings-v1';
 export const PROFILE_STORAGE_KEY = 'bac-profile-v1';
+export const EXERCICES_STORAGE_KEY = 'bac-exercices-v1';
 
 let lastSaveFailed = false;
 

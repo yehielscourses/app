@@ -9,7 +9,7 @@ const PAGES = {
             <ul>
                 <li><strong><a href="#home">Accueil</a></strong> — Suivez votre progression et consultez les dates des épreuves.</li>
                 <li><strong><a href="#cours">Cours</a></strong> — Fiches de révision par matière (philosophie disponible).</li>
-                <li><strong><a href="#exercices">Exercices</a></strong> — Entraînez-vous avec des exercices (bientôt disponible).</li>
+                <li><strong><a href="#exercices">Exercices</a></strong> — QCM de révision par matière (philosophie : notions, méthode, citations).</li>
                 <li><strong><a href="#simulateur">Simulateur</a></strong> — Simulez votre moyenne au bac.</li>
             </ul>
             <p>Pour toute question ou suggestion, contactez-nous à <a href="mailto:feedback@bac-tracker.app">feedback@bac-tracker.app</a>.</p>

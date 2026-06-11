@@ -1,3 +1,11 @@
 {
-  "exercices": []
+  "matieres": [
+    {
+      "id": "philo",
+      "label": "Philosophie",
+      "icon": "psychology",
+      "description": "QCM de révision : 17 notions, méthodologie, citations et repères pour l'épreuve du bac.",
+      "dataFile": "exercices-philo.json"
+    }
+  ]
 }
