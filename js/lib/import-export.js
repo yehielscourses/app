@@ -1,4 +1,10 @@
-import { TRACKER_STORAGE_KEY, SIMULATOR_STORAGE_KEY, SETTINGS_STORAGE_KEY, PROFILE_STORAGE_KEY } from '../storage.js';
+import {
+    TRACKER_STORAGE_KEY,
+    SIMULATOR_STORAGE_KEY,
+    SETTINGS_STORAGE_KEY,
+    PROFILE_STORAGE_KEY,
+    EXERCICES_STORAGE_KEY,
+} from '../storage.js';
 
 export const EXPORT_VERSION = 1;
 
@@ -9,7 +15,13 @@ export function buildExportBundle() {
         data: {},
     };
 
-    for (const key of [TRACKER_STORAGE_KEY, SIMULATOR_STORAGE_KEY, SETTINGS_STORAGE_KEY, PROFILE_STORAGE_KEY]) {
+    for (const key of [
+        TRACKER_STORAGE_KEY,
+        SIMULATOR_STORAGE_KEY,
+        SETTINGS_STORAGE_KEY,
+        PROFILE_STORAGE_KEY,
+        EXERCICES_STORAGE_KEY,
+    ]) {
         const raw = localStorage.getItem(key);
         if (raw) {
             try {
@@ -45,6 +57,7 @@ export function importBundle(bundle, { saveState } = {}) {
         SIMULATOR_STORAGE_KEY,
         SETTINGS_STORAGE_KEY,
         PROFILE_STORAGE_KEY,
+        EXERCICES_STORAGE_KEY,
     ]);
 
     let count = 0;

@@ -9,6 +9,7 @@ import {
     TRACKER_STORAGE_KEY,
     SIMULATOR_STORAGE_KEY,
     SETTINGS_STORAGE_KEY,
+    EXERCICES_STORAGE_KEY,
 } from '../storage.js';
 
 let sheetEl = null;
@@ -288,7 +289,13 @@ function wireSheetEvents(sheet) {
             danger: true,
         });
         if (!ok) return;
-        [TRACKER_STORAGE_KEY, SIMULATOR_STORAGE_KEY, SETTINGS_STORAGE_KEY, PROFILE_STORAGE_KEY].forEach(clearState);
+        [
+            TRACKER_STORAGE_KEY,
+            SIMULATOR_STORAGE_KEY,
+            SETTINGS_STORAGE_KEY,
+            PROFILE_STORAGE_KEY,
+            EXERCICES_STORAGE_KEY,
+        ].forEach(clearState);
         localStorage.removeItem('bac-tracker-collapse-v1');
         closeSheet();
         window.location.reload();
