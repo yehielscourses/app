@@ -2,7 +2,11 @@
 """Generate comprehensive philosophy QCM data for the Bac programme."""
 
 import json
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from philo_pedagogie import LEARNING_CARDS_GLOBAL, NEUROPSY_PROFILE, NOTION_PEDAGOGIE, PERSPECTIVES
 
 NOTIONS = [
     ("art", "L'art", "L'existence humaine et la culture"),
@@ -324,36 +328,131 @@ NOTION_QUESTIONS = {
 }
 
 
+def build_learning_cards():
+    cards = list(LEARNING_CARDS_GLOBAL)
+    card_id = len(cards)
+
+    for notion_id, ped in NOTION_PEDAGOGIE.items():
+        for text, author, source, usage in ped.get("citations", []):
+            card_id += 1
+            cards.append({
+                "id": f"learn-{notion_id}-{card_id}",
+                "theme": notion_id,
+                "front": f"« {text} »",
+                "back": f"{author} — {source}. {usage.capitalize()}.",
+                "importance": 2,
+            })
+        for item in ped.get("retenir", [])[:2]:
+            card_id += 1
+            cards.append({
+                "id": f"learn-{notion_id}-memo-{card_id}",
+                "theme": notion_id,
+                "front": f"Notion « {notion_id} » — qu'est-ce qu'il faut retenir ?",
+                "back": item,
+                "importance": 2,
+            })
+
+    return cards
+
+
+def enrich_explanation(base, pour_aller_plus_loin=""):
+    text = base
+    if pour_aller_plus_loin:
+        text += f"<br><br><strong>Pour aller plus loin :</strong> {pour_aller_plus_loin}"
+    return text
+
+
 def build_questions():
     questions = []
-    counter = 0
 
-    def add(theme, suffix, importance, prompt, choices, correct, explanation):
-        nonlocal counter
-        counter += 1
-        questions.append({
+    def add(theme, suffix, importance, prompt, choices, correct, explanation,
+            hint="", level="consolidation", pour_aller_plus_loin=""):
+        q = {
             "id": f"{theme}-{suffix}",
             "theme": theme,
             "importance": importance,
+            "level": level,
             "prompt": prompt,
             "choices": choices,
             "correct": correct,
-            "explanation": explanation,
-        })
+            "explanation": enrich_explanation(explanation, pour_aller_plus_loin=pour_aller_plus_loin),
+        }
+        if hint:
+            q["hint"] = hint
+        if level:
+            q["level"] = level
+        questions.append(q)
 
     for suffix, imp, prompt, choices, correct, expl in METHODOLOGIE:
-        add("methodologie", suffix, imp, prompt, choices, correct, expl)
+        add("methodologie", suffix, imp, prompt, choices, correct, expl, level="decouverte")
 
     for suffix, imp, quote, author, choices, correct, expl in CITATIONS:
         prompt = f"À qui attribue-t-on : {quote} ?"
-        add("citations", suffix, imp, prompt, choices, correct, expl)
+        hint = f"Pensez à la notion principale associée à {author}."
+        add("citations", suffix, imp, prompt, choices, correct, expl,
+            hint=hint, level="consolidation",
+            pour_aller_plus_loin=f"Retrouvez le contexte de cette citation dans la fiche cours.")
 
     for suffix, imp, prompt, choices, correct, expl in REPERES:
-        add("reperes", suffix, imp, prompt, choices, correct, expl)
+        add("reperes", suffix, imp, prompt, choices, correct, expl, level="decouverte")
 
     for notion_id, _, _ in NOTIONS:
         for suffix, imp, prompt, choices, correct, expl in NOTION_QUESTIONS.get(notion_id, []):
-            add(notion_id, suffix, imp, prompt, choices, correct, expl)
+            hint = ""
+            palp = ""
+            if notion_id in NOTION_PEDAGOGIE:
+                ped = NOTION_PEDAGOGIE[notion_id]
+                if ped.get("retenir"):
+                    hint = f"Rappel : {ped['retenir'][0]}"
+            add(notion_id, suffix, imp, prompt, choices, correct, expl,
+                hint=hint, level="consolidation", pour_aller_plus_loin=palp)
+
+    # Questions de catégorisation — entraînent l'encodage mémoriel par familles d'idées
+    CATEGORISATION = [
+        ("perspectives-existence", 2,
+         "Quelles notions appartiennent à « L'existence humaine et la culture » ?",
+         ["Art, bonheur, technique", "Devoir, État, justice", "Raison, science, vérité", "Liberté seule"], 0,
+         "Art, bonheur, conscience, inconscient, nature, religion, technique, temps, travail."),
+        ("perspectives-morale", 2,
+         "Quelles notions appartiennent à « La morale et la politique » ?",
+         ["Langage et science", "Devoir, État, justice, liberté", "Art et religion", "Temps et travail"], 1,
+         "Devoir, État, justice et liberté structurent cette perspective."),
+        ("perspectives-connaissance", 2,
+         "Quelles notions appartiennent à « La connaissance » ?",
+         ["Langage, raison, science, vérité", "Bonheur et nature", "État et devoir", "Art et technique"], 0,
+         "Les quatre notions de la connaissance : langage, raison, science, vérité."),
+    ]
+    for suffix, imp, prompt, choices, correct, expl in CATEGORISATION:
+        add("reperes", suffix, imp, prompt, choices, correct, expl,
+            hint="Classez mentalement les 17 notions en trois familles avant de répondre.",
+            level="decouverte")
+
+    # Questions « développement » — guident au-delà du descriptif
+    DEVELOPPEMENT = [
+        ("liberte-developper", "liberte", 3,
+         "Pourquoi Sartre dit-il que l'homme est « condamné » à être libre ?",
+         ["Parce que la liberté est un châtiment divin", "Parce qu'il ne peut pas échapper à la responsabilité de ses choix", "Parce que la liberté n'existe pas", "Parce que l'État l'oblige"], 1,
+         "Sans essence prédéfinie, l'homme doit choisir et assumer — il ne peut pas se dérober à cette responsabilité.",
+         "Pensez à la formule « l'existence précède l'essence ».",
+         "examen",
+         "Mobilisez cette idée en Partie II d'un sujet sur la liberté."),
+        ("kant-developper", "devoir", 3,
+         "Que signifie « agir par devoir » chez Kant ?",
+         ["Suivre ses envies", "Agir par respect de la loi morale, même contre ses inclinations", "Obéir à l'État", "Maximiser le plaisir"], 1,
+         "La moralité authentique obéit à la raison pratique, non au penchant.",
+         "Relisez l'impératif catégorique.",
+         "examen",
+         "Distinguez agir par devoir vs agir conformément au devoir par inclination."),
+        ("platon-developper", "verite", 3,
+         "Que montre l'allégorie de la caverne ?",
+         ["Que la science est inutile", "La distinction entre apparences (ombres) et réalité intelligible (Idées)", "Que l'art est supérieur à la philosophie", "Que le bonheur est impossible"], 1,
+         "Les prisonniers prennent les ombres pour la réalité ; le philosophe accède au soleil des Idées.",
+         "Qui est libéré dans l'allégorie ?",
+         "examen",
+         "Utilisez cette image pour parler de vérité et d'ignorance."),
+    ]
+    for suffix, theme, imp, prompt, choices, correct, expl, hint, level, palp in DEVELOPPEMENT:
+        add(theme, suffix, imp, prompt, choices, correct, expl, hint=hint, level=level, pour_aller_plus_loin=palp)
 
     return questions
 
@@ -381,10 +480,12 @@ def main():
     data = {
         "id": "philo",
         "label": "Philosophie",
-        "description": "QCM couvrant les 17 notions du programme, la méthodologie, les citations essentielles et les repères philosophiques pour l'épreuve du bac.",
+        "description": "Parcours progressif : cartes d'apprentissage, QCM guidés (indices et explications détaillées), citations et notions essentielles pour le bac.",
         "icon": "psychology",
-        "perspectives": [{"id": p[0], "label": p[1]} for p in PERSPECTIVES],
+        "perspectives": PERSPECTIVES,
+        "pedagogie": NEUROPSY_PROFILE,
         "themes": build_themes(),
+        "learningCards": build_learning_cards(),
         "questions": build_questions(),
     }
     out = Path(__file__).resolve().parent.parent / "data" / "exercices-philo.json"

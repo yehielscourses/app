@@ -4,7 +4,7 @@
       "id": "philo",
       "label": "Philosophie",
       "icon": "psychology",
-      "description": "QCM de révision : 17 notions, méthodologie, citations et repères pour l'épreuve du bac.",
+      "description": "Mode Apprendre + QCM guidés : citations, notions et méthodologie pour progresser vers le bac.",
       "dataFile": "exercices-philo.json"
     }
   ]

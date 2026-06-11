@@ -2,7 +2,16 @@
 """Generate data/cours-philo.json with all 17 bac philosophy notions."""
 
 import json
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from philo_pedagogie import (
+    NEUROPSY_PROFILE,
+    PERSPECTIVES,
+    build_methodologie_pedagogical_html,
+    build_notion_pedagogical_html,
+)
 
 def section(title, body):
     return f'<section class="fiche-section"><h3>{title}</h3>{body}</section>'
@@ -839,17 +848,23 @@ section("Repères philosophiques (à mobiliser)", "<p>Absolu/relatif · Abstrait
 data = {
     "id": "philo",
     "label": "Philosophie",
-    "description": "Les 17 notions du programme officiel de terminale (voie générale), avec problématiques, auteurs, citations et méthodologie pour l'épreuve du bac.",
+    "description": "Parcours pédagogique complet : 17 notions expliquées pas à pas, auteurs détaillés, citations à retenir, plans commentés et méthodologie adaptée.",
     "icon": "psychology",
     "voie": "generale",
     "notionCount": 17,
-    "perspectives": [
-        {"id": "existence", "label": "L'existence humaine et la culture"},
-        {"id": "morale", "label": "La morale et la politique"},
-        {"id": "connaissance", "label": "La connaissance"},
+    "perspectives": PERSPECTIVES,
+    "methodologie": {
+        "title": "Méthodologie du bac",
+        "html": build_methodologie_pedagogical_html(METHODOLOGIE),
+    },
+    "pedagogie": NEUROPSY_PROFILE,
+    "notions": [
+        {
+            **n,
+            "html": build_notion_pedagogical_html(n["id"], n["html"]),
+        }
+        for n in NOTIONS
     ],
-    "methodologie": {"title": "Méthodologie du bac", "html": METHODOLOGIE},
-    "notions": NOTIONS,
 }
 
 out = Path(__file__).resolve().parent.parent / "data" / "cours-philo.json"

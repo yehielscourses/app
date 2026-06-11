@@ -1086,6 +1086,206 @@
     color: var(--muted);
 }
 
+.cours-pedago-banner,
+.exercices-pedago-banner {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    background: var(--m3-primary-container);
+    border-radius: var(--m3-shape-lg);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.cours-pedago-banner .material-symbols-rounded,
+.exercices-pedago-banner .material-symbols-rounded {
+    font-size: 28px;
+    color: var(--primary-mid);
+    flex-shrink: 0;
+}
+
+.cours-pedago-banner strong,
+.exercices-pedago-banner strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.cours-pedago-banner p,
+.exercices-pedago-banner p {
+    margin: 0;
+    color: var(--text);
+}
+
+.exercices-pedago-list {
+    margin: 8px 0 0;
+    padding-left: 18px;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.fiche-pedago {
+    margin: 16px 0 20px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--m3-outline-variant);
+}
+
+.fiche-pedago--guide {
+    background: var(--m3-surface-container);
+}
+
+.fiche-pedago--memo {
+    background: var(--m3-secondary-container);
+    border-color: transparent;
+}
+
+.fiche-pedago--profile {
+    background: var(--m3-primary-container);
+    border-color: transparent;
+}
+
+.fiche-pedago--tip {
+    background: var(--m3-tertiary-container);
+    border-color: transparent;
+}
+
+.fiche-pedago-title {
+    font-size: 0.95rem;
+    font-weight: 800;
+    margin: 0 0 8px;
+}
+
+.fiche-category-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin-top: 8px;
+}
+
+.fiche-category-table th,
+.fiche-category-table td {
+    padding: 10px 12px;
+    border: 1px solid var(--m3-outline-variant);
+    text-align: left;
+    vertical-align: top;
+}
+
+.fiche-category-table th {
+    background: var(--m3-surface-container-high);
+    font-weight: 700;
+}
+
+.fiche-auteurs-grid,
+.fiche-citations-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.fiche-auteur-card,
+.fiche-citation-card {
+    padding: 14px 16px;
+    background: var(--m3-surface-container);
+    border-radius: 12px;
+    border: 1px solid var(--m3-outline-variant);
+}
+
+.fiche-auteur-name {
+    font-size: 1rem;
+    font-weight: 800;
+    margin: 0 0 8px;
+}
+
+.fiche-auteur-epoque {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.fiche-auteur-these,
+.fiche-auteur-usage,
+.fiche-auteur-exemple,
+.fiche-citation-usage {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin: 6px 0 0;
+}
+
+.fiche-citation-text {
+    font-style: italic;
+    font-size: 0.95rem;
+    margin: 0 0 6px;
+}
+
+.fiche-citation-meta {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin: 0;
+}
+
+.fiche-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.fiche-checklist li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    border-bottom: 1px solid var(--m3-outline-variant);
+}
+
+.fiche-checklist li:last-child {
+    border-bottom: none;
+}
+
+.fiche-checklist li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--m3-primary);
+    font-weight: 800;
+}
+
+.fiche-plan-guide {
+    margin-top: 8px;
+}
+
+.fiche-plan-sujet {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+}
+
+.fiche-plan-partie {
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    background: var(--m3-surface-container);
+    border-radius: 10px;
+    border-left: 4px solid var(--m3-primary);
+}
+
+.fiche-plan-partie h4 {
+    margin: 0 0 6px;
+    font-size: 0.92rem;
+}
+
+.fiche-plan-partie p {
+    margin: 4px 0;
+    font-size: 0.88rem;
+}
+
+.fiche-etapes {
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+.fiche-etapes li {
+    margin-bottom: 10px;
+}
+
 /* ── Exercices ────────────────────────────────────────────── */
 .exercices-intro {
     font-size: 0.92rem;
@@ -1319,6 +1519,17 @@
 }
 
 .exercices-theme-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--m3-shape-md);
+    overflow: hidden;
+    border: 1px solid var(--m3-outline-variant);
+    background: var(--m3-surface-container-low);
+    font-family: 'Nunito', sans-serif;
+    color: var(--text);
+}
+
+.exercices-theme-main {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto auto;
@@ -1327,12 +1538,11 @@
     text-align: left;
     width: 100%;
     padding: 14px;
-    border: 1px solid var(--m3-outline-variant);
-    border-radius: var(--m3-shape-md);
-    background: var(--m3-surface-container-low);
+    border: none;
+    background: transparent;
     cursor: pointer;
-    font-family: 'Nunito', sans-serif;
-    color: var(--text);
+    font: inherit;
+    color: inherit;
 }
 
 .exercices-theme-icon {
@@ -1602,4 +1812,93 @@
     justify-content: center;
     gap: 6px;
     width: 100%;
+}
+
+.exercices-mode-card--learn {
+    border: 1px dashed var(--m3-primary);
+    margin-top: 10px;
+}
+
+.exercices-qcm-hint {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    background: var(--m3-tertiary-container);
+    border-radius: 10px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+.exercices-qcm-hint .material-symbols-rounded {
+    font-size: 22px;
+    color: var(--m3-tertiary);
+    flex-shrink: 0;
+}
+
+.exercices-qcm-hint p {
+    margin: 0;
+}
+
+.exercices-theme-learn {
+    padding: 8px 16px;
+    border: none;
+    border-top: 1px solid var(--m3-outline-variant);
+    background: var(--m3-surface-container-high);
+    color: var(--m3-primary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+}
+
+.exercices-learn-tip {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin: 0 0 16px;
+    line-height: 1.5;
+}
+
+.exercices-learn-card {
+    background: var(--m3-surface-container);
+    border: 1px solid var(--m3-outline-variant);
+    border-radius: var(--m3-shape-lg);
+    padding: 24px 20px;
+    min-height: 200px;
+}
+
+.exercices-learn-front h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.45;
+    margin: 0;
+}
+
+.exercices-learn-back {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 2px dashed var(--m3-outline-variant);
+}
+
+.exercices-learn-back p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.exercices-learn-card--revealed .exercices-learn-front {
+    opacity: 0.7;
+}
+
+.exercices-learn-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.exercices-learn-done-icon {
+    font-size: 48px;
+    color: var(--m3-primary);
 }

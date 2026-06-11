@@ -4,7 +4,7 @@
       "id": "philo",
       "label": "Philosophie",
       "icon": "psychology",
-      "description": "17 notions du programme officiel de terminale (voie générale)",
+      "description": "17 notions expliquées pas à pas — auteurs, citations, plans commentés (parcours adapté)",
       "dataFile": "cours-philo.json"
     }
   ]
