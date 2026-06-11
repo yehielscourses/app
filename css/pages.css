@@ -826,3 +826,262 @@
     max-width: 360px;
     margin: 0 auto;
 }
+
+/* ── Cours ───────────────────────────────────────────────── */
+.cours-intro {
+    font-size: 0.92rem;
+    color: var(--muted);
+    margin: -8px 0 20px;
+    line-height: 1.55;
+}
+
+.cours-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    background: var(--m3-surface-container-high);
+    color: var(--m3-primary);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    padding: 8px 14px 8px 10px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+
+.cours-back .material-symbols-rounded {
+    font-size: 20px;
+}
+
+.cours-matiere-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+}
+
+.cours-matiere-card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 4px 14px;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+    padding: 18px 16px;
+    border: 1.5px solid var(--m3-outline-variant);
+    border-radius: var(--m3-shape-lg);
+    background: var(--m3-surface-container);
+    box-shadow: var(--m3-elevation-1);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    color: var(--text);
+}
+
+.cours-matiere-icon {
+    grid-row: 1 / 3;
+    font-size: 32px;
+    color: var(--m3-primary);
+}
+
+.cours-matiere-label {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--m3-on-surface);
+}
+
+.cours-matiere-desc {
+    grid-column: 2;
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.45;
+}
+
+.cours-matiere-chevron {
+    grid-row: 1 / 3;
+    grid-column: 3;
+    color: var(--m3-on-surface-variant);
+    font-size: 24px;
+}
+
+.cours-method-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 16px 18px;
+    margin-bottom: 24px;
+    border: 2px solid var(--m3-primary);
+    border-radius: var(--m3-shape-lg);
+    background: var(--m3-primary-container);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    text-align: left;
+    color: var(--text);
+}
+
+.cours-method-icon {
+    font-size: 28px;
+    color: var(--m3-primary);
+    flex-shrink: 0;
+}
+
+.cours-method-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.cours-method-text strong {
+    font-size: 0.95rem;
+    color: var(--m3-on-primary-container);
+}
+
+.cours-method-text span:last-child {
+    font-size: 0.82rem;
+    color: var(--muted);
+}
+
+.cours-perspective-section {
+    margin-bottom: 28px;
+}
+
+.cours-perspective-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary-mid);
+    margin: 0 0 10px;
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+.cours-notion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cours-notion-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 12px;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid var(--m3-outline-variant);
+    border-radius: 12px;
+    background: var(--m3-surface-container);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    color: var(--text);
+}
+
+.cours-notion-card:hover {
+    background: var(--surface-hover);
+}
+
+.cours-notion-title {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--m3-on-surface);
+}
+
+.cours-notion-summary {
+    grid-column: 1;
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.45;
+}
+
+.cours-notion-card .cours-matiere-chevron {
+    grid-row: 1 / 3;
+    grid-column: 2;
+}
+
+.cours-fiche-perspective {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--primary-mid);
+    background: var(--m3-primary-container);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+}
+
+.cours-fiche {
+    margin-top: 4px;
+}
+
+.cours-fiche-title {
+    margin-bottom: 20px;
+}
+
+.cours-fiche-body {
+    font-size: 0.94rem;
+    line-height: 1.65;
+    color: var(--text);
+}
+
+.cours-fiche-body .fiche-section {
+    margin-bottom: 24px;
+}
+
+.cours-fiche-body .fiche-section h3 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 10px;
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+.cours-fiche-body .fiche-section p {
+    margin: 0 0 10px;
+}
+
+.cours-fiche-body .fiche-section ul {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.cours-fiche-body .fiche-section li {
+    margin-bottom: 8px;
+}
+
+.cours-fiche-body .fiche-section li strong {
+    color: var(--m3-on-surface);
+}
+
+.cours-fiche-body .fiche-quote {
+    margin: 16px 0;
+    padding: 14px 18px;
+    border-left: 4px solid var(--m3-primary);
+    background: var(--m3-surface-container-high);
+    border-radius: 0 12px 12px 0;
+    font-style: italic;
+}
+
+.cours-fiche-body .fiche-quote p {
+    margin: 0 0 6px;
+    font-size: 0.95rem;
+    color: var(--text);
+}
+
+.cours-fiche-body .fiche-quote cite {
+    font-size: 0.82rem;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--muted);
+}

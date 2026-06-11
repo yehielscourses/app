@@ -1,3 +1,11 @@
 {
-  "matieres": []
+  "matieres": [
+    {
+      "id": "philo",
+      "label": "Philosophie",
+      "icon": "psychology",
+      "description": "17 notions du programme officiel de terminale (voie générale)",
+      "dataFile": "cours-philo.json"
+    }
+  ]
 }

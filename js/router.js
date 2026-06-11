@@ -27,14 +27,21 @@ function normalizeRoute(hash) {
 
 export function getRouteFromHash() {
     const hash = location.hash.replace(/^#\/?/, '');
-    return normalizeRoute(hash);
+    const top = hash.split('/')[0] || '';
+    return normalizeRoute(top);
 }
 
 export function navigate(route) {
     const target = normalizeRoute(route);
-    const hash = target;
-    if (location.hash !== `#${hash}`) {
-        location.hash = hash;
+    const current = location.hash.replace(/^#\/?/, '');
+    const [currentTop, ...subParts] = current.split('/');
+
+    if (currentTop === target && subParts.length > 0) {
+        return target;
+    }
+
+    if (current !== target) {
+        location.hash = target;
     }
     return target;
 }

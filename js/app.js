@@ -41,8 +41,12 @@ function init() {
     shell.append(navRail, main, bottomNav);
     app.append(shell);
 
+    let lastTopRoute = getRouteFromHash();
     window.addEventListener('hashchange', () => {
-        showPage(getRouteFromHash());
+        const top = getRouteFromHash();
+        if (top === lastTopRoute) return;
+        lastTopRoute = top;
+        showPage(top);
     });
 
     window.addEventListener('profile-updated', () => {
