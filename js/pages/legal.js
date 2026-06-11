@@ -8,7 +8,7 @@ const PAGES = {
             <h3>Utilisation</h3>
             <ul>
                 <li><strong><a href="#home">Accueil</a></strong> — Suivez votre progression et consultez les dates des épreuves.</li>
-                <li><strong><a href="#cours">Cours</a></strong> — Accédez aux cours par matière (bientôt disponible).</li>
+                <li><strong><a href="#cours">Cours</a></strong> — Fiches de révision par matière (philosophie disponible).</li>
                 <li><strong><a href="#exercices">Exercices</a></strong> — Entraînez-vous avec des exercices (bientôt disponible).</li>
                 <li><strong><a href="#simulateur">Simulateur</a></strong> — Simulez votre moyenne au bac.</li>
             </ul>

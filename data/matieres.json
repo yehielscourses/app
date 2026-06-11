@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "id": "philo",
+    "label": "Philosophie",
+    "icon": "psychology",
+    "description": "17 notions du programme officiel de terminale (voie générale)"
+  }
+]
