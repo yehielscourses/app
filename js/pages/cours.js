@@ -164,8 +164,7 @@ function buildPrintAllDocument(matiereData) {
 <body class="cours-print-doc">
     <header class="cours-print-cover">
         <h1>${matiereData.label}</h1>
-        <p class="cours-print-cover-desc">${matiereData.description}</p>
-        <p class="cours-print-cover-meta">${notionCount} notions + méthodologie · Bac Tracker</p>
+        <p class="cours-print-cover-meta">${notionCount} notions + méthodologie</p>
     </header>
     ${fichesHtml}
     <script>
