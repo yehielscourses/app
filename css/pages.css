@@ -828,6 +828,45 @@
 }
 
 /* ── Cours ───────────────────────────────────────────────── */
+.cours-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px 16px;
+    margin-bottom: 4px;
+}
+
+.cours-header-text {
+    flex: 1 1 220px;
+    min-width: 0;
+}
+
+.cours-header .cours-intro {
+    margin-bottom: 0;
+}
+
+.cours-print-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    border: 1.5px solid var(--m3-outline-variant);
+    background: var(--m3-surface-container);
+    color: var(--m3-primary);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    padding: 10px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: var(--m3-elevation-1);
+}
+
+.cours-print-all .material-symbols-rounded {
+    font-size: 20px;
+}
+
 .cours-intro {
     font-size: 0.92rem;
     color: var(--muted);
@@ -1024,6 +1063,77 @@
 
 .cours-fiche-title {
     margin-bottom: 20px;
+}
+
+.cours-print-doc {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px;
+    background: #fff;
+    color: var(--text);
+}
+
+.cours-print-cover {
+    text-align: center;
+    padding: 40px 16px 32px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid var(--m3-outline-variant);
+}
+
+.cours-print-cover h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 2rem;
+    margin: 0 0 12px;
+    color: var(--primary);
+}
+
+.cours-print-cover-desc {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 0 0 8px;
+}
+
+.cours-print-cover-meta {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--primary-mid);
+    margin: 0;
+}
+
+.cours-print-fiche {
+    margin-bottom: 32px;
+}
+
+.cours-print-fiche .cours-fiche-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+@media print {
+    .cours-print-doc {
+        max-width: none;
+        padding: 0;
+    }
+
+    .cours-print-cover {
+        break-after: page;
+        page-break-after: always;
+    }
+
+    .cours-print-fiche {
+        break-before: page;
+        page-break-before: always;
+    }
+
+    .cours-print-fiche .fiche-section,
+    .cours-print-fiche .fiche-auteur-card,
+    .cours-print-fiche .fiche-citation-card,
+    .cours-print-fiche .fiche-plan-partie {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
 }
 
 .cours-fiche-body {
