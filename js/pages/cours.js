@@ -93,6 +93,105 @@ function renderPedagogieBanner(pedagogie) {
     return banner;
 }
 
+function groupNotionsByPerspective(matiereData) {
+    const perspectives = matiereData.perspectives ?? [];
+    const grouped = new Map();
+    perspectives.forEach((p) => grouped.set(p.label, []));
+
+    matiereData.notions.forEach((notion) => {
+        const key = notion.perspective ?? 'Autres';
+        if (!grouped.has(key)) grouped.set(key, []);
+        grouped.get(key).push(notion);
+    });
+
+    return grouped;
+}
+
+function stylesheetHref(path) {
+    return new URL(path, document.baseURI).href;
+}
+
+function buildPrintAllDocument(matiereData) {
+    const notionCount = matiereData.notions?.length ?? 0;
+    const fiches = [{
+        title: matiereData.methodologie.title,
+        perspective: null,
+        html: matiereData.methodologie.html,
+    }];
+
+    groupNotionsByPerspective(matiereData).forEach((notions) => {
+        notions.forEach((notion) => {
+            fiches.push({
+                title: notion.title,
+                perspective: notion.perspective ?? null,
+                html: notion.html,
+            });
+        });
+    });
+
+    const fichesHtml = fiches.map((fiche) => `
+        <article class="cours-fiche cours-print-fiche">
+            ${fiche.perspective ? `<p class="cours-fiche-perspective">${fiche.perspective}</p>` : ''}
+            <h2 class="cours-fiche-title">${fiche.title}</h2>
+            <div class="cours-fiche-body">${fiche.html}</div>
+        </article>
+    `).join('');
+
+    const stylesheets = ['css/variables.css', 'css/base.css', 'css/pages.css']
+        .map((path) => `<link rel="stylesheet" href="${stylesheetHref(path)}">`)
+        .join('\n    ');
+
+    return `<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <title>${matiereData.label} — Tous les cours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    ${stylesheets}
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
+                displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']]
+            },
+            options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+        };
+    <\/script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"><\/script>
+</head>
+<body class="cours-print-doc">
+    <header class="cours-print-cover">
+        <h1>${matiereData.label}</h1>
+        <p class="cours-print-cover-desc">${matiereData.description}</p>
+        <p class="cours-print-cover-meta">${notionCount} notions + méthodologie · Bac Tracker</p>
+    </header>
+    ${fichesHtml}
+    <script>
+        window.addEventListener('load', async function () {
+            if (window.MathJax?.typesetPromise) {
+                try { await window.MathJax.typesetPromise(); } catch (e) { /* ignore */ }
+            }
+            setTimeout(function () { window.print(); }, 300);
+        });
+    <\/script>
+</body>
+</html>`;
+}
+
+function printAllCours(matiereData) {
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) {
+        alert('Impossible d\'ouvrir la fenêtre d\'impression. Autorisez les fenêtres popup pour ce site.');
+        return;
+    }
+
+    printWindow.document.open();
+    printWindow.document.write(buildPrintAllDocument(matiereData));
+    printWindow.document.close();
+}
+
 function renderNotionList(container, matiereMeta, matiereData) {
     container.innerHTML = '';
     container.append(createBackButton('Toutes les matières', ''));
@@ -100,9 +199,22 @@ function renderNotionList(container, matiereMeta, matiereData) {
     const header = document.createElement('div');
     header.className = 'cours-header';
     header.innerHTML = `
-        <h1 class="page-title">${matiereData.label}</h1>
-        <p class="cours-intro">${matiereData.description}</p>
+        <div class="cours-header-text">
+            <h1 class="page-title">${matiereData.label}</h1>
+            <p class="cours-intro">${matiereData.description}</p>
+        </div>
     `;
+
+    const printBtn = document.createElement('button');
+    printBtn.type = 'button';
+    printBtn.className = 'cours-print-all m3-state-layer';
+    printBtn.innerHTML = `
+        <span class="material-symbols-rounded" aria-hidden="true">print</span>
+        <span>Imprimer tous les cours</span>
+    `;
+    printBtn.addEventListener('click', () => printAllCours(matiereData));
+    header.append(printBtn);
+
     container.append(header);
 
     const pedagoBanner = renderPedagogieBanner(matiereData.pedagogie);
@@ -122,17 +234,7 @@ function renderNotionList(container, matiereMeta, matiereData) {
     methodBtn.addEventListener('click', () => setCoursHash(`${matiereMeta.id}/methodologie`));
     container.append(methodBtn);
 
-    const perspectives = matiereData.perspectives ?? [];
-    const grouped = new Map();
-    perspectives.forEach((p) => grouped.set(p.label, []));
-
-    matiereData.notions.forEach((notion) => {
-        const key = notion.perspective ?? 'Autres';
-        if (!grouped.has(key)) grouped.set(key, []);
-        grouped.get(key).push(notion);
-    });
-
-    grouped.forEach((notions, perspective) => {
+    groupNotionsByPerspective(matiereData).forEach((notions, perspective) => {
         if (!notions.length) return;
 
         const section = document.createElement('section');
